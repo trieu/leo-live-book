@@ -1,0 +1,88 @@
+{
+  "book": {
+    "book_id": "leo-live-book-ai-agents-2026",
+    "title": "LEO LIVE BOOK: AI Agents, Knowledge, and Activation Systems",
+    "image_cover_url": "https://img.icons8.com/plasticine/1200/storytelling.jpg",
+    "author": "LEO AI Collective",
+    "description": "A living book that explains how AI agents think, reason, and activate knowledge in real-world systems, combining architecture, cognition, and execution.",
+    "version": "1.0.0"
+  },
+  "chapters": [
+    {
+      "chapter_id": "ch01",
+      "chapter_number": 1,
+      "chapter_title": "Foundations of LEO AI",
+      "sections": [
+        {
+          "section_id": "ch01-sec01",
+          "section_number": "1.1",
+          "section_title": "What Is an AI Agent?",
+          "summary_video": {
+            "title": "AI Agents Explained Clearly",
+            "youtube_id": "eHEHE2fpnWQ"
+          },
+          "keywords": [
+            "AI Agent",
+            "Autonomy",
+            "Perception",
+            "Action Loop"
+          ],
+          "summary": "An AI agent is an autonomous system that perceives its environment, reasons over knowledge, and acts to achieve defined objectives.",
+          "content": [
+            "An AI agent continuously operates in a perception → reasoning → action loop.",
+            "Agents differ from scripts by maintaining internal state and goals.",
+            "Modern AI agents integrate LLMs, tools, memory, and policies.",
+            "Autonomy is defined by how independently an agent can plan and execute tasks."
+          ]
+        },
+        {
+          "section_id": "ch01-sec02",
+          "section_number": "1.2",
+          "section_title": "From Knowledge to Action",
+          "summary_video": {
+            "title": "How AI Turns Knowledge Into Action",
+            "youtube_id": "vtMBYsjs304"
+          },
+          "keywords": [
+            "Knowledge Graph",
+            "Reasoning",
+            "Decision Making",
+            "Execution"
+          ],
+          "summary": "Knowledge alone is inert; value emerges when knowledge is activated into decisions and actions.",
+          "content": [
+            "Static knowledge bases do not produce outcomes by themselves.",
+            "Activation layers connect knowledge to real-world actions.",
+            "Reasoning engines select the next best action based on context.",
+            "LEO emphasizes execution, not just intelligence."
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "ch02",
+      "chapter_number": 2,
+      "chapter_title": "LEO LIVE BOOK Architecture",
+      "sections": [
+        {
+          "section_id": "ch02-sec01",
+          "section_number": "2.1",
+          "section_title": "Living Knowledge Structures",
+          "keywords": [
+            "Living Book",
+            "Dynamic Content",
+            "Contextual Learning",
+            "Versioning"
+          ],
+          "summary": "A LEO LIVE BOOK evolves over time, adapting content to context, user intent, and system intelligence.",
+          "content": [
+            "Content is modular, versioned, and context-aware.",
+            "Sections can be updated independently without breaking the book.",
+            "AI agents personalize reading paths dynamically.",
+            "The book behaves more like software than a PDF."
+          ]
+        }
+      ]
+    }
+  ]
+}

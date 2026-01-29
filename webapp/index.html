@@ -68,7 +68,7 @@
 
     <!-- ================= APP LAYOUT ================= -->
     <div class="container-fluid">
-        <div class="row flex-nowrap">
+        <div class="row flex-nowrap leo-app-layout">
 
             <!-- ========== SIDEBAR ========== -->
             <aside id="sidebar" class="collapse show col-12 col-md-3 col-lg-2 bg-dark text-white p-3">
@@ -87,8 +87,6 @@
                 </small>
 
                 <div id="chapterList" class="chapter-list"></div>
-
-
 
             </aside>
 
@@ -238,7 +236,7 @@
                 token: "leo-demo-key-123"
             });
 
-            var dataPath = "./data/sample-book.json";
+            var dataPath = "./data/leo-live-book.json";
             if (location.search) {
                 const params = new URLSearchParams(location.search);
                 if (params.has("book-metadata")) {

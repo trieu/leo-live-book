@@ -15,10 +15,13 @@ body {
    Layout
 =========================== */
 
-.app {
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 260px 1fr 340px;
+
+
+.leo-app-layout {
+  min-height: calc(100vh - 56px); /* navbar height */
+  display: flex;
+  align-items: stretch;
+  
 }
 
 /* ===========================
