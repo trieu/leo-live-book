@@ -99,8 +99,12 @@ body {
    Knowledge Tags
 =========================== */
 
-.tag {
-    display: inline-block;
+.tag-clickable {
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.15s ease;
+
+     display: inline-block;
     padding: 6px 14px;
     font-size: 12px;
     border-radius: 999px;
@@ -108,6 +112,12 @@ body {
     color: var(--leo-primary);
     margin-right: 8px;
 }
+
+.tag-clickable:hover {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
 
 /* ===========================
    AI Panel

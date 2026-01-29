@@ -1,37 +1,61 @@
 {
   "book": {
-    "book_id": "stats-py-malato-2025",
-    "title": "Statistics with Python: 100 Solved Exercises for Data Analysis",
-    "author": "Gianluca Malato (Parsed by LEO AI)",
-    "description": "A practical guide to statistics using Python, covering probability, descriptive statistics, and hypothesis testing.",
-    "version": "1.1.0"
+    "book_id": "statistics-with-python-100-solved-exercises-for-data-analysis",
+    "title": "Thống kê với Python: 100 Bài tập Giải sẵn cho Phân tích Dữ liệu",
+    "image_cover_url": "https://m.media-amazon.com/images/I/410XGfNJkRL._SY445_SX342_FMwebp_.jpg",
+    "author": "Parsed by LEO AI (LEO CDP Framework)",
+    "description": "Tài liệu hướng dẫn thực hành thống kê ứng dụng, được biên soạn từ dự án MkDocs và tối ưu hóa cho phân tích dữ liệu thực tế.",
+    "version": "1.2.0"
   },
   "chapters": [
     {
       "chapter_id": "ch01",
       "chapter_number": 1,
-      "chapter_title": "Probability",
+      "chapter_title": "Chương 1 - Lý thuyết Xác suất",
       "sections": [
         {
           "section_id": "ch01-sec01",
           "section_number": "1.1",
-          "section_title": "Foundations of Probability",
+          "section_title": "1.1 Nền tảng của Xác suất",
           "summary_video": {
-            "title": "Probability Basics for Data Science",
-            "youtube_id": "KzfWUEJjG18"
+            "youtube_id": "KzfWUEJjG18",
+            "title": "Cơ bản về Xác suất trong Khoa học Dữ liệu"
           },
           "keywords": [
-            "Sample Space",
-            "Event",
-            "Frequentist Probability",
-            "Random Variables"
+            "Không gian mẫu",
+            "Biến cố",
+            "Xác suất tần suất",
+            "Biến ngẫu nhiên"
           ],
-          "summary": "Probability is the measure of the likelihood that an event will occur, ranging from 0 to 1.",
+          "summary": "Xác suất là thước đo khả năng xảy ra của một sự kiện, có giá trị nằm trong khoảng từ 0 đến 1.",
           "content": [
-            "A random experiment is a process with an uncertain outcome.",
-            "The set of all possible outcomes is called the Sample Space (S).",
-            "An Event (E) is a subset of the Sample Space.",
-            "The probability P(A) of an event A is the number of favorable outcomes divided by the total number of possible outcomes."
+            "Xác suất là nền tảng để xử lý sự không chắc chắn trong dữ liệu.",
+            "Một phép thử ngẫu nhiên là một quá trình có kết quả không thể đoán trước chính xác.",
+            "Tập hợp tất cả các kết quả có thể xảy ra được gọi là **Không gian mẫu (Sample Space - S)**.",
+            "Một **Biến cố (Event - E)** là một tập con của không gian mẫu.",
+            "Công thức xác suất cơ bản: $P(A) = \\frac{n(A)}{n(S)}$"
+          ]
+        },
+        {
+          "section_id": "ch01-sec02",
+          "section_number": "1.2",
+          "section_title": "1.2 Xác suất có điều kiện và Định lý Bayes",
+          "summary_video": {
+            "youtube_id": "HZGCoVF3YvM",
+            "title": "Định lý Bayes trong Machine Learning"
+          },
+          "keywords": [
+            "Conditional Probability",
+            "Bayes Theorem",
+            "Independence",
+            "Prior/Posterior"
+          ],
+          "summary": "Tìm hiểu cách cập nhật niềm tin về một sự kiện khi có thêm thông tin mới.",
+          "content": [
+            "Xác suất có điều kiện $P(A|B)$ là xác suất xảy ra A khi biết B đã xảy ra.",
+            "Định lý Bayes đóng vai trò quan trọng trong các mô hình phân loại (Naive Bayes).",
+            "Công thức Bayes: $P(A|B) = \\frac{P(B|A)P(A)}{P(B)}$",
+            "Ứng dụng: Lọc thư rác (Spam filtering) và chẩn đoán y tế dựa trên triệu chứng."
           ]
         }
       ]
@@ -39,72 +63,51 @@
     {
       "chapter_id": "ch02",
       "chapter_number": 2,
-      "chapter_title": "Descriptive Statistics",
+      "chapter_title": "Chương 2 - Thống kê Mô tả",
       "sections": [
         {
           "section_id": "ch02-sec01",
           "section_number": "2.1",
-          "section_title": "Mean Value",
+          "section_title": "2.1 Số trung bình, Trung vị và Yếu vị",
           "summary_video": {
-            "title": "Calculating Mean in Python",
-            "youtube_id": "SL2RobwU_M4"
+            "youtube_id": "SNwjr5o0kBE",
+            "title": "Giải thích về các đại lượng đo lường độ tập trung"
           },
           "keywords": [
-            "Arithmetic Mean",
-            "Average",
-            "numpy.mean",
-            "pandas.DataFrame.mean"
+            "Mean",
+            "Median",
+            "Mode",
+            "Central Tendency",
+            "Outliers"
           ],
-          "summary": "The arithmetic mean provides the central point of a data distribution.",
+          "summary": "Thống kê mô tả giúp tóm tắt các đặc điểm chính của một tập dữ liệu.",
           "content": [
-            "The mean is calculated as the sum of elements divided by the count.",
-            "In Python, use `numpy.mean(data)` for efficient calculation.",
-            "Pandas allows calculating means across columns using `df.mean()`.",
-            "Note: The mean is highly sensitive to outliers."
+            "**Số trung bình (Mean)**: Trung bình cộng của các quan sát $\\bar{x} = \\frac{1}{n} \\sum x_i$.",
+            "**Trung vị (Median)**: Giá trị nằm ở giữa khi dữ liệu được sắp xếp. Nó ít bị ảnh hưởng bởi giá trị ngoại lai (outliers).",
+            "**Yếu vị (Mode)**: Giá trị xuất hiện với tần suất cao nhất trong tập dữ liệu.",
+            "Trong Python, ta thường dùng `df.describe()` trong thư viện Pandas để tính nhanh các giá trị này."
           ]
         },
         {
           "section_id": "ch02-sec02",
           "section_number": "2.2",
-          "section_title": "Standard Deviation",
+          "section_title": "2.2 Độ lệch chuẩn và Phương sai",
           "summary_video": {
-            "title": "Understanding Variance and SD",
-            "youtube_id": "09kiX3p5Vek"
+            "youtube_id": "9H6vWz6S064",
+            "title": "Đo lường sự phân tán của dữ liệu"
           },
           "keywords": [
-            "Dispersion",
             "Variance",
             "Standard Deviation",
-            "numpy.std"
+            "Range",
+            "Interquartile Range"
           ],
-          "summary": "Standard deviation measures the amount of variation or dispersion in a set of values.",
+          "summary": "Đo lường mức độ phân tán hoặc biến thiên của các điểm dữ liệu quanh giá trị trung tâm.",
           "content": [
-            "A low standard deviation indicates that the data points tend to be close to the mean.",
-            "Variance is the average of the squared differences from the mean.",
-            "Standard deviation is the square root of the variance.",
-            "Python implementation: `df['column'].std()` using pandas."
-          ]
-        },
-        {
-          "section_id": "ch02-sec06",
-          "section_number": "2.6",
-          "section_title": "Identification of Outliers with IQR Method",
-          "summary_video": {
-            "title": "Interquartile Range Explained",
-            "youtube_id": "rZJbj2I-_Ek"
-          },
-          "keywords": [
-            "Outliers",
-            "IQR",
-            "Boxplot",
-            "Quantiles"
-          ],
-          "summary": "The Interquartile Range (IQR) method is a robust way to detect anomalies in data.",
-          "content": [
-            "IQR is calculated as Q3 (75th percentile) minus Q1 (25th percentile).",
-            "Outliers are typically defined as values below Q1 - 1.5*IQR or above Q3 + 1.5*IQR.",
-            "This method is more robust than the Z-score for non-normal distributions.",
-            "Visualizing outliers is best done with a boxplot using `seaborn.boxplot()`."
+            "**Phương sai (Variance)**: Trung bình bình phương khoảng cách của mỗi điểm dữ liệu tới số trung bình.",
+            "**Độ lệch chuẩn (Standard Deviation)**: Căn bậc hai của phương sai, giúp đưa đơn vị đo về dạng gốc.",
+            "Độ lệch chuẩn thấp cho thấy dữ liệu tập trung sát số trung bình, độ lệch chuẩn cao cho thấy dữ liệu phân tán rộng.",
+            "Công thức độ lệch chuẩn mẫu: $s = \\sqrt{\\frac{\\sum (x_i - \\bar{x})^2}{n-1}}$"
           ]
         }
       ]
@@ -112,57 +115,28 @@
     {
       "chapter_id": "ch03",
       "chapter_number": 3,
-      "chapter_title": "Regression Analysis",
+      "chapter_title": "Chương 3 - Phân phối Xác suất",
       "sections": [
         {
           "section_id": "ch03-sec01",
           "section_number": "3.1",
-          "section_title": "Linear Regression",
+          "section_title": "3.1 Phân phối Chuẩn (Normal Distribution)",
           "summary_video": {
-            "title": "Simple Linear Regression with Scikit-Learn",
-            "youtube_id": "7ArmBVF2dCs"
-          },
-          "keywords": [
-            "Linear Regression",
-            "Correlation",
-            "Ordinary Least Squares",
-            "scikit-learn"
-          ],
-          "summary": "Linear regression models the relationship between a dependent variable and one or more independent variables.",
-          "content": [
-            "The model assumes a linear relationship: y = mx + c.",
-            "Correlation coefficient (r) measures the strength of this linear relationship.",
-            "In Python, `sklearn.linear_model.LinearRegression` is the standard tool for modeling.",
-            "Evaluation metrics include R-squared and Mean Squared Error (MSE)."
-          ]
-        }
-      ]
-    },
-    {
-      "chapter_id": "ch05",
-      "chapter_number": 5,
-      "chapter_title": "Probability Distributions",
-      "sections": [
-        {
-          "section_id": "ch05-sec06",
-          "section_number": "5.6",
-          "section_title": "Normal Distribution",
-          "summary_video": {
-            "title": "The Bell Curve and Z-Scores",
-            "youtube_id": "rzFX5NWojp0"
+            "youtube_id": "mtbJitfMiyI",
+            "title": "Sức mạnh của Phân phối Hình chuông"
           },
           "keywords": [
             "Gaussian Distribution",
-            "Bell Curve",
-            "Z-Score",
-            "scipy.stats.norm"
+            "Z-score",
+            "Empirical Rule",
+            "Central Limit Theorem"
           ],
-          "summary": "The normal distribution is the most important probability distribution in statistics due to the Central Limit Theorem.",
+          "summary": "Phân phối quan trọng nhất trong thống kê, mô tả nhiều hiện tượng tự nhiên và xã hội.",
           "content": [
-            "Characterized by its mean (μ) and standard deviation (σ).",
-            "Approximately 68% of data falls within one standard deviation of the mean.",
-            "A Standard Normal Distribution has a mean of 0 and a variance of 1.",
-            "Use `scipy.stats.norm.pdf()` to calculate the probability density function in Python."
+            "Phân phối chuẩn có dạng hình chuông đối xứng qua giá trị trung bình.",
+            "Quy tắc 68-95-99.7: 95% dữ liệu nằm trong khoảng 2 độ lệch chuẩn từ số trung bình.",
+            "**Z-score**: Giá trị chuẩn hóa cho biết một điểm dữ liệu cách số trung bình bao nhiêu độ lệch chuẩn.",
+            "Công thức chuẩn hóa: <div class=\"math-block text-center my-4\">$z = \\frac{x - \\mu}{\\sigma}$</div>"
           ]
         }
       ]

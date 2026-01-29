@@ -39,8 +39,6 @@
     ====================================================== */
 
   const CONFIG = {
-    endpointUrl: "/webapp/data/book-demo.json",
-
     containerId: "knowledgeGraph",
     zoomInBtn: "zoomInBtn",
     zoomOutBtn: "zoomOutBtn",
@@ -59,7 +57,7 @@
        INITIALIZATION
     ====================================================== */
 
-  function init() {
+  function init(endpointUrl) {
     if (!window.cytoscape) {
       console.error("❌ Cytoscape.js not loaded");
       return;
@@ -70,26 +68,17 @@
       return;
     }
 
-    loadBookFromApi();
+    loadBookFromApi(endpointUrl);
   }
 
   /* ======================================================
        LOAD BOOK JSON (AJAX)
     ====================================================== */
 
-  function loadBookFromApi() {
-    $.ajax({
-      url: CONFIG.endpointUrl,
-      method: "GET",
-      dataType: "json",
-      cache: false,
-
-      success: function (bookJson) {
-        console.log("✅ Book JSON loaded", bookJson);
-        renderFromBookJson(bookJson);
-      },
-
-      error: function (xhr, status, err) {
+  function loadBookFromApi(endpointUrl) {
+    BookDataService.getBookByUrl(endpointUrl, {
+      onSuccess: (bookJson) => renderFromBookJson(bookJson),
+      onError: (err) => {
         console.error("❌ Failed to load book JSON", err);
       },
     });
@@ -186,6 +175,7 @@
     ====================================================== */
 
   function renderFromBookJson(bookJson) {
+    console.log("📊 Rendering knowledge graph...", bookJson.book?.title);
     const graph = buildGraph(bookJson);
 
     if (cy) {
@@ -236,7 +226,7 @@
         },
 
         /* ---------- Nodes ---------- */
-        
+
         /* ---------- Book ---------- */
         {
           selector: 'node[type="book"]',
@@ -303,7 +293,7 @@
             "border-width": 1,
             "border-color": "#e5e7eb",
           },
-        }
+        },
       ],
     });
 
@@ -335,6 +325,8 @@
       .on("click", () => {
         cy.fit(undefined, CONFIG.fitPadding);
       });
+
+
   }
 
   function zoomTo(level) {
@@ -356,17 +348,12 @@
     ====================================================== */
 
   window.LEO_KNOWLEDGE_GRAPH = {
-    reload() {
-      loadBookFromApi();
+    init,
+    reload(endpointUrl) {
+      loadBookFromApi(endpointUrl);
     },
     getInstance() {
       return cy;
     },
   };
-
-  /* ======================================================
-       BOOT
-    ====================================================== */
-
-  $(document).ready(init);
 })(window, jQuery);

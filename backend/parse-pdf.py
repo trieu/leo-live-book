@@ -15,7 +15,7 @@ load_dotenv(override=True)
 # Note: Ensure your API key has access to this model. 
 LLM_MODEL_ID = 'gemini-2.5-flash-lite'
 
-PDF_PATH = "Statistics_with_Python.pdf"
+PDF_PATH = "/home/thomas/Documents/MBA Marketing/Statistics_with_Python.pdf"
 CSV_OUTPUT_PATH = "statistics_exercises.csv"
 BOOK_NAME = "Statistics with Python. 100 solved exercises for Data Analysis"
 BOOK_ID = "stats_py_malato_2025"

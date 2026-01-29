@@ -1,0 +1,172 @@
+{
+  "book": {
+    "book_id": "stats-py-malato-2025",
+    "title": "Statistics with Python: 100 Solved Exercises for Data Analysis",
+    "image_cover_url": "https://m.media-amazon.com/images/I/61mM9DycLGL._SL1430_.jpg",
+    "author": "Gianluca Malato (Parsed by LEO AI)",
+    "description": "A practical guide to statistics using Python, covering probability, descriptive statistics, and hypothesis testing.",
+    "version": "1.1.0"
+  },
+  "chapters": [
+    {
+      "chapter_id": "ch01",
+      "chapter_number": 1,
+      "chapter_title": "Probability",
+      "sections": [
+        {
+          "section_id": "ch01-sec01",
+          "section_number": "1.1",
+          "section_title": "Foundations of Probability",
+          "summary_video": {
+            "title": "Probability Basics for Data Science",
+            "youtube_id": "KzfWUEJjG18"
+          },
+          "keywords": [
+            "Sample Space",
+            "Event",
+            "Frequentist Probability",
+            "Random Variables"
+          ],
+          "summary": "Probability is the measure of the likelihood that an event will occur, ranging from 0 to 1.",
+          "content": [
+            "A random experiment is a process with an uncertain outcome.",
+            "The set of all possible outcomes is called the Sample Space (S).",
+            "An Event (E) is a subset of the Sample Space.",
+            "The probability P(A) of an event A is the number of favorable outcomes divided by the total number of possible outcomes."
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "ch02",
+      "chapter_number": 2,
+      "chapter_title": "Descriptive Statistics",
+      "sections": [
+        {
+          "section_id": "ch02-sec01",
+          "section_number": "2.1",
+          "section_title": "Mean Value",
+          "summary_video": {
+            "title": "Calculating Mean in Python",
+            "youtube_id": "SL2RobwU_M4"
+          },
+          "keywords": [
+            "Arithmetic Mean",
+            "Average",
+            "numpy.mean",
+            "pandas.DataFrame.mean"
+          ],
+          "summary": "The arithmetic mean provides the central point of a data distribution.",
+          "content": [
+            "The mean is calculated as the sum of elements divided by the count.",
+            "In Python, use `numpy.mean(data)` for efficient calculation.",
+            "Pandas allows calculating means across columns using `df.mean()`.",
+            "Note: The mean is highly sensitive to outliers."
+          ]
+        },
+        {
+          "section_id": "ch02-sec02",
+          "section_number": "2.2",
+          "section_title": "Standard Deviation",
+          "summary_video": {
+            "title": "Understanding Variance and SD",
+            "youtube_id": "09kiX3p5Vek"
+          },
+          "keywords": [
+            "Dispersion",
+            "Variance",
+            "Standard Deviation",
+            "numpy.std"
+          ],
+          "summary": "Standard deviation measures the amount of variation or dispersion in a set of values.",
+          "content": [
+            "A low standard deviation indicates that the data points tend to be close to the mean.",
+            "Variance is the average of the squared differences from the mean.",
+            "Standard deviation is the square root of the variance.",
+            "Python implementation: `df['column'].std()` using pandas."
+          ]
+        },
+        {
+          "section_id": "ch02-sec06",
+          "section_number": "2.6",
+          "section_title": "Identification of Outliers with IQR Method",
+          "summary_video": {
+            "title": "Interquartile Range Explained",
+            "youtube_id": "rZJbj2I-_Ek"
+          },
+          "keywords": [
+            "Outliers",
+            "IQR",
+            "Boxplot",
+            "Quantiles"
+          ],
+          "summary": "The Interquartile Range (IQR) method is a robust way to detect anomalies in data.",
+          "content": [
+            "IQR is calculated as Q3 (75th percentile) minus Q1 (25th percentile).",
+            "Outliers are typically defined as values below Q1 - 1.5*IQR or above Q3 + 1.5*IQR.",
+            "This method is more robust than the Z-score for non-normal distributions.",
+            "Visualizing outliers is best done with a boxplot using `seaborn.boxplot()`."
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "ch03",
+      "chapter_number": 3,
+      "chapter_title": "Regression Analysis",
+      "sections": [
+        {
+          "section_id": "ch03-sec01",
+          "section_number": "3.1",
+          "section_title": "Linear Regression",
+          "summary_video": {
+            "title": "Simple Linear Regression with Scikit-Learn",
+            "youtube_id": "7ArmBVF2dCs"
+          },
+          "keywords": [
+            "Linear Regression",
+            "Correlation",
+            "Ordinary Least Squares",
+            "scikit-learn"
+          ],
+          "summary": "Linear regression models the relationship between a dependent variable and one or more independent variables.",
+          "content": [
+            "The model assumes a linear relationship: y = mx + c.",
+            "Correlation coefficient (r) measures the strength of this linear relationship.",
+            "In Python, `sklearn.linear_model.LinearRegression` is the standard tool for modeling.",
+            "Evaluation metrics include R-squared and Mean Squared Error (MSE)."
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "ch05",
+      "chapter_number": 5,
+      "chapter_title": "Probability Distributions",
+      "sections": [
+        {
+          "section_id": "ch05-sec06",
+          "section_number": "5.6",
+          "section_title": "Normal Distribution",
+          "summary_video": {
+            "title": "The Bell Curve and Z-Scores",
+            "youtube_id": "rzFX5NWojp0"
+          },
+          "keywords": [
+            "Gaussian Distribution",
+            "Bell Curve",
+            "Z-Score",
+            "scipy.stats.norm"
+          ],
+          "summary": "The normal distribution is the most important probability distribution in statistics due to the Central Limit Theorem.",
+          "content": [
+            "Characterized by its mean (μ) and standard deviation (σ).",
+            "Approximately 68% of data falls within one standard deviation of the mean.",
+            "A Standard Normal Distribution has a mean of 0 and a variance of 1.",
+            "Use `scipy.stats.norm.pdf()` to calculate the probability density function in Python."
+          ]
+        }
+      ]
+    }
+  ]
+}

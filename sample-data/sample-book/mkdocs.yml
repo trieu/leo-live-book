@@ -1,0 +1,10 @@
+site_name: "Statistics with Python: 100 Solved Exercises for Data Analysis"
+image_cover_url: "https://m.media-amazon.com/images/I/61mM9DycLGL._SL1430_.jpg"
+
+nav:
+  - Introduction: index.md
+  - Chapter 1 - Probability:
+      - 1.1 Foundations of Probability: chapter-01/01-foundations.md
+      - 1.2 Events and Sample Space: chapter-01/02-events.md
+  - Chapter 2 - Descriptive Statistics:
+      - 2.1 Mean and Median: chapter-02/01-descriptive.md

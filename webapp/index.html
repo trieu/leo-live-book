@@ -75,8 +75,8 @@
 
                 <!-- Book cover -->
                 <div class="text-center mb-4">
-                    <img id="book-cover" src="https://m.media-amazon.com/images/I/71+XcyfnEoL._UF1000,1000_QL80_.jpg"
-                        class="img-fluid rounded shadow mb-2" style="max-width:140px">
+                    <img id="book-cover" class="img-fluid rounded shadow mb-2" src="https://img.icons8.com/plasticine/1200/storytelling.jpg"
+                        style="max-width:140px; height:auto; display: none;" alt="Book Cover" />
                     <div id="book-title" class="fw-semibold small">
                         LEO LIVE BOOK
                     </div>
@@ -169,6 +169,40 @@
         </div>
     </div>
 
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: { fontCache: 'global' }
+        };
+
+        function renderMath(container) {
+            if (window.MathJax) {
+                MathJax.typesetPromise([container])
+                    .catch(err => console.error("MathJax render error:", err));
+            }
+        }
+
+        function convertMdToHTML(markdownText) {
+            if (!markdownText) return "";
+
+            return marked.parse(markdownText, {
+                breaks: true,        // line breaks → <br>
+                gfm: true            // GitHub-flavored markdown
+            });
+        }
+
+        
+    </script>
+
+    <!-- MathJax -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Marked.js -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -178,18 +212,42 @@
     <!-- Cytoscape.js -->
     <script src="https://unpkg.com/cytoscape@3.26.0/dist/cytoscape.min.js"></script>
 
-    <!-- Fullscreen -->
-    <script>
-        $("#btnFullscreen").on("click", () => {
-            document.documentElement.requestFullscreen?.();
-        });
-    </script>
+
+    <!-- Book Data Service -->
+    <script src="./js/book-data-service.js"></script>
 
     <!-- Leo Book Engine -->
     <script src="./js/leo-book-engine.js"></script>
 
     <!-- Knowledge Graph Renderer -->
     <script src="./js/knowledge-graph-render.js"></script>
+
+    <!-- App Init -->
+    <script>
+        function initApp(dataPath) {
+            // Initialize Book Engine
+            LEO_BOOK.init(dataPath);
+
+            // Initialize Knowledge Graph
+            LEO_KNOWLEDGE_GRAPH.init(dataPath);
+        }
+
+        $(document).ready(() => {
+            BookDataService.setAuth({
+                headerKey: "X-API-KEY",
+                token: "leo-demo-key-123"
+            });
+
+            var dataPath = "./data/sample-book.json";
+            if (location.search) {
+                const params = new URLSearchParams(location.search);
+                if (params.has("book-metadata")) {
+                    dataPath = params.get("book-metadata");
+                }
+            }
+            initApp(dataPath);
+        });
+    </script>
 
 </body>
 

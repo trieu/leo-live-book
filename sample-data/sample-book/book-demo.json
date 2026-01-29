@@ -1,0 +1,92 @@
+{
+  "book": {
+    "book_id": "statistics-with-python-100-solved-exercises-for-data-analysis",
+    "title": "Statistics with Python: 100 Solved Exercises for Data Analysis",
+    "image_cover_url": "https://m.media-amazon.com/images/I/61mM9DycLGL._SL1430_.jpg",
+    "author": "Parsed by LEO AI",
+    "description": "Generated from MkDocs markdown project",
+    "version": "1.1.0"
+  },
+  "chapters": [
+    {
+      "chapter_id": "ch01",
+      "chapter_number": 1,
+      "chapter_title": "Chapter 1 - Probability",
+      "sections": [
+        {
+          "section_id": "ch01-sec01",
+          "section_number": "1.1",
+          "section_title": "1.1 Foundations of Probability",
+          "summary_video": {
+            "youtube_id": "KzfWUEJjG18",
+            "title": "Probability Basics for Data Science"
+          },
+          "keywords": [
+            "Sample Space",
+            "Event",
+            "Frequentist Probability",
+            "Random Variables"
+          ],
+          "summary": "Probability is the measure of the likelihood that an event will occur,\nranging from 0 to 1.",
+          "content": [
+            "Probability is the measure of the likelihood that an event will occur,\nranging from 0 to 1.",
+            "A random experiment is a process with an uncertain outcome.",
+            "The set of all possible outcomes is called the **Sample Space (S)**.",
+            "An **Event (E)** is a subset of the sample space."
+          ]
+        },
+        {
+          "section_id": "ch01-sec02",
+          "section_number": "1.2",
+          "section_title": "1.2 Events and Sample Space",
+          "summary_video": {
+            "youtube_id": "SNwjr5o0kBE",
+            "title": "Understanding Events in Probability"
+          },
+          "keywords": [
+            "Event",
+            "Union",
+            "Intersection",
+            "Complement"
+          ],
+          "summary": "An event is a collection of outcomes from a random experiment.",
+          "content": [
+            "An event is a collection of outcomes from a random experiment.",
+            "The **union** of two events represents outcomes belonging to either event.",
+            "The **intersection** represents outcomes common to both events.",
+            "The **complement** of an event includes all outcomes not in the event."
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "ch02",
+      "chapter_number": 2,
+      "chapter_title": "Chapter 2 - Descriptive Statistics",
+      "sections": [
+        {
+          "section_id": "ch02-sec01",
+          "section_number": "2.1",
+          "section_title": "2.1 Mean and Median",
+          "summary_video": {
+            "youtube_id": "SNwjr5o0kBE",
+            "title": "Descriptive Statistics Explained"
+          },
+          "keywords": [
+            "Mean",
+            "Median",
+            "Central Tendency",
+            "Outliers"
+          ],
+          "summary": "Descriptive statistics summarize and describe the main features of a dataset.",
+          "content": [
+            "Descriptive statistics summarize and describe the main features of a dataset.",
+            "The **mean** is the arithmetic average of all observations.",
+            "The **median** is the middle value when the data is ordered.",
+            "The median is less sensitive to outliers than the mean."
+          ]
+        }
+      ]
+    }
+  ]
+}
