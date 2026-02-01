@@ -1,0 +1,318 @@
+{
+  "book": {
+    "book_id": "leo-live-book-ai-agents-2026-vn",
+    "title": "LEO LIVE BOOK: AI Agents, Tri Thức và Hệ Thống Kích Hoạt (Technical & Business Edition)",
+    "image_cover_url": "https://img.icons8.com/plasticine/1200/storytelling.jpg",
+    "author": "LEO AI Collective",
+    "description": "Tài liệu chuyên sâu về vận hành AI Agents trong LEO CDP. Dành cho Kỹ sư dữ liệu (triển khai kiến trúc USPA, APIs, Data Pipelines) và Nhà quản lý (tối ưu hóa ROI, CLTV và trải nghiệm khách hàng).",
+    "version": "2.0.0",
+    "language": "vi-VN",
+    "repository_url": "https://github.com/trieu/leo-cdp-framework",
+    "last_updated": "2026-02-01"
+  },
+  "chapters": [
+    {
+      "chapter_id": "ch01",
+      "chapter_number": 1,
+      "chapter_title": "Giới thiệu: Kỷ nguyên của AI Agents",
+      "sections": [
+        {
+          "section_id": "ch01-sec01",
+          "section_number": "1.1",
+          "section_title": "AI Agent là gì?",
+          "summary_video": {
+            "title": "Giải thích về AI Agents và Kiến trúc Event-Driven",
+            "youtube_id": "eHEHE2fpnWQ"
+          },
+          "keywords": [
+            "AI Agent",
+            "Autonomous Loop",
+            "State Machine",
+            "LLM Integration",
+            "Operational Efficiency"
+          ],
+          "summary": "AI Agent là hệ thống phần mềm tự chủ. Về mặt kỹ thuật, nó là một 'Stateful Worker' xử lý luồng sự kiện. Về mặt kinh doanh, nó là nhân viên kỹ thuật số hoạt động 24/7 để tối ưu hóa phễu chuyển đổi.",
+          "content": [
+            "Technical View: Agent vận hành theo vòng lặp 'Perception (Input Stream) → Reasoning (LLM/Rule Engine) → Action (API Calls)'. Nó duy trì bộ nhớ ngữ cảnh (Contextual Memory) trong Vector Database.",
+            "Business View: Khác với chatbot truyền thống chỉ phản hồi, AI Agent chủ động đề xuất hành động (Proactive), giúp giảm chi phí vận hành CSKH đến 40% và tăng tốc độ phản hồi.",
+            "Core Capability: Khả năng 'Self-Correction' (Tự điều chỉnh) dựa trên Feedback Loop, cho phép hệ thống học từ dữ liệu sai lệch mà không cần can thiệp thủ công liên tục."
+          ]
+        },
+        {
+          "section_id": "ch01-sec02",
+          "section_number": "1.2",
+          "section_title": "Từ Dữ liệu thô đến Trải nghiệm số",
+          "keywords": [
+            "Data Pipeline",
+            "ETL/ELT",
+            "Latency",
+            "Customer Experience (CX)",
+            "ROI"
+          ],
+          "summary": "Quy trình chuyển đổi Data thành Insight. Tech: Xử lý độ trễ thấp (Low-latency ingestion). Business: Rút ngắn thời gian Time-to-market cho các chiến dịch.",
+          "content": [
+            "Technical Flow: Raw Data (Logs, Clickstream) → Ingestion (Kafka/Fluentd) → Cleaning/Normalization → Enrichment → Activation API.",
+            "Business Impact: Dữ liệu chỉ có giá trị khi 'Tươi' (Freshness). Kích hoạt dữ liệu trong <200ms giúp tăng tỷ lệ chuyển đổi (Conversion Rate) lên 15-20% so với xử lý theo lô (Batch) ngày hôm sau.",
+            "CDP Role: LEO CDP đóng vai trò là 'Single Source of Truth', loại bỏ các Data Silos (kho dữ liệu rời rạc) giữa Marketing, Sales và IT."
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "ch02",
+      "chapter_number": 2,
+      "chapter_title": "Các trường hợp sử dụng (Use Cases)",
+      "sections": [
+        {
+          "section_id": "ch02-sec01",
+          "section_number": "2.1",
+          "section_title": "Bán lẻ đa kênh (Omnichannel Retail)",
+          "keywords": [
+            "O2O Mapping",
+            "Identity Graph",
+            "POS Integration",
+            "Average Order Value (AOV)"
+          ],
+          "summary": "Kết nối định danh khách hàng Online-Offline. Kỹ thuật: Mapping Fingerprint với SĐT/Email. Kinh doanh: Tăng giá trị vòng đời khách hàng (LTV).",
+          "content": [
+            "Tech Implementation: Sử dụng thuật toán 'Deterministic Matching' để khớp user ID từ App với số điện thoại tại POS. Webhook trigger gửi coupon zalo ngay khi khách rời cửa hàng.",
+            "Business Scenario: Khách xem giày trên Web nhưng không mua → Đến cửa hàng vật lý → Hệ thống nhận diện và báo nhân viên tư vấn đúng mẫu đó → Tăng khả năng chốt đơn (Closing Rate).",
+            "Key Metric: Tăng doanh thu trên mỗi khách ghé thăm (Revenue Per Visitor) và cải thiện trải nghiệm mua sắm liền mạch (Seamless Experience)."
+          ]
+        },
+        {
+          "section_id": "ch02-sec02",
+          "section_number": "2.2",
+          "section_title": "Tài chính & Ngân hàng (BFSI)",
+          "keywords": [
+            "Real-time Fraud Detection",
+            "Credit Scoring Model",
+            "Data Security",
+            "Compliance"
+          ],
+          "summary": "Ứng dụng trong bảo mật và bán chéo. Tech: Stream Processing phát hiện gian lận. Business: Giảm rủi ro và tăng Cross-sell các gói vay/thẻ.",
+          "content": [
+            "Tech Stack: Sử dụng mô hình 'Anomaly Detection' trên luồng transaction. Nếu phát hiện geo-location bất thường, kích hoạt API khóa tạm thời hoặc yêu cầu 2FA.",
+            "Business Value: Cá nhân hóa hạn mức tín dụng dựa trên hành vi chi tiêu thực tế thay vì chỉ dựa trên lịch sử tín dụng tĩnh. Tăng tỷ lệ chấp nhận thẻ (Approval Rate) an toàn.",
+            "Compliance: Đảm bảo tuân thủ GDPR/Nghị định 13 về bảo vệ dữ liệu cá nhân thông qua cơ chế quản lý sự đồng thuận (Consent Management)."
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "ch03",
+      "chapter_number": 3,
+      "chapter_title": "Khung kiến trúc USPA",
+      "sections": [
+        {
+          "section_id": "ch03-sec01",
+          "section_number": "3.1",
+          "section_title": "Triết lý thiết kế USPA",
+          "summary_video": {
+            "title": "LEO CDP: Khung USPA Architecture Deep Dive",
+            "youtube_id": "leocdp_uspa_intro_vn"
+          },
+          "keywords": [
+            "USPA Architecture",
+            "Modular Design",
+            "Scalability",
+            "Data Governance"
+          ],
+          "summary": "USPA (Unification - Segmentation - Personalization - Activation) là xương sống kỹ thuật giúp doanh nghiệp mở rộng quy mô dữ liệu mà không vỡ cấu trúc.",
+          "content": [
+            "U - Unification (Hợp nhất): Sử dụng Graph Database để tạo Profile 360. Giải quyết bài toán phân mảnh dữ liệu.",
+            "S - Segmentation (Phân khúc): Sử dụng In-memory Computing để truy vấn nhóm khách hàng (Audiences) thời gian thực.",
+            "P - Personalization (Cá nhân hóa): Tích hợp Recommendation Engine (AI Models) để ra quyết định nội dung.",
+            "A - Activation (Kích hoạt): Hệ thống Connectors đa luồng (Multi-threaded) để đẩy dữ liệu ra các kênh Marketing (Ads, Email, App)."
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "ch04",
+      "chapter_number": 4,
+      "chapter_title": "Unification: Thống nhất dữ liệu (Bộ nhớ)",
+      "sections": [
+        {
+          "section_id": "ch04-sec01",
+          "section_number": "4.1",
+          "section_title": "Hồ sơ khách hàng hợp nhất (Single Customer View)",
+          "keywords": [
+            "ID Resolution",
+            "Deduplication Algorithms",
+            "Graph DB",
+            "Data Quality"
+          ],
+          "summary": "Quy trình kỹ thuật để gộp dữ liệu trùng lặp (Merge) và tạo ra một 'Golden Record' duy nhất cho mỗi khách hàng.",
+          "content": [
+            "Tech Detail: Hỗ trợ hợp nhất dựa trên ưu tiên nguồn (Source Prioritization). Ví dụ: Dữ liệu tên từ CRM đè dữ liệu từ Web Form. Xử lý xung đột dữ liệu (Data Conflict Resolution).",
+            "Identity Graph: Liên kết các định danh: Cookie ID, Device ID, Email (SHA-256), Phone, Loyalty ID vào một Node khách hàng duy nhất.",
+            "Business Benefit: Loại bỏ việc spam khách hàng do trùng lặp hồ sơ (ví dụ: gửi 2 email cho cùng 1 người), giúp tiết kiệm chi phí Marketing và giữ hình ảnh thương hiệu chuyên nghiệp."
+          ]
+        },
+        {
+          "section_id": "ch04-sec02",
+          "section_number": "4.2",
+          "section_title": "Mô hình dữ liệu sự kiện (Event Data Model)",
+          "keywords": [
+            "JSON Schema",
+            "Timeseries Data",
+            "Contextual Attributes",
+            "Behavioral Analytics"
+          ],
+          "summary": "Cấu trúc dữ liệu chuẩn (Standard Schema) để ghi nhận hành vi. Đảm bảo tính nhất quán cho Analytics và AI Training.",
+          "content": [
+            "Tech Spec: Event Structure = {event_id, timestamp, profile_id, action_type, context: {device, ip, location}, payload: {product_id, price}}.",
+            "Storage Strategy: Dữ liệu sự kiện được lưu trữ dạng NoSQL (ví dụ: ArangoDB/MongoDB) tối ưu cho việc ghi (Write-heavy) tốc độ cao.",
+            "Business Usage: Cho phép trả lời các câu hỏi: 'Khách hàng thường rớt đơn ở bước nào?', 'Sản phẩm nào được xem nhiều nhất nhưng mua ít nhất?'."
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "ch05",
+      "chapter_number": 5,
+      "chapter_title": "Segmentation: Phân khúc khách hàng (Lý luận)",
+      "sections": [
+        {
+          "section_id": "ch05-sec01",
+          "section_number": "5.1",
+          "section_title": "Phân khúc theo quy tắc (Rule-based)",
+          "keywords": [
+            "Boolean Logic",
+            "Real-time Query",
+            "Audience Targeting",
+            "Retargeting"
+          ],
+          "summary": "Tạo nhóm khách hàng dựa trên logic nghiệp vụ cứng. Tech: Truy vấn cơ sở dữ liệu. Business: Chiến dịch Marketing trực tiếp.",
+          "content": [
+            "Tech Implementation: Xây dựng query builder (AND/OR/NOT). Ví dụ: (Total_Spend > 5M) AND (Last_Visit < 30 days). Tính toán lại ngay khi có event mới (Event-triggered update).",
+            "Business Application: Tạo nhóm 'VIP nguy cơ rời bỏ', nhóm 'Khách hàng mới tiềm năng' để chạy quảng cáo Facebook/Google Ads (Retargeting).",
+            "Transparency: Dễ dàng giải thích lý do tại sao một khách hàng thuộc nhóm này (Auditability)."
+          ]
+        },
+        {
+          "section_id": "ch05-sec02",
+          "section_number": "5.2",
+          "section_title": "Phân khúc nâng cao bằng AI (Predictive)",
+          "keywords": [
+            "Machine Learning",
+            "Churn Prediction",
+            "CLTV Modeling",
+            "Lookalike Audiences"
+          ],
+          "summary": "Sử dụng ML để dự đoán tương lai. Tech: Scikit-learn/TensorFlow pipelines. Business: Chiến lược giữ chân chủ động (Proactive Retention).",
+          "content": [
+            "Tech Models: Sử dụng mô hình RFM (Recency, Frequency, Monetary) kết hợp với Gradient Boosting để chấm điểm khách hàng (Scoring).",
+            "Churn Prediction: Hệ thống cảnh báo khách hàng có xác suất rời bỏ > 80% trong tháng tới dựa trên việc giảm tần suất tương tác.",
+            "Business Strategy: Tập trung ngân sách vào nhóm có CLTV (Giá trị vòng đời) cao, thay vì rải tiền khuyến mãi cho tất cả mọi người."
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "ch06",
+      "chapter_number": 6,
+      "chapter_title": "Personalization: Cá nhân hóa (Ra quyết định)",
+      "sections": [
+        {
+          "section_id": "ch06-sec01",
+          "section_number": "6.1",
+          "section_title": "Recommendation Engine",
+          "keywords": [
+            "Collaborative Filtering",
+            "Content-based Filtering",
+            "Matrix Factorization",
+            "Upsell/Cross-sell"
+          ],
+          "summary": "Hệ thống gợi ý thông minh. Tech: Vector Search & Ranking Algorithms. Business: Tăng AOV và CTR.",
+          "content": [
+            "Tech Detail: Kết hợp Collaborative Filtering (Người giống người) và Content-based (Sản phẩm giống sản phẩm). Xử lý vấn đề 'Cold Start' cho người dùng mới.",
+            "API Response: Trả về danh sách JSON sản phẩm gợi ý kèm theo `confidence_score` cho Frontend hiển thị.",
+            "Business Impact: Khách hàng thấy đúng thứ họ cần tìm. Tăng tỷ lệ click (CTR) lên 30-50% trên các widget 'Có thể bạn sẽ thích'."
+          ]
+        },
+        {
+          "section_id": "ch06-sec02",
+          "section_number": "6.2",
+          "section_title": "Cá nhân hóa nội dung động",
+          "keywords": [
+            "Dynamic Content Injection",
+            "A/B Testing",
+            "Hyper-personalization"
+          ],
+          "summary": "Thay đổi giao diện Web/App theo thời gian thực. Tech: Server-side rendering (SSR) hoặc Client-side JS SDK. Business: Trải nghiệm 1-1.",
+          "content": [
+            "Tech Mechanism: LEO JS SDK nhận diện Segment ID của user và thay thế DOM element (Banner, Title) bằng nội dung tương ứng được cấu hình trước.",
+            "Testing: Tích hợp A/B Testing tự động để so sánh hiệu quả giữa các biến thể nội dung.",
+            "Business Scenario: Khách hàng nam, thích thể thao thấy banner giày chạy bộ. Khách hàng nữ, thích yoga thấy banner thảm tập. Tất cả trên cùng một URL trang chủ."
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "ch07",
+      "chapter_number": 7,
+      "chapter_title": "Activation: Kích hoạt (Hành động)",
+      "sections": [
+        {
+          "section_id": "ch07-sec01",
+          "section_number": "7.1",
+          "section_title": "Multi-channel Connectors",
+          "keywords": [
+            "REST API",
+            "Webhook",
+            "Server-to-Server",
+            "Throttling"
+          ],
+          "summary": "Cổng giao tiếp với thế giới bên ngoài. Tech: Quản lý API Token, Rate Limiting. Business: Đồng bộ hóa đa kênh.",
+          "content": [
+            "Tech Implementation: Hỗ trợ Webhook (POST JSON), tích hợp API trực tiếp với Facebook CAPI, Google Analytics 4 (MP), Zalo OA, Email Service (SendGrid/Mailchimp).",
+            "Reliability: Cơ chế 'Retry with Exponential Backoff' (Thử lại thông minh) khi API bên thứ 3 bị lỗi, đảm bảo không mất dữ liệu.",
+            "Business Reach: Tiếp cận khách hàng ở bất cứ đâu họ hiện diện (Web, App, Social, Email) với cùng một thông điệp nhất quán."
+          ]
+        },
+        {
+          "section_id": "ch07-sec02",
+          "section_number": "7.2",
+          "section_title": "Journey Orchestration",
+          "keywords": [
+            "Workflow Engine",
+            "Trigger-based Marketing",
+            "Visual Flow Builder"
+          ],
+          "summary": "Nhạc trưởng điều phối trải nghiệm. Tech: DAG (Directed Acyclic Graph) execution. Business: Tự động hóa quy trình nuôi dưỡng khách hàng.",
+          "content": [
+            "Visual Tool: Giao diện kéo thả cho phép Marketer thiết kế luồng: 'Nếu User bỏ giỏ hàng -> Chờ 2 giờ -> Gửi Push App -> Nếu không mở -> Gửi Email sáng hôm sau'.",
+            "Tech Logic: Xử lý các điều kiện rẽ nhánh (Decision Nodes) và độ trễ (Delay Nodes) trên quy mô hàng triệu users đồng thời.",
+            "Automation: Chuyển từ 'Blast Marketing' (Gửi đồng loạt) sang 'Trigger-based Marketing' (Đúng người, đúng thời điểm, đúng ngữ cảnh)."
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "ch08",
+      "chapter_number": 8,
+      "chapter_title": "Tổng kết và Tương lai",
+      "sections": [
+        {
+          "section_id": "ch08-sec01",
+          "section_number": "8.1",
+          "section_title": "Tương lai của LEO AI Agents",
+          "keywords": [
+            "Generative AI",
+            "RAG Architecture",
+            "Privacy Sandbox",
+            "Cookie-less Future"
+          ],
+          "summary": "Định hướng Roadmap 2026+. Tech: GenAI Integration. Business: Tiếp thị tự hành (Autonomous Marketing).",
+          "content": [
+            "AI-native CDP: Tích hợp LLMs (Large Language Models) để query dữ liệu bằng ngôn ngữ tự nhiên (Natural Language Querying) thay vì SQL.",
+            "Privacy First: Chuẩn bị cho kỷ nguyên không Cookie (Cookie-less) với Server-side tracking và Data Clean Rooms.",
+            "Vision: Chuyển dịch từ hệ thống hỗ trợ ra quyết định sang hệ thống tự động ra quyết định và thực thi (Fully Autonomous Agents) dưới sự giám sát của con người."
+          ]
+        }
+      ]
+    }
+  ]
+}
