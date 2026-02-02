@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEO Book Search Engine</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        h1 { text-align: center; margin-bottom: 30px; }
+
+        /* Search Box Styles */
+        .search-container {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        input#search-input {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s;
+            box-sizing: border-box;
+        }
+
+        input#search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+
+        /* Results Styles */
+        .result-item {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.2s;
+        }
+
+        .result-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-meta {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .result-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            color: var(--text);
+        }
+
+        .result-snippet {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .result-keywords {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .keyword-tag {
+            background: #e0f2fe;
+            color: #0369a1;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 999px;
+        }
+
+        .highlight {
+            background-color: #fef08a; /* Yellow highlight */
+            color: #854d0e;
+            font-weight: bold;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+
+        .no-results {
+            text-align: center;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>LEO Live Book Search</h1>
+
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search chapters, keywords, or content (e.g., 'Agent reasoning')..." autofocus>
+    </div>
+
+    <div id="results-container"></div>
+
+<script>
+/**
+ * THE DATA SOURCE
+ */
+const bookData = {
+  "book": {
+    "book_id": "leo-live-book-ai-agents-2026",
+    "title": "LEO LIVE BOOK: AI Agents, Knowledge, and Activation Systems",
+    "image_cover_url": "https://img.icons8.com/plasticine/1200/storytelling.jpg",
+    "author": "LEO AI Collective",
+    "description": "A living book that explains how AI agents think, reason, and activate knowledge in real-world systems, combining architecture, cognition, and execution.",
+    "version": "1.0.0"
+  },
+  "chapters": [
+    {
+      "chapter_id": "ch01",
+      "chapter_number": 1,
+      "chapter_title": "Foundations of LEO AI",
+      "sections": [
+        {
+          "section_id": "ch01-sec01",
+          "section_number": "1.1",
+          "section_title": "What Is an AI Agent?",
+          "summary_video": { "title": "AI Agents Explained Clearly", "youtube_id": "eHEHE2fpnWQ" },
+          "keywords": [ "AI Agent", "Autonomy", "Perception", "Action Loop" ],
+          "summary": "An AI agent is an autonomous system that perceives its environment, reasons over knowledge, and acts to achieve defined objectives.",
+          "content": [
+            "An AI agent continuously operates in a perception → reasoning → action loop.",
+            "Agents differ from scripts by maintaining internal state and goals.",
+            "Modern AI agents integrate LLMs, tools, memory, and policies.",
+            "Autonomy is defined by how independently an agent can plan and execute tasks."
+          ]
+        },
+        {
+          "section_id": "ch01-sec02",
+          "section_number": "1.2",
+          "section_title": "From Knowledge to Action",
+          "summary_video": { "title": "How AI Turns Knowledge Into Action", "youtube_id": "vtMBYsjs304" },
+          "keywords": [ "Knowledge Graph", "Reasoning", "Decision Making", "Execution" ],
+          "summary": "Knowledge alone is inert; value emerges when knowledge is activated into decisions and actions.",
+          "content": [
+            "Static knowledge bases do not produce outcomes by themselves.",
+            "Activation layers connect knowledge to real-world actions.",
+            "Reasoning engines select the next best action based on context.",
+            "LEO emphasizes execution, not just intelligence."
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "ch02",
+      "chapter_number": 2,
+      "chapter_title": "LEO LIVE BOOK Architecture",
+      "sections": [
+        {
+          "section_id": "ch02-sec01",
+          "section_number": "2.1",
+          "section_title": "Living Knowledge Structures",
+          "keywords": [ "Living Book", "Dynamic Content", "Contextual Learning", "Versioning" ],
+          "summary": "A LEO LIVE BOOK evolves over time, adapting content to context, user intent, and system intelligence.",
+          "content": [
+            "Content is modular, versioned, and context-aware.",
+            "Sections can be updated independently without breaking the book.",
+            "AI agents personalize reading paths dynamically.",
+            "The book behaves more like software than a PDF."
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+/**
+ * SEARCH ENGINE LOGIC
+ */
+class LeoSearchEngine {
+    constructor(data) {
+        this.index = [];
+        this.buildIndex(data);
+    }
+
+    // Flatten nested JSON into searchable documents
+    buildIndex(data) {
+        data.chapters.forEach(chapter => {
+            chapter.sections.forEach(section => {
+                // Combine content array into single string
+                const contentStr = section.content.join(" ");
+                
+                this.index.push({
+                    id: section.section_id,
+                    chapter_title: chapter.chapter_title,
+                    chapter_number: chapter.chapter_number,
+                    section_number: section.section_number,
+                    section_title: section.section_title,
+                    keywords: section.keywords,
+                    summary: section.summary,
+                    content: contentStr,
+                    // Pre-normalized strings for faster searching
+                    _searchBlob: this.normalize(`${chapter.chapter_title} ${section.section_title} ${section.keywords.join(" ")} ${section.summary} ${contentStr}`)
+                });
+            });
+        });
+    }
+
+    // Helper to lowerCase and remove special chars for matching
+    normalize(str) {
+        return str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+
+    search(query) {
+        if (!query || query.trim().length === 0) return [];
+        
+        const terms = this.normalize(query).split(/\s+/).filter(t => t.length > 0);
+        const results = [];
+
+        this.index.forEach(doc => {
+            let score = 0;
+            let matchedFields = [];
+
+            terms.forEach(term => {
+                // Scoring Logic (Weights)
+                // Title Matches (High Priority)
+                if (this.normalize(doc.section_title).includes(term)) score += 10;
+                if (this.normalize(doc.chapter_title).includes(term)) score += 8;
+                
+                // Keyword Matches (Medium Priority)
+                if (doc.keywords.some(k => this.normalize(k).includes(term))) score += 8;
+
+                // Content/Summary Matches (Low Priority)
+                if (this.normalize(doc.summary).includes(term)) score += 2;
+                if (this.normalize(doc.content).includes(term)) score += 1;
+            });
+
+            if (score > 0) {
+                results.push({ ...doc, score, terms });
+            }
+        });
+
+        // Sort by Score Descending
+        return results.sort((a, b) => b.score - a.score);
+    }
+}
+
+/**
+ * UI INTERACTION
+ */
+const engine = new LeoSearchEngine(bookData);
+const searchInput = document.getElementById('search-input');
+const resultsContainer = document.getElementById('results-container');
+
+searchInput.addEventListener('input', (e) => {
+    const query = e.target.value;
+    const results = engine.search(query);
+    renderResults(results, query);
+});
+
+function highlightText(text, terms) {
+    if (!terms || terms.length === 0) return text;
+    
+    // Create a regex that matches any of the terms, case insensitive
+    // We sort terms by length desc to avoid partial replacement issues
+    const sortedTerms = [...terms].sort((a, b) => b.length - a.length);
+    const pattern = new RegExp(`(${sortedTerms.join('|')})`, 'gi');
+    
+    return text.replace(pattern, '<span class="highlight">$1</span>');
+}
+
+function renderResults(results, query) {
+    resultsContainer.innerHTML = '';
+
+    if (query.trim() !== '' && results.length === 0) {
+        resultsContainer.innerHTML = '<div class="no-results">No matches found for "' + query + '"</div>';
+        return;
+    }
+
+    if (query.trim() === '') return;
+
+    // Get normalized terms for highlighting
+    const terms = query.toLowerCase().split(/\s+/).filter(t => t.length > 0);
+
+    results.forEach(res => {
+        const div = document.createElement('div');
+        div.className = 'result-item';
+
+        // Highlight fields
+        const titleH = highlightText(res.section_title, terms);
+        const summaryH = highlightText(res.summary, terms);
+        const chapterH = highlightText(res.chapter_title, terms);
+
+        // Generate Keyword tags
+        const tagsHtml = res.keywords.map(k => {
+            const isMatch = terms.some(t => k.toLowerCase().includes(t));
+            return `<span class="keyword-tag" style="${isMatch ? 'background:#bbf7d0; color:#166534;' : ''}">${k}</span>`;
+        }).join('');
+
+        div.innerHTML = `
+            <div class="result-meta">Chapter ${res.chapter_number}: ${chapterH}</div>
+            <h3 class="result-title">${res.section_number} ${titleH}</h3>
+            <div class="result-snippet">${summaryH}</div>
+            <div class="result-keywords">${tagsHtml}</div>
+        `;
+
+        resultsContainer.appendChild(div);
+    });
+}
+
+// Initialize with empty search
+// renderResults([], "");
+</script>
+
+</body>
+</html>
