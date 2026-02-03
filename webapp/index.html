@@ -75,7 +75,8 @@
 
                 <!-- Book cover -->
                 <div class="text-center mb-4">
-                    <img id="book-cover" class="img-fluid rounded shadow mb-2" src="https://img.icons8.com/plasticine/1200/storytelling.jpg"
+                    <img id="book-cover" class="img-fluid rounded shadow mb-2"
+                        src="https://img.icons8.com/plasticine/1200/storytelling.jpg"
                         style="max-width:140px; height:auto; display: none;" alt="Book Cover" />
                     <div id="book-title" class="fw-semibold small">
                         LEO LIVE BOOK
@@ -102,26 +103,38 @@
             </main>
 
             <!-- ========== AI PANEL ========== -->
-            <aside id="aiPanel" class="d-none d-lg-block col-lg-3 border-start px-3 py-4 bg-white">
+            <aside id="aiPanel" class="d-none d-lg-block col-lg-3 border-start px-3 py-4 bg-white ">
 
-                <h6 class="fw-bold mb-3">
+                <h6 class="fw-bold mb-3 in_development">
                     AI GENERATED ASSETS
                 </h6>
 
-                <div class="w-100 mb-3 rounded bg-opacity-90">
+                <div class="w-100 mb-3 rounded bg-opacity-90 in_development">
                     <div class="d-flex align-items-center gap-2">
                         <span class="spinner-grow spinner-grow-sm text-info"></span>
                         <strong>AI Agent Active</strong> Parsing · Embedding · Reasoning
                     </div>
                 </div>
 
-                <div class="btn-group w-100 mb-3">
-                    <button class="btn btn-outline-primary active">Mindmap</button>
-                    <button class="btn btn-outline-primary" disabled>Slides</button>
-                    <button class="btn btn-outline-primary" disabled>Quiz</button>
+                <div class="btn-group w-100 mb-3 in_development">
+                    <button class="btn btn-outline-primary active">Search</button>
+                    <button class="btn btn-outline-primary">Mindmap</button>
+                    <button class="btn btn-outline-primary ">Slides</button>
+                    <button class="btn btn-outline-primary ">Quiz</button>
                 </div>
 
-                <div class="position-relative border rounded mb-4">
+                <div class="border rounded p-3 bg-primary bg-opacity-10">
+                    <h3 class="mb-3">Content Search</h3>
+
+                    <div class="search-container">
+                        <input type="text" id="search-input"
+                            placeholder="Search chapters, keywords, or content (e.g., 'Agent reasoning')..." autofocus>
+                    </div>
+
+                    <div id="results-container"></div>
+                </div>
+
+                <div class="position-relative border rounded mb-4 in_development">
 
                     <!-- Toolbar -->
                     <div class="graph-toolbar btn-group btn-group-sm position-absolute top-0 end-0 m-2 z-3">
@@ -148,9 +161,8 @@
 
                 </div>
 
-
-
-                <div class="border rounded p-3 bg-primary bg-opacity-10">
+            
+                <div class="border rounded p-3 bg-primary bg-opacity-10 in_development">
                     <h6 class="text-primary fw-bold">
                         Learning Challenge Ready
                     </h6>
@@ -192,7 +204,7 @@
             });
         }
 
-        
+
     </script>
 
     <!-- MathJax -->
@@ -217,6 +229,9 @@
     <!-- Leo Book Engine -->
     <script src="./js/leo-book-engine.js"></script>
 
+    <!-- Search Service -->
+    <script src="./js/search-service.js"></script>
+
     <!-- Knowledge Graph Renderer -->
     <script src="./js/knowledge-graph-render.js"></script>
 
@@ -228,6 +243,8 @@
 
             // Initialize Knowledge Graph
             LEO_KNOWLEDGE_GRAPH.init(dataPath);
+
+            initSearchService(dataPath);
         }
 
         $(document).ready(() => {
@@ -236,7 +253,8 @@
                 token: "leo-demo-key-123"
             });
 
-            var dataPath = "./data/leo-cdp-doc.json";
+            //var dataPath = "./data/leo-cdp-doc.json";
+            var dataPath = "./data/sample-book.json";
             if (location.search) {
                 const params = new URLSearchParams(location.search);
                 if (params.has("book-metadata")) {
