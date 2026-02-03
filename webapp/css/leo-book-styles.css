@@ -1,430 +1,400 @@
+/* =========================================
+   1. VARIABLES & THEME CONFIGURATION
+   ========================================= */
 :root {
+  /* Brand Colors */
   --leo-primary: #4f46e5;
+  --leo-primary-rgb: 79, 70, 229;
+  --leo-secondary: #0f172a; /* Sidebar Dark */
+  
+  /* UI Colors */
   --leo-bg: #f7f8fb;
+  --leo-surface: #ffffff;
   --leo-border: #e5e7eb;
-  --leo-muted: #6b7280;
+  --leo-text-main: #111827;
+  --leo-text-muted: #6b7280;
+  --leo-text-light: #cbd5f5;
+
+  /* Dimensions */
+  --leo-navbar-height: 56px;
+  --leo-sidebar-width: 280px;
 }
 
+/* =========================================
+   2. GLOBAL BASE STYLES
+   ========================================= */
 body {
-  font-family: Inter, system-ui, sans-serif;
-  background: var(--leo-bg);
-  color: #111827;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--leo-bg);
+  color: var(--leo-text-main);
+  overflow-x: hidden; /* Prevent horizontal scroll from rows */
 }
 
-/* ===========================
-   Development Features
-=========================== */
+a {
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+/* Utility: Development Flags */
 .in_development {
-  display: none;
+  display: none !important;
 }
 
-/* ===========================
-   Layout
-=========================== */
+/* =========================================
+   3. LAYOUT STRUCTURE
+   ========================================= */
 
+/* Main wrapper used in index.html */
 .leo-app-layout {
-  min-height: calc(100vh - 56px); /* navbar height */
+  min-height: calc(100vh - var(--leo-navbar-height));
   display: flex;
   align-items: stretch;
 }
 
-/* ===========================
-   Navbar
-=========================== */
+/* Navbar Customizations */
+.navbar {
+  height: var(--leo-navbar-height);
+  z-index: 1030; /* Bootstrap fixed content z-index */
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
 
 .navbar input::placeholder {
-  color: #cbd5f5;
+  color: var(--leo-text-light);
   opacity: 0.8;
 }
 
 .navbar .form-control:focus {
   box-shadow: none;
-  background-color: #374151;
+  background-color: #374151; /* Darker grey focus state */
 }
 
-/* ===========================
-   Sidebar
-=========================== */
+/* =========================================
+   4. SIDEBAR & NAVIGATION
+   ========================================= */
 
-.sidebar {
-  background: #0f172a;
+#sidebar {
+  background-color: var(--leo-secondary);
   color: white;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
+  min-height: calc(100vh - var(--leo-navbar-height));
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
 }
 
-.sidebar h5 {
-  font-weight: 700;
-  letter-spacing: 0.4px;
+/* Mobile Sidebar behavior */
+@media (max-width: 768px) {
+  #sidebar {
+    position: fixed;
+    top: var(--leo-navbar-height);
+    left: 0;
+    bottom: 0;
+    width: var(--leo-sidebar-width);
+    z-index: 1040;
+    overflow-y: auto;
+  }
 }
 
+/* Book Cover Styling */
+.book-card img {
+  max-width: 140px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Chapter List Links */
 .chapter-list a {
   display: block;
-  padding: 10px 14px;
-  margin-bottom: 6px;
-  border-radius: 8px;
-  color: #cbd5f5;
-  text-decoration: none;
-  font-size: 14px;
+  padding: 8px 12px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  color: var(--leo-text-light);
+  font-size: 0.9rem;
+  border-left: 3px solid transparent;
 }
 
-.chapter-list a.active,
 .chapter-list a:hover {
-  background: rgba(79, 70, 229, 0.25);
+  background: rgba(255, 255, 255, 0.05);
   color: white;
 }
 
-/* ===========================
-   Reader
-=========================== */
+.chapter-list a.active {
+  background: rgba(79, 70, 229, 0.25); /* Primary with opacity */
+  color: white;
+  border-left-color: var(--leo-primary);
+  font-weight: 500;
+}
 
-.reader {
-  padding: 36px 48px;
-  overflow-y: auto;
+/* =========================================
+   5. READER AREA
+   ========================================= */
+
+#reader {
+  /* Main content area spacing */
+  background-color: var(--leo-bg);
 }
 
 .reader-card {
-  background: white;
-  border-radius: 18px;
-  padding: 32px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+  background: var(--leo-surface);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 10px 15px -3px rgba(0, 0, 0, 0.02);
+  border: 1px solid var(--leo-border);
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.reader h1 {
-  font-weight: 700;
+.reader-card h1 {
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: #111827;
 }
 
-.reader p {
-  font-size: 17px;
-  line-height: 1.7;
+.reader-card p {
+  font-size: 1.05rem;
+  line-height: 1.75;
   color: #374151;
+  margin-bottom: 1.5rem;
 }
 
-/* ===========================
-   Knowledge Tags
-=========================== */
+.reader-card img {
+  max-width: 100%;
+  border-radius: 8px;
+  height: auto;
+}
+
+/* Knowledge Tags */
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
 
 .tag-clickable {
   cursor: pointer;
   user-select: none;
-  transition: all 0.15s ease;
-
-  display: inline-block;
-  padding: 6px 14px;
-  font-size: 12px;
-  border-radius: 999px;
-  background: rgba(79, 70, 229, 0.1);
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  background: rgba(var(--leo-primary-rgb), 0.1);
   color: var(--leo-primary);
-  margin-right: 8px;
+  border: 1px solid transparent;
 }
 
 .tag-clickable:hover {
-  background-color: #0d6efd;
+  background-color: var(--leo-primary);
   color: #fff;
+  transform: translateY(-1px);
 }
 
-/* ===========================
-   AI Panel
-=========================== */
+/* =========================================
+   6. AI & SEARCH PANEL (Right Sidebar)
+   ========================================= */
 
-.ai-panel {
-  background: white;
+#aiPanel {
+  background: var(--leo-surface);
   border-left: 1px solid var(--leo-border);
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
+  height: calc(100vh - var(--leo-navbar-height));
+  overflow-y: auto;
+  position: sticky;
+  top: 0; /* Keeps it fixed while scrolling main content */
 }
 
-.ai-panel h6 {
+#aiPanel h6 {
   font-weight: 700;
   letter-spacing: 0.3px;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: var(--leo-text-muted);
 }
 
-.ai-tabs button {
-  font-size: 13px;
+/* --- Search Input --- */
+#aiPanel .search-container {
+  margin-bottom: 1rem;
 }
 
-.ai-canvas {
-  height: 300px;
-  border: 2px dashed var(--leo-border);
-  border-radius: 14px;
+#aiPanel #search-input {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.875rem;
+  border-radius: 8px;
+  border: 1px solid var(--leo-border);
+  background-color: var(--leo-bg);
+  color: var(--leo-text-main);
+  border-color: var(--leo-primary);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#aiPanel #search-input:focus {
+  outline: none;
+  border-color: var(--leo-primary);
+  box-shadow: 0 0 0 3px rgba(var(--leo-primary-rgb), 0.1);
+}
+
+/* --- Search Results --- */
+#aiPanel #results-container {
+  max-height: 75vh;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+/* Scrollbar styling for results */
+#aiPanel #results-container::-webkit-scrollbar {
+  width: 4px;
+}
+#aiPanel #results-container::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 4px;
+}
+
+/* Result Item */
+#aiPanel .result-item {
+  background-color: #fff;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--leo-border);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+#aiPanel .result-item:hover {
+  border-color: var(--leo-primary);
+  background-color: rgba(var(--leo-primary-rgb), 0.02);
+  transform: translateX(2px);
+}
+
+#aiPanel .result-meta {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--leo-primary);
+  margin-bottom: 4px;
+}
+
+#aiPanel .result-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 4px;
+  color: var(--leo-text-main);
+}
+
+#aiPanel .result-snippet {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--leo-text-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limit to 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Highlighted Terms */
+#aiPanel .highlight {
+  background-color: #fde047; /* Yellow highlight */
+  color: #854d0e;
+  padding: 0 2px;
+  border-radius: 2px;
+  font-weight: 500;
+}
+
+/* Result Keywords */
+#aiPanel .result-keywords {
+  margin-top: 8px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--leo-muted);
-  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 4px;
 }
 
-/* ===========================
-   AI Status
-=========================== */
-
-.ai-status {
-  background: rgba(79, 70, 229, 0.08);
-  border-radius: 14px;
-  padding: 16px;
+#aiPanel .keyword-tag {
+  font-size: 0.65rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background-color: var(--leo-bg);
+  color: var(--leo-text-muted);
+  border: 1px solid var(--leo-border);
 }
 
-.pulse {
-  width: 10px;
-  height: 10px;
-  background: #22c55e;
-  border-radius: 50%;
-  animation: pulse 1.4s infinite;
+#aiPanel .no-results {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.85rem;
+  color: var(--leo-text-muted);
+  font-style: italic;
 }
 
-@keyframes pulse {
-  0% {
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.3;
-  }
+/* =========================================
+   7. KNOWLEDGE GRAPH
+   ========================================= */
+
+#knowledgeGraph {
+  background: #f8fafc;
+  border-radius: 0 0 8px 8px;
 }
 
-/* ===========================
-   Responsive
-=========================== */
-
-@media (max-width: 1200px) {
-  .app {
-    grid-template-columns: 220px 1fr;
-  }
-  .ai-panel {
-    display: none;
-  }
+.graph-toolbar button {
+  background: white;
+  border: 1px solid var(--leo-border);
+  color: var(--leo-text-muted);
 }
 
-/* ===============================
-   App Header
-================================ */
-
-.app-header {
-  height: 52px;
-  background: #0f172a;
-  color: white;
-  position: sticky;
-  top: 0;
-  z-index: 2000;
+.graph-toolbar button:hover {
+  background: var(--leo-bg);
+  color: var(--leo-primary);
 }
 
-/* ===============================
-   Layout
-================================ */
+/* =========================================
+   8. COMPATIBILITY & LEGACY HANDLERS
+   ========================================= */
+/* These classes were found in the previous CSS but might 
+   not be active in the current HTML. Preserved for safety. 
+*/
 
+/* Fullscreen Mode toggle support */
+body.fullscreen-mode #sidebar,
+body.fullscreen-mode #aiPanel, 
+body.fullscreen-mode .navbar {
+  display: none !important;
+}
+
+body.fullscreen-mode .leo-app-layout {
+  height: 100vh;
+}
+
+/* Legacy .app Layout (Preserved just in case) */
 .app {
   height: calc(100vh - 52px);
   display: grid;
   grid-template-columns: 260px 1fr 340px;
 }
 
-/* ===============================
-   Sidebar
-================================ */
-
-.sidebar {
-  background: #0f172a;
-  color: white;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.3s ease;
+/* AI Status Pulse Animation */
+.ai-status {
+  background: rgba(var(--leo-primary-rgb), 0.08);
+  border-radius: 12px;
+  padding: 12px;
 }
 
-/* Book card */
-
-.book-card img {
-  max-width: 140px;
+.pulse {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  animation: pulse-green 2s infinite;
 }
 
-/* ===============================
-   Collapsed Nav
-================================ */
-
-body.nav-collapsed .sidebar {
-  transform: translateX(-100%);
-}
-
-body.nav-collapsed .app {
-  grid-template-columns: 0 1fr 340px;
-}
-
-/* ===============================
-   Fullscreen Mode
-================================ */
-
-body.fullscreen-mode .sidebar,
-body.fullscreen-mode .ai-panel {
-  display: none;
-}
-
-body.fullscreen-mode .app {
-  grid-template-columns: 1fr;
-}
-
-/* ===============================
-   Mobile
-================================ */
-
-@media (max-width: 992px) {
-  .app {
-    grid-template-columns: 1fr;
-  }
-
-  .sidebar {
-    position: fixed;
-    left: 0;
-    top: 52px;
-    bottom: 0;
-    width: 260px;
-    z-index: 3000;
-    transform: translateX(-100%);
-  }
-
-  body.nav-collapsed .sidebar {
-    transform: translateX(0);
-  }
-
-  .ai-panel {
-    display: none;
-  }
-}
-
-
-/* ===============================
-   Search Box Styles
-================================ */
-
-#aiPanel .search-container {
-  margin-bottom: 1rem;
-}
-
-/* Search input */
-#aiPanel #search-input {
-  width: 100%;
-  padding: 0.5rem 0.75rem;
-  font-size: 0.875rem;
-  border-radius: var(--bs-border-radius);
-  border: var(--bs-border-width) solid var(--bs-border-color);
-  background-color: var(--bs-body-bg);
-  color: var(--bs-body-color);
-  box-shadow: none;
-  box-sizing: border-box;
-  border-color: var(--bs-primary);
-}
-
-#aiPanel #search-input::placeholder {
-  color: var(--bs-secondary-color);
-  font-size: 0.8rem;
-}
-
-#aiPanel #search-input:focus {
-  outline: 0;
-  border-color: var(--bs-primary);
-  box-shadow: 0 0 0 .2rem rgba(var(--bs-primary-rgb), .2);
-}
-
-/* =========================================
-   SEARCH RESULTS
-   ========================================= */
-
-#aiPanel #results-container {
-  max-height: 60vh;
-  overflow-y: auto;
-  padding-right: 2px;
-}
-
-/* Individual result */
-#aiPanel .result-item {
-  background-color: var(--bs-body-bg);
-  padding: 0.75rem;
-  margin-bottom: 0.75rem;
-  border-radius: var(--bs-border-radius);
-  border: 1px solid var(--bs-border-color);
-  box-shadow: none;
-  cursor: pointer;
-  transition: background-color .15s ease;
-}
-
-#aiPanel .result-item:hover {
-  background-color: rgba(var(--bs-primary-rgb), .04);
-}
-
-/* Meta */
-#aiPanel .result-meta {
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: .04em;
-  text-transform: uppercase;
-  color: var(--bs-primary);
-  margin-bottom: 0.25rem;
-}
-
-/* Title */
-#aiPanel .result-title {
-  font-size: 0.9rem;
-  font-weight: 600;
-  line-height: 1.3;
-  margin-bottom: 0.25rem;
-  color: var(--bs-heading-color);
-  word-break: break-word;
-}
-
-/* Snippet – clamp for narrow column */
-#aiPanel .result-snippet {
-  font-size: 0.8rem;
-  line-height: 1.4;
-  color: var(--bs-secondary-color);
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* =========================================
-   KEYWORDS
-   ========================================= */
-
-#aiPanel .result-keywords {
-  margin-top: 0.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-}
-
-#aiPanel .keyword-tag {
-  font-size: 0.65rem;
-  padding: 0.1rem 0.5rem;
-  border-radius: var(--bs-border-radius-pill);
-  background-color: rgba(var(--bs-primary-rgb), .12);
-  color: var(--bs-primary);
-  white-space: nowrap;
-}
-
-/* =========================================
-   HIGHLIGHTED SEARCH TERMS
-   ========================================= */
-
-#aiPanel .highlight {
-  background-color: rgba(var(--bs-warning-rgb), .4);
-  color: var(--bs-warning-text-emphasis);
-  font-weight: 600;
-  padding: 0 .15rem;
-  border-radius: .2rem;
-}
-
-/* =========================================
-   EMPTY STATE
-   ========================================= */
-
-#aiPanel .no-results {
-  text-align: center;
-  padding: 1.5rem 0.5rem;
-  font-size: 0.8rem;
-  color: var(--bs-secondary-color);
-  font-style: italic;
+@keyframes pulse-green {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
 }
