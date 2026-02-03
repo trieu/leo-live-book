@@ -27,7 +27,10 @@ body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   background-color: var(--leo-bg);
   color: var(--leo-text-main);
-  overflow-x: hidden; /* Prevent horizontal scroll from rows */
+  overflow-x: hidden;
+  
+  /* FIX: Push content down to compensate for fixed navbar */
+  padding-top: var(--leo-navbar-height);
 }
 
 a {
@@ -44,8 +47,8 @@ a {
    3. LAYOUT STRUCTURE
    ========================================= */
 
-/* Main wrapper used in index.html */
 .leo-app-layout {
+  /* Min-height accounts for the viewport minus the header space */
   min-height: calc(100vh - var(--leo-navbar-height));
   display: flex;
   align-items: stretch;
@@ -54,8 +57,15 @@ a {
 /* Navbar Customizations */
 .navbar {
   height: var(--leo-navbar-height);
-  z-index: 1030; /* Bootstrap fixed content z-index */
+  z-index: 1030; /* Stays above content */
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  
+  /* FIX: Fixed positioning for Desktop/Laptop */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
 }
 
 .navbar-brand {
@@ -70,22 +80,101 @@ a {
 
 .navbar .form-control:focus {
   box-shadow: none;
-  background-color: #374151; /* Darker grey focus state */
+  background-color: #374151;
 }
 
 /* =========================================
-   4. SIDEBAR & NAVIGATION
+   4. SIDEBAR & NAVIGATION (Refactored UX)
    ========================================= */
 
 #sidebar {
   background-color: var(--leo-secondary);
   color: white;
-  min-height: calc(100vh - var(--leo-navbar-height));
+  
+  /* UX: Sticky positioning relative to viewport */
+  position: sticky;
+  /* Top value = height of the fixed navbar */
+  top: var(--leo-navbar-height);
+  /* Height = Viewport - Navbar */
+  height: calc(100vh - var(--leo-navbar-height));
+  
+  overflow-y: auto;
   border-right: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
+  
+  /* Custom Scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: #334155 transparent;
 }
 
-/* Mobile Sidebar behavior */
+/* Webkit Scrollbar Styling */
+#sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+#sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+#sidebar::-webkit-scrollbar-thumb {
+  background-color: #334155;
+  border-radius: 20px;
+}
+
+/* Book Cover Styling */
+.book-card img {
+  max-width: 140px;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  margin-bottom: 1rem;
+}
+
+#book-title {
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+/* --- Chapter List Typography & Hierarchy --- */
+
+.chapter-list > div > .fw-semibold {
+  color: #94a3b8;
+  text-transform: uppercase;
+  font-size: 0.7rem !important;
+  letter-spacing: 0.08em;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+/* --- Section Links Interaction --- */
+
+.chapter-list a {
+  display: block;
+  padding: 8px 12px 8px 16px;
+  margin-bottom: 2px;
+  border-radius: 0 6px 6px 0;
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  border-left: 3px solid transparent;
+  line-height: 1.4;
+}
+
+.chapter-list a:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  border-left-color: rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+}
+
+.chapter-list a.active {
+  background: linear-gradient(90deg, rgba(79, 70, 229, 0.15) 0%, transparent 100%);
+  color: #fff;
+  border-left-color: var(--leo-primary);
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Mobile Sidebar Behavior */
 @media (max-width: 768px) {
   #sidebar {
     position: fixed;
@@ -93,39 +182,11 @@ a {
     left: 0;
     bottom: 0;
     width: var(--leo-sidebar-width);
-    z-index: 1040;
-    overflow-y: auto;
+    z-index: 2000;
+    border-right: 1px solid #334155;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.5);
+    height: calc(100vh - var(--leo-navbar-height)); /* Ensure it fills height on mobile too */
   }
-}
-
-/* Book Cover Styling */
-.book-card img {
-  max-width: 140px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-/* Chapter List Links */
-.chapter-list a {
-  display: block;
-  padding: 8px 12px;
-  margin-bottom: 4px;
-  border-radius: 6px;
-  color: var(--leo-text-light);
-  font-size: 0.9rem;
-  border-left: 3px solid transparent;
-}
-
-.chapter-list a:hover {
-  background: rgba(255, 255, 255, 0.05);
-  color: white;
-}
-
-.chapter-list a.active {
-  background: rgba(79, 70, 229, 0.25); /* Primary with opacity */
-  color: white;
-  border-left-color: var(--leo-primary);
-  font-weight: 500;
 }
 
 /* =========================================
@@ -133,14 +194,15 @@ a {
    ========================================= */
 
 #reader {
-  /* Main content area spacing */
   background-color: var(--leo-bg);
+  /* Ensure reader takes full available height if content is short */
+  min-height: 100%; 
 }
 
 .reader-card {
   background: var(--leo-surface);
   border-radius: 16px;
-  padding: 40px;
+  padding: 25px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 10px 15px -3px rgba(0, 0, 0, 0.02);
   border: 1px solid var(--leo-border);
   max-width: 900px;
@@ -171,6 +233,9 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--leo-border);
 }
 
 .tag-clickable {
@@ -195,16 +260,19 @@ a {
 }
 
 /* =========================================
-   6. AI & SEARCH PANEL (Right Sidebar)
+   6. AI & SEARCH PANEL
    ========================================= */
 
 #aiPanel {
   background: var(--leo-surface);
   border-left: 1px solid var(--leo-border);
-  height: calc(100vh - var(--leo-navbar-height));
-  overflow-y: auto;
+  
+  /* AI Panel also needs to respect the Fixed Header */
   position: sticky;
-  top: 0; /* Keeps it fixed while scrolling main content */
+  top: var(--leo-navbar-height);
+  height: calc(100vh - var(--leo-navbar-height));
+  
+  overflow-y: auto;
 }
 
 #aiPanel h6 {
@@ -215,7 +283,7 @@ a {
   color: var(--leo-text-muted);
 }
 
-/* --- Search Input --- */
+/* Search Input */
 #aiPanel .search-container {
   margin-bottom: 1rem;
 }
@@ -238,23 +306,13 @@ a {
   box-shadow: 0 0 0 3px rgba(var(--leo-primary-rgb), 0.1);
 }
 
-/* --- Search Results --- */
+/* Search Results */
 #aiPanel #results-container {
-  max-height: 75vh;
+  max-height: 70vh;
   overflow-y: auto;
   padding-right: 2px;
 }
 
-/* Scrollbar styling for results */
-#aiPanel #results-container::-webkit-scrollbar {
-  width: 4px;
-}
-#aiPanel #results-container::-webkit-scrollbar-thumb {
-  background-color: #cbd5e1;
-  border-radius: 4px;
-}
-
-/* Result Item */
 #aiPanel .result-item {
   background-color: #fff;
   padding: 12px;
@@ -293,26 +351,17 @@ a {
   line-height: 1.4;
   color: var(--leo-text-muted);
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* Limit to 2 lines */
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-/* Highlighted Terms */
 #aiPanel .highlight {
-  background-color: #fde047; /* Yellow highlight */
+  background-color: #fde047;
   color: #854d0e;
   padding: 0 2px;
   border-radius: 2px;
   font-weight: 500;
-}
-
-/* Result Keywords */
-#aiPanel .result-keywords {
-  margin-top: 8px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
 }
 
 #aiPanel .keyword-tag {
@@ -353,13 +402,10 @@ a {
 }
 
 /* =========================================
-   8. COMPATIBILITY & LEGACY HANDLERS
+   8. UTILITY & ANIMATIONS
    ========================================= */
-/* These classes were found in the previous CSS but might 
-   not be active in the current HTML. Preserved for safety. 
-*/
 
-/* Fullscreen Mode toggle support */
+/* Legacy / Toggle Support */
 body.fullscreen-mode #sidebar,
 body.fullscreen-mode #aiPanel, 
 body.fullscreen-mode .navbar {
@@ -370,14 +416,7 @@ body.fullscreen-mode .leo-app-layout {
   height: 100vh;
 }
 
-/* Legacy .app Layout (Preserved just in case) */
-.app {
-  height: calc(100vh - 52px);
-  display: grid;
-  grid-template-columns: 260px 1fr 340px;
-}
-
-/* AI Status Pulse Animation */
+/* AI Status Pulse */
 .ai-status {
   background: rgba(var(--leo-primary-rgb), 0.08);
   border-radius: 12px;
@@ -389,7 +428,6 @@ body.fullscreen-mode .leo-app-layout {
   height: 8px;
   background: #22c55e;
   border-radius: 50%;
-  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
   animation: pulse-green 2s infinite;
 }
 
