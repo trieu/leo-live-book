@@ -314,6 +314,7 @@ body.fullscreen-mode .app {
   color: var(--bs-body-color);
   box-shadow: none;
   box-sizing: border-box;
+  border-color: var(--bs-primary);
 }
 
 #aiPanel #search-input::placeholder {
