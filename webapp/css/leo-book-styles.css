@@ -6,6 +6,7 @@
   --leo-primary: #4f46e5;
   --leo-primary-rgb: 79, 70, 229;
   --leo-secondary: #0f172a; /* Sidebar Dark */
+  --leo-spotlight: #FFF01A;
   
   /* UI Colors */
   --leo-bg: #f7f8fb;
@@ -28,8 +29,6 @@ body {
   background-color: var(--leo-bg);
   color: var(--leo-text-main);
   overflow-x: hidden;
-  
-  /* FIX: Push content down to compensate for fixed navbar */
   padding-top: var(--leo-navbar-height);
 }
 
@@ -168,9 +167,9 @@ a {
 
 .chapter-list a.active {
   background: linear-gradient(90deg, rgba(79, 70, 229, 0.15) 0%, transparent 100%);
-  color: #fff;
-  border-left-color: var(--leo-primary);
-  font-weight: 500;
+  color: var(--leo-spotlight);
+  border-left-color: var(--leo-spotlight);
+  font-weight: 550;
   text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 
