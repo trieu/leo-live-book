@@ -35,6 +35,7 @@
           ],
           "summary": "AI Agent đại diện cho bước tiến hóa tiếp theo của GenAI: từ thụ động sang chủ động. Đây là hệ thống phần mềm có khả năng tự nhận thức môi trường, lập kế hoạch, sử dụng công cụ và thực thi hành động để đạt mục tiêu mà không cần sự can thiệp liên tục của con người.",
           "content": [
+             "![leo-activation-framework](https://raw.githubusercontent.com/trieu/leo-activation/main/leo-activation-framework.png)",
             "### 1. Định Nghĩa Cốt Lõi: AI Agent Không Chỉ Là Chatbot\n\nTrong khi các mô hình ngôn ngữ lớn (LLM) như GPT-4 hay Claude 3 đóng vai trò là 'bộ não' chứa kiến thức, thì AI Agent là một thực thể hoàn chỉnh có thêm 'tay chân' (Tools) và 'giác quan' (Sensors). Một phép so sánh đơn giản: Nếu LLM là một cuốn bách khoa toàn thư biết nói, thì AI Agent là một nhà nghiên cứu biết sử dụng cuốn bách khoa đó, sau đó tự động gửi email, viết code, hoặc cập nhật cơ sở dữ liệu.\n\nVề mặt bản chất, AI Agent là một hệ thống tính toán tự chủ (Autonomous Computational System). Nó không chờ đợi con người ra lệnh cho từng bước nhỏ (micro-management). Thay vào đó, nó nhận một mục tiêu cấp cao (High-level Goal) - ví dụ: 'Hãy lên kế hoạch du lịch và đặt vé cho tôi' - và tự mình phân rã mục tiêu đó thành các nhiệm vụ con (Sub-tasks), thực hiện chúng tuần tự hoặc song song, và xử lý các ngoại lệ phát sinh.",
             "### 2. Kiến Trúc Kỹ Thuật (The Technical Anatomy)\n\nĐể hiểu sâu về AI Agent, chúng ta cần mổ xẻ kiến trúc 'Cognitive Architecture' của nó. Một Agent điển hình bao gồm 4 thành phần chính:\n\n**A. Agent Core (The Brain - LLM):**\nĐây là trung tâm điều khiển. LLM không chỉ sinh văn bản mà còn đóng vai trò là bộ máy suy luận (Reasoning Engine). Nó sử dụng các kỹ thuật như *Chain-of-Thought (CoT)* hoặc *ReAct (Reasoning + Acting)* để phân tích vấn đề. Ví dụ, khi gặp yêu cầu khó, nó sẽ tự hỏi: 'Tôi cần dữ liệu gì? Tôi nên dùng công cụ nào để lấy dữ liệu đó?'.\n\n**B. Perception & Tools (Sensors & Actuators):**\nAgent cần tương tác với thế giới bên ngoài. \n- *Sensors:* Các API listeners, Webhooks, hoặc khả năng đọc file giúp Agent nhận biết sự thay đổi của môi trường (ví dụ: nhận email mới, phát hiện server bị lỗi).\n- *Tools (Actuators):* Đây là các hàm (Functions) mà Agent có thể gọi. Đó có thể là một lệnh SQL, một API call đến CRM, một lệnh Google Search, hoặc một script Python. Khả năng *Function Calling* là yếu tố then chốt biến LLM thành Agent.\n\n**C. Memory (Context Management):**\nKhác với chatbot vô tri sẽ quên bạn là ai sau khi đóng tab, Agent cần bộ nhớ bền vững:\n- *Short-term Memory:* Lưu trữ ngữ cảnh của cuộc hội thoại hiện tại.\n- *Long-term Memory:* Sử dụng **Vector Database** (như Pinecone, Weaviate) để lưu trữ thông tin dưới dạng Embeddings. Điều này cho phép Agent 'nhớ' lại các quy tắc doanh nghiệp, lịch sử khách hàng từ nhiều tháng trước để đưa ra quyết định chính xác.\n\n**D. Planning (Planning Engine):**\nKhả năng tự lập kế hoạch là sự khác biệt lớn nhất. Agent có thể sử dụng các chiến lược như:\n- *Task Decomposition:* Chia nhỏ việc lớn thành việc nhỏ.\n- *Self-Reflection:* Tự kiểm tra xem kết quả vừa làm có đúng không. Nếu sai, nó tự sửa (Self-correction) mà không cần con người báo lỗi.",
             "### 3. Cơ Chế Hoạt Động: Vòng Lặp OODA\n\nAI Agent vận hành dựa trên một vòng lặp vô tận gọi là OODA (Observe - Orient - Decide - Act) hoặc mô hình 'Perception-Action Cycle':\n\n1.  **Observe (Quan sát):** Nhận tín hiệu đầu vào (Input Stream) từ người dùng hoặc hệ thống (Trigger Event).\n2.  **Orient (Định hướng):** Truy xuất bộ nhớ (Memory Retrieval) để lấy ngữ cảnh liên quan. Phân tích xem tín hiệu này có ý nghĩa gì.\n3.  **Decide (Ra quyết định):** LLM suy luận và chọn công cụ cần thiết. Ví dụ: 'Để trả lời câu hỏi về tồn kho, tôi cần chạy query SQL'.\n4.  **Act (Hành động):** Thực thi công cụ (Execute Tool) và nhận kết quả.\n5.  **Loop (Lặp lại):** Kết quả của hành động trở thành đầu vào mới cho vòng lặp tiếp theo. Quá trình này tiếp diễn cho đến khi mục tiêu hoàn thành (Terminal State).",
@@ -178,8 +179,8 @@
           "section_number": "3.1",
           "section_title": "Triết lý thiết kế và Ứng dụng thực tiễn của USPA",
           "summary_video": {
-            "title": "Mastering USPA: From Data Architecture to Business Growth",
-            "youtube_id": "leocdp_uspa_deepdive"
+            "title": "Giới thiệu USPA framework cho việc hiện thực Customer Data Platform",
+            "youtube_id": "tyASsGaE8jg"
           },
           "keywords": [
             "Identity Resolution",
@@ -225,26 +226,35 @@
           ],
           "summary": "Quy trình kỹ thuật để gộp dữ liệu trùng lặp (Merge) và tạo ra một 'Golden Record' duy nhất cho mỗi khách hàng.",
           "content": [
-            "Tech Detail: Hỗ trợ hợp nhất dựa trên ưu tiên nguồn (Source Prioritization). Ví dụ: Dữ liệu tên từ CRM đè dữ liệu từ Web Form. Xử lý xung đột dữ liệu (Data Conflict Resolution).",
-            "Identity Graph: Liên kết các định danh: Cookie ID, Device ID, Email (SHA-256), Phone, Loyalty ID vào một Node khách hàng duy nhất.",
-            "Business Benefit: Loại bỏ việc spam khách hàng do trùng lặp hồ sơ (ví dụ: gửi 2 email cho cùng 1 người), giúp tiết kiệm chi phí Marketing và giữ hình ảnh thương hiệu chuyên nghiệp."
+            "![profile360](media/profile360.png)",
+            "<a href=\"https://dcdp.bigdatavietnam.org/#calljs-leoCdpRouter('Customer_Profile_Info','4ll3Hz8KVWQ8eFijFi4YfN')\" target=\"_blank\"><strong>Live Demo – Unified Customer Profile</strong></a>",
+            "<strong>Unified Customer Profile (Hồ sơ khách hàng 360°)</strong>: Màn hình tổng hợp toàn bộ thông tin định danh, hành vi và tương tác của khách hàng trên một giao diện duy nhất.",
+            "Profile Metadata: Hiển thị đầy đủ vòng đời hồ sơ bao gồm thời điểm tạo, nguồn cập nhật (CDP, CRM) và trạng thái dữ liệu. Data Quality Score được tính toán tự động nhằm đánh giá mức độ đầy đủ và tin cậy của hồ sơ.",
+            "Identity Resolution: Hợp nhất các định danh như Email, Phone, Cookie ID, Device ID và dữ liệu từ CRM vào một Customer Profile duy nhất, giúp loại bỏ trùng lặp và đảm bảo một nguồn dữ liệu khách hàng chuẩn (Single Customer View).",
+            "Segmentation & Labels: Hồ sơ được gán động vào nhiều phân khúc (Segments) và nhãn dữ liệu (Data Labels) dựa trên hành vi, sự kiện, nguồn dữ liệu và logic kinh doanh, hỗ trợ cá nhân hóa theo thời gian thực.",
+            "Data Journey Map: Trực quan hóa hành trình khách hàng xuyên suốt các kênh và chiến dịch. Biểu đồ Top Engaged Touchpoints giúp xác định nội dung, sản phẩm và điểm chạm có mức độ tương tác cao nhất.",
+            "Business Value: Giúp đội Marketing, Sales và CS hiểu rõ khách hàng theo ngữ cảnh, tối ưu chiến dịch cá nhân hóa, giảm spam do trùng hồ sơ và nâng cao trải nghiệm khách hàng một cách nhất quán."
           ]
         },
         {
           "section_id": "ch04-sec02",
           "section_number": "4.2",
-          "section_title": "Mô hình dữ liệu sự kiện (Event Data Model)",
+          "section_title": "Mô hình metric cho dữ liệu sự kiện (Event Data Metrics)",
           "keywords": [
             "JSON Schema",
             "Timeseries Data",
             "Contextual Attributes",
             "Behavioral Analytics"
           ],
-          "summary": "Cấu trúc dữ liệu chuẩn (Standard Schema) để ghi nhận hành vi. Đảm bảo tính nhất quán cho Analytics và AI Training.",
+          "summary": "Mô hình metrics cho dữ liệu sự kiện (Event Data Metrics) phục vụ phân tích Funnel, chấm điểm hành vi (Scoring) và huấn luyện AI. Đảm bảo tính nhất quán xuyên suốt từ thu thập dữ liệu, phân tích hành trình đến kích hoạt cá nhân hóa.",
           "content": [
-            "Tech Spec: Event Structure = {event_id, timestamp, profile_id, action_type, context: {device, ip, location}, payload: {product_id, price}}.",
-            "Storage Strategy: Dữ liệu sự kiện được lưu trữ dạng NoSQL (ví dụ: ArangoDB/MongoDB) tối ưu cho việc ghi (Write-heavy) tốc độ cao.",
-            "Business Usage: Cho phép trả lời các câu hỏi: 'Khách hàng thường rớt đơn ở bước nào?', 'Sản phẩm nào được xem nhiều nhất nhưng mua ít nhất?'."
+            "![event metrics model](media/event_metrics_model.png)",
+            "<strong>Event Funnel Model:</strong> Hệ thống ánh xạ từng sự kiện (Event) vào các giai đoạn Funnel chuẩn như New Visitor, Lead, Prospect, Engaged Customer, Happy Customer và Churn, cho phép theo dõi tỷ lệ chuyển đổi và điểm rơi hành vi theo thời gian.",
+            "<strong>Event Schema (Tech Spec):</strong> Mỗi sự kiện tuân theo cấu trúc thống nhất: {event_name, event_label, timestamp, profile_id, event_score, loyalty_point, default_funnel_stage, scoring_model, cx_journey_stage, context:{device, channel, ip, location}, payload:{product_id, content_id, price}}.",
+            "<strong>Scoring & CX Mapping:</strong> Mỗi Event được gán điểm (Event Score) và liên kết với Scoring Model (Lead Score, Prospect Score, CAC, CSAT…) cũng như CX Journey Stage (Awareness, Attraction, Ask, Action), tạo nền tảng cho phân khúc và automation thông minh.",
+            "<strong>Storage Strategy:</strong> Dữ liệu sự kiện được lưu trữ dưới dạng NoSQL (ví dụ: ArangoDB hoặc MongoDB), tối ưu cho khối lượng ghi lớn (write-heavy), truy vấn theo đồ thị hành vi và phân tích chuỗi sự kiện theo thời gian thực.",
+            "<strong>Business Insight:</strong> Cho phép trả lời chính xác các câu hỏi trọng yếu như: Khách hàng rơi rớt ở bước nào trong Funnel? Sự kiện nào thúc đẩy chuyển đổi mạnh nhất? Nội dung hoặc sản phẩm nào có mức tương tác cao nhưng tỷ lệ mua thấp?",
+            "<strong>AI Readiness:</strong> Event Data là đầu vào trực tiếp cho mô hình dự đoán chuyển đổi, churn prediction, next-best-action và hệ AI Agent vận hành Marketing & Sales Automation."
           ]
         }
       ]
@@ -257,18 +267,24 @@
         {
           "section_id": "ch05-sec01",
           "section_number": "5.1",
-          "section_title": "Phân khúc theo quy tắc (Rule-based)",
+          "section_title": "Phân khúc theo quy tắc (Rule-based Segmentation)",
           "keywords": [
             "Boolean Logic",
-            "Real-time Query",
+            "Visual Query Builder",
+            "Real-time Segmentation",
             "Audience Targeting",
-            "Retargeting"
+            "Retargeting",
+            "Explainable Segment"
           ],
-          "summary": "Tạo nhóm khách hàng dựa trên logic nghiệp vụ cứng. Tech: Truy vấn cơ sở dữ liệu. Business: Chiến dịch Marketing trực tiếp.",
+          "summary": "Cơ chế phân khúc khách hàng dựa trên tập quy tắc nghiệp vụ có thể giải thích (rule-based), cho phép đội Marketing và Data định nghĩa tập khách hàng mục tiêu bằng giao diện trực quan, hỗ trợ truy vấn real-time và kích hoạt chiến dịch tức thời.",
           "content": [
-            "Tech Implementation: Xây dựng query builder (AND/OR/NOT). Ví dụ: (Total_Spend > 5M) AND (Last_Visit < 30 days). Tính toán lại ngay khi có event mới (Event-triggered update).",
-            "Business Application: Tạo nhóm 'VIP nguy cơ rời bỏ', nhóm 'Khách hàng mới tiềm năng' để chạy quảng cáo Facebook/Google Ads (Retargeting).",
-            "Transparency: Dễ dàng giải thích lý do tại sao một khách hàng thuộc nhóm này (Auditability)."
+            "![segment builder](media/segment_builder.png)",
+            "<strong>Visual Segment Builder:</strong> Giao diện kéo–thả cho phép xây dựng logic phân khúc bằng các toán tử AND / OR / NOT, hỗ trợ nhóm điều kiện (rule group) và kết hợp dữ liệu hồ sơ, hành vi và Funnel Stage.",
+            "<strong>Rule Definition:</strong> Ví dụ: (Data Funnel Stage = 'Engaged Customer') AND (Primary Email IS NOT EMPTY OR Primary Phone IS NOT EMPTY) AND (Behavioral Event Metrics CONTAINS 'Purchase' OR 'Made Payment').",
+            "<strong>Real-time Query:</strong> Phân khúc có thể cấu hình chạy real-time nhằm đảm bảo kết quả luôn phản ánh dữ liệu mới nhất khi có event phát sinh (event-triggered recomputation).",
+            "<strong>Governance & Access Control:</strong> Hỗ trợ phân quyền người xem và người chỉnh sửa segment, đảm bảo tuân thủ quy trình dữ liệu và kiểm soát truy cập theo vai trò.",
+            "<strong>Business Activation:</strong> Segment được sử dụng trực tiếp cho Marketing Automation, cá nhân hóa nội dung, đồng bộ audience sang Facebook / Google / Email system và các nền tảng Digital Marketing khác.",
+            "<strong>Explainability & Auditability:</strong> Mỗi hồ sơ trong segment đều có thể truy vết lý do thỏa điều kiện, giúp đội Marketing, Sales và Compliance dễ dàng kiểm tra và giải thích quyết định phân khúc."
           ]
         },
         {
@@ -387,6 +403,7 @@
           ],
           "summary": "Định hướng Roadmap 2026+. Tech: GenAI Integration. Business: Tiếp thị tự hành (Autonomous Marketing).",
           "content": [
+            "![leo-activation-framework](https://raw.githubusercontent.com/trieu/leo-activation/main/leo-activation-framework.png)",
             "AI-native CDP: Tích hợp LLMs (Large Language Models) để query dữ liệu bằng ngôn ngữ tự nhiên (Natural Language Querying) thay vì SQL.",
             "Privacy First: Chuẩn bị cho kỷ nguyên không Cookie (Cookie-less) với Server-side tracking và Data Clean Rooms.",
             "Vision: Chuyển dịch từ hệ thống hỗ trợ ra quyết định sang hệ thống tự động ra quyết định và thực thi (Fully Autonomous Agents) dưới sự giám sát của con người."
