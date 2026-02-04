@@ -12,6 +12,13 @@ The project is part of the broader [LEO CDP Framework](https://github.com/trieu/
 
 ---
 
+
+### Demo 
+
+https://leocdp.com/docs/index.html
+
+---
+
 ### 🚀 Key Capabilities
 
 LEO LIVE BOOK goes beyond simple summarization; it acts as a **Virtual Professor** and **Content Architect**:
