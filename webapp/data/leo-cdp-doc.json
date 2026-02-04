@@ -19,33 +19,64 @@
         {
           "section_id": "ch01-sec01",
           "section_number": "1.1",
-          "section_title": "AI Agent là gì? Từ Khái Niệm Đến Thực Tiễn",
-          "summary_video": {
-            "title": "Giải thích chuyên sâu về AI Agents, Kiến trúc Cognitive và Event-Driven",
-            "youtube_id": "eHEHE2fpnWQ"
-          },
+          "section_title": "LEO CDP là gì? Nền tảng AI-first cho dữ liệu & Activation",
           "keywords": [
-            "AI Agent",
-            "Autonomous Loop",
-            "Cognitive Architecture",
-            "ReAct Pattern",
-            "Vector Database",
-            "LLM Orchestration",
-            "Operational Efficiency"
+            "LEO CDP",
+            "AI-first Customer Data Platform",
+            "Event-driven Architecture",
+            "Identity Graph",
+            "Real-time Data Ingestion",
+            "Single Customer Graph",
+            "AI Agents",
+            "Data Activation"
           ],
-          "summary": "AI Agent đại diện cho bước tiến hóa tiếp theo của GenAI: từ thụ động sang chủ động. Đây là hệ thống phần mềm có khả năng tự nhận thức môi trường, lập kế hoạch, sử dụng công cụ và thực thi hành động để đạt mục tiêu mà không cần sự can thiệp liên tục của con người.",
+          "summary": "LEO CDP (Leo Customer Data Platform) là một nền tảng AI-first được thiết kế để hợp nhất, xử lý và làm giàu dữ liệu khách hàng theo thời gian thực, từ đó cung cấp một Golden Customer Profile sống. Trên nền dữ liệu này, AI Agents được kích hoạt để suy luận, ra quyết định và thực thi các hành động cá nhân hóa trên mọi touchpoint.",
           "content": [
-             "![leo-activation-framework](https://raw.githubusercontent.com/trieu/leo-activation/main/leo-activation-framework.png)",
-            "### 1. Định Nghĩa Cốt Lõi: AI Agent Không Chỉ Là Chatbot\n\nTrong khi các mô hình ngôn ngữ lớn (LLM) như GPT-4 hay Claude 3 đóng vai trò là 'bộ não' chứa kiến thức, thì AI Agent là một thực thể hoàn chỉnh có thêm 'tay chân' (Tools) và 'giác quan' (Sensors). Một phép so sánh đơn giản: Nếu LLM là một cuốn bách khoa toàn thư biết nói, thì AI Agent là một nhà nghiên cứu biết sử dụng cuốn bách khoa đó, sau đó tự động gửi email, viết code, hoặc cập nhật cơ sở dữ liệu.\n\nVề mặt bản chất, AI Agent là một hệ thống tính toán tự chủ (Autonomous Computational System). Nó không chờ đợi con người ra lệnh cho từng bước nhỏ (micro-management). Thay vào đó, nó nhận một mục tiêu cấp cao (High-level Goal) - ví dụ: 'Hãy lên kế hoạch du lịch và đặt vé cho tôi' - và tự mình phân rã mục tiêu đó thành các nhiệm vụ con (Sub-tasks), thực hiện chúng tuần tự hoặc song song, và xử lý các ngoại lệ phát sinh.",
-            "### 2. Kiến Trúc Kỹ Thuật (The Technical Anatomy)\n\nĐể hiểu sâu về AI Agent, chúng ta cần mổ xẻ kiến trúc 'Cognitive Architecture' của nó. Một Agent điển hình bao gồm 4 thành phần chính:\n\n**A. Agent Core (The Brain - LLM):**\nĐây là trung tâm điều khiển. LLM không chỉ sinh văn bản mà còn đóng vai trò là bộ máy suy luận (Reasoning Engine). Nó sử dụng các kỹ thuật như *Chain-of-Thought (CoT)* hoặc *ReAct (Reasoning + Acting)* để phân tích vấn đề. Ví dụ, khi gặp yêu cầu khó, nó sẽ tự hỏi: 'Tôi cần dữ liệu gì? Tôi nên dùng công cụ nào để lấy dữ liệu đó?'.\n\n**B. Perception & Tools (Sensors & Actuators):**\nAgent cần tương tác với thế giới bên ngoài. \n- *Sensors:* Các API listeners, Webhooks, hoặc khả năng đọc file giúp Agent nhận biết sự thay đổi của môi trường (ví dụ: nhận email mới, phát hiện server bị lỗi).\n- *Tools (Actuators):* Đây là các hàm (Functions) mà Agent có thể gọi. Đó có thể là một lệnh SQL, một API call đến CRM, một lệnh Google Search, hoặc một script Python. Khả năng *Function Calling* là yếu tố then chốt biến LLM thành Agent.\n\n**C. Memory (Context Management):**\nKhác với chatbot vô tri sẽ quên bạn là ai sau khi đóng tab, Agent cần bộ nhớ bền vững:\n- *Short-term Memory:* Lưu trữ ngữ cảnh của cuộc hội thoại hiện tại.\n- *Long-term Memory:* Sử dụng **Vector Database** (như Pinecone, Weaviate) để lưu trữ thông tin dưới dạng Embeddings. Điều này cho phép Agent 'nhớ' lại các quy tắc doanh nghiệp, lịch sử khách hàng từ nhiều tháng trước để đưa ra quyết định chính xác.\n\n**D. Planning (Planning Engine):**\nKhả năng tự lập kế hoạch là sự khác biệt lớn nhất. Agent có thể sử dụng các chiến lược như:\n- *Task Decomposition:* Chia nhỏ việc lớn thành việc nhỏ.\n- *Self-Reflection:* Tự kiểm tra xem kết quả vừa làm có đúng không. Nếu sai, nó tự sửa (Self-correction) mà không cần con người báo lỗi.",
-            "### 3. Cơ Chế Hoạt Động: Vòng Lặp OODA\n\nAI Agent vận hành dựa trên một vòng lặp vô tận gọi là OODA (Observe - Orient - Decide - Act) hoặc mô hình 'Perception-Action Cycle':\n\n1.  **Observe (Quan sát):** Nhận tín hiệu đầu vào (Input Stream) từ người dùng hoặc hệ thống (Trigger Event).\n2.  **Orient (Định hướng):** Truy xuất bộ nhớ (Memory Retrieval) để lấy ngữ cảnh liên quan. Phân tích xem tín hiệu này có ý nghĩa gì.\n3.  **Decide (Ra quyết định):** LLM suy luận và chọn công cụ cần thiết. Ví dụ: 'Để trả lời câu hỏi về tồn kho, tôi cần chạy query SQL'.\n4.  **Act (Hành động):** Thực thi công cụ (Execute Tool) và nhận kết quả.\n5.  **Loop (Lặp lại):** Kết quả của hành động trở thành đầu vào mới cho vòng lặp tiếp theo. Quá trình này tiếp diễn cho đến khi mục tiêu hoàn thành (Terminal State).",
-            "### 4. Góc Nhìn Kinh Doanh (The Business Perspective)\n\nTại sao doanh nghiệp cần quan tâm đến AI Agent ngay bây giờ? Câu trả lời nằm ở sự chuyển dịch từ **'Hỗ trợ' (Assistance)** sang **'Ủy quyền' (Delegation)**.\n\n**Tối ưu hóa Chi Phí Vận Hành (OpEx):**\nAI Agent không chỉ giảm tải cho nhân sự mà còn thay đổi cấu trúc chi phí. Thay vì trả lương cho nhân viên trực chat 24/7 chỉ để trả lời 80% câu hỏi lặp lại, Agent có thể xử lý toàn bộ phễu CSKH từ chào hỏi, tư vấn, chốt đơn, đến xử lý khiếu nại. Theo McKinsey, tự động hóa bằng Agent có thể giảm 30-50% chi phí vận hành trong các ngành thâm dụng lao động tri thức.\n\n**Tăng Tốc Độ và Sự Chủ Động (Proactivity):**\nHệ thống truyền thống là 'Reactive' (chờ lệnh mới chạy). AI Agent là 'Proactive'.\n- *Ví dụ:* Một Sales Agent không chờ khách hỏi. Nó tự động quét dữ liệu hành vi trên website, nhận thấy khách hàng đang do dự ở trang thanh toán, và chủ động gửi một mã giảm giá hoặc lời chào hỏi đúng ngữ cảnh để tăng tỷ lệ chuyển đổi (Conversion Rate).\n\n**Khả Năng Mở Rộng (Scalability):**\nĐào tạo một nhân viên mới mất 2 tháng. 'Nhân bản' một AI Agent chỉ mất vài giây. Doanh nghiệp có thể mở rộng quy mô phục vụ từ 1.000 lên 1.000.000 khách hàng trong mùa cao điểm mà không bị vỡ trận về nhân sự.",
-            "### 5. Thách Thức và Giới Hạn Hiện Tại\n\nMặc dù tiềm năng rất lớn, việc triển khai AI Agent vẫn đối mặt với các rào cản thực tế:\n\n- **Hallucination (Ảo giác):** Agent có thể tự bịa ra thông tin hoặc thực hiện hành động sai lầm (ví dụ: hoàn tiền nhầm) nếu không có cơ chế kiểm soát (Guardrails) chặt chẽ.\n- **Vòng lặp vô tận (Infinite Loops):** Nếu logic suy luận bị lỗi, Agent có thể rơi vào trạng thái lặp đi lặp lại một hành động mà không thoát ra được, gây tốn kém tài nguyên (Token cost).\n- **Bảo mật & Quyền riêng tư:** Việc cấp quyền cho Agent truy cập database và thực hiện API call đòi hỏi cơ chế phân quyền (RBAC) cực kỳ nghiêm ngặt để tránh rò rỉ dữ liệu.\n\n### 6. Tương Lai: Multi-Agent Systems (MAS)\n\nXu hướng tiếp theo không phải là một siêu Agent làm tất cả, mà là **Hệ thống Đa Tác tử (Multi-Agent Systems)**. Giống như một công ty có các phòng ban, chúng ta sẽ có:\n- *Coder Agent:* Chuyên viết mã.\n- *Reviewer Agent:* Chuyên kiểm tra lỗi của Coder.\n- *Product Manager Agent:* Điều phối công việc giữa các Agent.\n\nCác Agent này sẽ giao tiếp với nhau, tranh luận và hợp tác để giải quyết các vấn đề phức tạp mà một Agent đơn lẻ không làm được. Đây chính là tiền đề cho một lực lượng lao động kỹ thuật số (Digital Workforce) thực sự trong tương lai."
+            "![leo-cdp-version-2.0](media/leo-cdp-version-2.0.png)",
+            "### 1. LEO CDP không phải CDP truyền thống\n\nPhần lớn CDP trên thị trường được xây với mục tiêu **thu thập và báo cáo dữ liệu**. LEO CDP được xây với mục tiêu khác:\n\n> **Biến dữ liệu thành hành động thông minh theo thời gian thực.**\n\nLEO CDP không dừng ở việc tạo Single Customer View tĩnh. Nó tạo ra **Single Customer Graph động**, liên tục được cập nhật bởi sự kiện và được sử dụng trực tiếp bởi AI Agents.",
+            "### 2. Mục tiêu cốt lõi của LEO CDP\n\nLEO CDP phục vụ hai mục tiêu song song:\n\n- **Unify & Enrich Data:** Hợp nhất dữ liệu từ mọi nguồn thành một Golden Profile theo thời gian thực\n- **Activate with AI:** Sử dụng AI reasoning để cá nhân hóa trải nghiệm và dẫn dắt hành vi khách hàng\n\nCDP xử lý dữ liệu. **AI Agents sử dụng dữ liệu đó để hành động.**",
+            "### 3. Kiến trúc AI-first của LEO CDP\n\nLEO CDP được thiết kế theo kiến trúc **Event-driven + Agent-based**:\n\n**External & Internal Data Sources**\n- Web SDK, Mobile SDK\n- CRM, ERP, Payment, HR, Logistics\n\n**Data Observer (Real-time Ingestion)**\n- Nhận behavioral & transactional events\n- Chuẩn hóa dữ liệu ngay khi phát sinh\n\n**Data Agents (Scheduled & Sync Jobs)**\n- Đồng bộ dữ liệu nội bộ\n- Làm giàu hồ sơ khách hàng theo thời gian\n\n**Data Queue & Processor**\n- Xử lý bất đồng bộ, chịu tải cao\n- Đảm bảo low-latency cho real-time use cases",
+            "### 4. Identity Resolution & Customer Graph\n\nKhác với CDP dùng bảng phẳng, LEO CDP sử dụng **Graph Database (ArangoDB)** để mô hình hóa:\n\n- Khách hàng\n- Thiết bị\n- Sự kiện\n- Giao dịch\n- Hành trình\n\n**Entity Resolution** cho phép:\n- Hợp nhất nhiều định danh thành một con người\n- Cập nhật danh tính theo thời gian (progressive identity)\n\nKết quả là một **Golden Customer Graph**, không phải record tĩnh.",
+            "### 5. LEO CDP là nền tảng cho AI Agents\n\nLEO CDP không tự gửi email hay push notification.\n\nNó cung cấp **ngữ cảnh, dữ liệu và quyền truy cập** cho AI Agents trong LEO Activation:\n\n- Agents for Data Enrichment (labeling, scoring, segmentation)\n- Agents for Notification & Campaign\n- Personal AI Assistant (Chatbot)\n\nAI Agents sử dụng dữ liệu từ CDP để:\n- Suy luận theo ngữ cảnh\n- Quyết định hành động phù hợp\n- Cá nhân hóa theo từng cá nhân, từng thời điểm",
+            "### 6. Real-time Activation & Feedback Loop\n\nLEO CDP hỗ trợ activation với độ trễ thấp:\n\n- Real-time notification (Web Push, App Push)\n- Personalized messaging (Email, Zalo OA, FB Page)\n- Conversational activation (AI Assistant)\n\nMọi phản hồi của khách hàng quay lại hệ thống như **event mới**, ghi nhận vào Customer Graph và tiếp tục nuôi vòng học (learning loop).",
+            "### 7. Bảo mật, phân quyền và kiểm soát\n\nLEO CDP tích hợp:\n- OpenID Connect (Keycloak)\n- Phân quyền Admin / Business / System\n- Kiểm soát truy cập dữ liệu theo role\n\nĐiều này cho phép triển khai LEO CDP ở môi trường enterprise với yêu cầu bảo mật cao.",
+            "### 8. LEO CDP giải quyết vấn đề gì?\n\n- Phá vỡ data silos giữa các hệ thống\n- Chuyển dữ liệu từ batch sang real-time\n- Cho phép AI Agents hành động an toàn trên dữ liệu thật\n- Cá nhân hóa ở quy mô lớn mà không cần flow cứng\n\nLEO CDP không phải công cụ marketing.\nNó là **hạ tầng dữ liệu & activation cho AI-driven organization**."
           ]
         },
         {
           "section_id": "ch01-sec02",
           "section_number": "1.2",
+          "section_title": "AI Agent trong LEO CDP: Từ Khái Niệm đến Activation",
+          "summary_video": {
+            "title": "AI Agents trong LEO CDP – Kiến trúc Event-driven & Activation Loop",
+            "youtube_id": "eHEHE2fpnWQ"
+          },
+          "keywords": [
+            "AI Agent",
+            "LEO Activation",
+            "Customer Data Platform",
+            "Event-driven Architecture",
+            "Agent Orchestration",
+            "ArangoDB",
+            "PostgreSQL 16",
+            "Personalization",
+            "Data Activation"
+          ],
+          "summary": "Trong LEO CDP, AI Agent không phải là chatbot trả lời câu hỏi, mà là một tác nhân kích hoạt (Activation Agent) vận hành trên dữ liệu khách hàng, sự kiện hành vi và mục tiêu kinh doanh. Agent quan sát dữ liệu, suy luận theo ngữ cảnh, điều phối công cụ và chủ động hành động để thay đổi nhận thức, ý định và hành vi của khách hàng theo thời gian thực.",
+          "content": [
+            "![leo-cdp-agent-architecture](https://raw.githubusercontent.com/trieu/leo-activation/main/leo-activation-framework.png)",
+            "### 1. AI Agent trong LEO CDP không phải Chatbot\n\nPhần lớn hệ thống GenAI hiện nay dừng lại ở **Conversational AI** – trả lời khi người dùng hỏi. LEO CDP đi xa hơn: **AI Agent là một thành phần vận hành trong hệ thống dữ liệu và kích hoạt (Activation System)**.\n\nTrong kiến trúc LEO CDP:\n- LLM chỉ là **Reasoning Engine**\n- AI Agent là **thực thể có trạng thái, mục tiêu và quyền hành động**\n- Chatbot chỉ là *một giao diện* của Agent, không phải bản chất của nó\n\nAgent không chờ câu hỏi. Agent phản ứng với **event**: hành vi web, giao dịch, thay đổi hồ sơ, hoặc tín hiệu từ hệ thống khác.",
+            "### 2. Kiến Trúc AI Agent trong LEO CDP (Mapping trực tiếp từ sơ đồ)\n\n**A. Data Layer – Nền tảng nhận thức**\n\n- **ArangoDB (LEO CDP Core):** Lưu các collection như `cdp_profile`, `cdp_journeymap`, `cdp_segment`, `cdp_campaign`, `cdp_agent`.\n- **External Profile Data:** Dữ liệu đồng bộ từ PostgreSQL, CSV, Google Sheets, CRM, ERP.\n- **PostgreSQL 16+:** Lớp dữ liệu chuẩn hóa cho segmentation, recommendation, activation history.\n\nAgent không \"nhớ\" bằng prompt – Agent truy xuất dữ liệu thật.\n\n**B. Event Layer – Giác quan của Agent**\n\n- Behavioral Events (click, view, scroll)\n- Transactional Events (order, payment, refund)\n- System Events (sync xong dữ liệu, campaign kết thúc)\n\nMỗi event là một **signal** kích hoạt vòng suy luận của Agent.\n\n**C. Agent Orchestration Layer**\n\n- FastAPI + Agent Router\n- Phân loại agent: Notification Agent, Enrichment Agent, Assistant Agent\n- Điều phối multi-agent theo ngữ cảnh (không phải 1 agent làm tất cả)\n\n**D. Tool & Action Layer**\n\n- Gửi Email, Zalo OA, FB Page\n- Web Push / App Push real-time\n- Chạy segmentation, labeling, recommendation\n- Ghi log, cập nhật profile, chuyển trạng thái journey\n\nĐây là nơi **AI chuyển từ suy nghĩ sang hành động**.",
+            "### 3. Activation Loop: AI Agent thực sự vận hành như thế nào?\n\nLEO CDP triển khai Agent theo vòng lặp Activation (mở rộng OODA):\n\n1. **Observe:** Nhận event từ touchpoint (web/app/backend)\n2. **Contextualize:** Truy xuất profile, journey stage, lịch sử activation\n3. **Reason:** LLM + system prompt + rule + goal\n4. **Decide:** Chọn *có kích hoạt hay không*, kích hoạt cái gì, qua kênh nào\n5. **Act:** Thực thi hành động (notification, assistant, update data)\n6. **Learn:** Ghi nhận phản hồi để điều chỉnh hành vi Agent\n\nKhông có bước nào là \"random\". Mọi activation đều có lý do và trace được.",
+            "### 4. Các Loại AI Agent trong LEO Activation\n\n**Notification Agent**\n- Kết hợp segment + campaign + template\n- Quyết định *thời điểm*, *kênh*, *nội dung*\n- Tránh spam, tránh trùng lặp\n\n**Data Enrichment Agent**\n- Gắn nhãn hành vi (intent, interest)\n- Tự động cập nhật segment\n- Đề xuất sản phẩm hoặc next-best-action\n\n**Personal AI Assistant**\n- Giao tiếp 1-1 (Chatbot, Telegram, WhatsApp)\n- Dựa trên profile + journey hiện tại\n- Không trả lời chung chung, mà theo lịch sử cá nhân\n\nCác Agent này **phối hợp**, không hoạt động độc lập.",
+            "### 5. Use Cases Thực Tế\n\n**Use case 1 – E-commerce:**\nKhách hàng xem sản phẩm 3 lần nhưng chưa mua → Behavioral Event → Agent phát hiện do dự → Gửi push cá nhân hóa + ưu đãi phù hợp → Tăng conversion.\n\n**Use case 2 – SaaS / B2B:**\nUser dùng trial, không active tính năng chính → Agent phân tích usage → Assistant chủ động hướng dẫn → Email follow-up theo hành vi → Giảm churn.\n\n**Use case 3 – Giáo dục / EdTech:**\nHọc viên dừng ở một module → Agent nhận signal → Gửi nội dung bổ trợ + giải thích \"vì sao nên học tiếp\" → Thay đổi nhận thức, không chỉ nhắc nhở.\n\nĐiểm chung: **Agent không bán hàng, Agent dẫn dắt hành vi**.",
+            "### 6. LEO CDP khác gì hệ thống Marketing Automation truyền thống?\n\n- Không chạy flow cứng → chạy theo event và ngữ cảnh\n- Không cá nhân hóa bằng rule → cá nhân hóa bằng reasoning\n- Không tối ưu click → tối ưu hành vi dài hạn\n\nLEO CDP coi khách hàng là **con người có hành trình học và thay đổi**, không phải record trong database.",
+            "### 7. Tương Lai: Multi-Agent & Self-Improving CDP\n\nLEO Activation hướng tới hệ CDP mà:\n- Agent tự đánh giá hiệu quả của mình\n- Agent học từ phản hồi (implicit & explicit)\n- Agent điều chỉnh chiến lược activation theo thời gian\n\nĐây không còn là \"công cụ marketing\".\nĐây là **hệ thống dẫn dắt hành vi ở quy mô lớn**."
+          ]
+        },
+        {
+          "section_id": "ch01-sec03",
+          "section_number": "1.3",
           "section_title": "Từ Dữ liệu thô đến Trải nghiệm số: Hành trình của Data",
           "keywords": [
             "Data Pipeline",
@@ -58,6 +89,7 @@
           ],
           "summary": "Phân tích toàn diện quy trình biến đổi dữ liệu thô (Raw Data) thành hành động tiếp thị có ý nghĩa. Chương này đi sâu vào kiến trúc kỹ thuật của Data Pipeline, tầm quan trọng của việc xử lý thời gian thực (Real-time), và cách hợp nhất dữ liệu đa kênh để tạo ra trải nghiệm khách hàng siêu cá nhân hóa.",
           "content": [
+            "![uspa_framework_data_driven](media/uspa_framework_data_driven.png)",
             "### 1. Bản Chất Của Vấn Đề: Dữ Liệu Thô Là 'Dầu Thô'\n\nTrong kỷ nguyên số, chúng ta thường nghe câu nói 'Dữ liệu là dầu mỏ mới'. Tuy nhiên, phép ẩn dụ này cần được hiểu chính xác: Dữ liệu thô (Raw Data) giống như dầu thô mới khai thác—nó hỗn độn, bẩn, và chưa thể sử dụng để chạy động cơ. Nếu đổ trực tiếp dầu thô vào xe hơi, động cơ sẽ hỏng. Tương tự, nếu đẩy trực tiếp log server hay clickstream chưa qua xử lý vào hệ thống Marketing, doanh nghiệp sẽ tạo ra những trải nghiệm khách hàng rời rạc và sai lệch.\n\nHành trình 'Từ Dữ liệu thô đến Trải nghiệm số' là quá trình tinh lọc, làm giàu và kích hoạt. Mục tiêu không phải là thu thập nhiều dữ liệu nhất, mà là rút ngắn tối đa thời gian từ lúc dữ liệu xuất hiện (Data Creation) đến lúc nó tạo ra giá trị (Value Creation).",
             "### 2. Kiến Trúc Kỹ Thuật: Giải Phẫu Một Data Pipeline Hiện Đại\n\nĐể biến đổi hàng tỷ điểm dữ liệu thành một trải nghiệm mượt mà, hệ thống cần trải qua 4 giai đoạn kỹ thuật cốt lõi:\n\n**Giai đoạn 1: Ingestion (Thu nạp - The Input Stream)**\nĐây là cửa ngõ đầu tiên. Dữ liệu đến từ vô số nguồn: Mobile App (SDK), Website (JavaScript Tags), CRM (Backend API), IoT Devices, và cả POS tại cửa hàng vật lý.\n- *Thách thức:* Dữ liệu không đồng nhất. Một khách hàng có thể được định danh là `user_id: 123` trên web, nhưng là `email: abc@gmail.com` trên CRM.\n- *Công nghệ:* Sử dụng các message broker hiệu năng cao như **Apache Kafka** hoặc **Google Pub/Sub** để hứng luồng dữ liệu khổng lồ với độ trễ mili giây.\n\n**Giai đoạn 2: Processing & Transformation (Xử lý & Chuyển đổi)**\nTại đây, dữ liệu được làm sạch (Cleaning). Các giá trị null bị loại bỏ, định dạng ngày tháng được chuẩn hóa (Normalization). Quan trọng hơn, hệ thống thực hiện **Identity Resolution** (Hợp nhất định danh). \n- *Cơ chế:* Hệ thống so khớp mờ (Fuzzy matching) hoặc chính xác (Deterministic matching) để nhận ra rằng người đang lướt web ẩn danh và người vừa mở email tuần trước là cùng một người. Kết quả là tạo ra một **Unified Customer Profile** (Hồ sơ khách hàng hợp nhất).\n\n**Giai đoạn 3: Enrichment (Làm giàu dữ liệu)**\nDữ liệu hành vi (Behavioral Data) được kết hợp với dữ liệu ngữ cảnh (Contextual Data). \n- *Ví dụ:* Khi biết khách hàng đang xem 'áo mưa', hệ thống kết hợp với dữ liệu thời tiết API (đang mưa to tại vị trí khách hàng) để tăng trọng số cho việc đề xuất sản phẩm. Đây là bước biến 'Data' thành 'Insight'.",
             "### 3. Yếu Tố Thời Gian: Latency Is The Killer\n\nTrong môi trường kinh doanh hiện đại, giá trị của dữ liệu tỷ lệ nghịch với thời gian tồn tại của nó. \n\n- **Batch Processing (Xử lý theo lô):** Cách làm cũ là thu thập dữ liệu cả ngày và xử lý vào ban đêm. Điều này giống như việc bạn đọc tin tức ngày hôm qua. Nếu khách hàng bỏ giỏ hàng lúc 9 giờ sáng, nhưng đến 9 giờ sáng hôm sau hệ thống mới gửi email nhắc nhở, cảm xúc mua hàng (Buying Impulse) đã nguội lạnh.\n- **Real-time Processing (Xử lý thời gian thực):** Các hệ thống hiện đại như LEO CDP hướng tới **Low-latency ingestion**. Thời gian từ lúc người dùng 'Click' đến lúc hệ thống sẵn sàng phản hồi phải dưới **200ms**. Tại sao? Vì đó là giới hạn nhận thức của não bộ con người về sự 'tức thì'. Phản hồi chậm hơn ngưỡng này sẽ khiến trải nghiệm số trở nên rời rạc và kém thông minh.",
@@ -75,58 +107,85 @@
         {
           "section_id": "ch02-sec01",
           "section_number": "2.1",
-          "section_title": "Bán lẻ đa kênh (Omnichannel Retail): Hợp nhất Trải nghiệm",
+          "section_title": "Bán lẻ Đa Kênh trong LEO CDP: Hợp nhất Danh tính, Ngữ cảnh và Hành vi",
           "keywords": [
+            "Omnichannel Retail",
             "O2O Mapping",
             "Identity Graph",
+            "ArangoDB",
             "POS Integration",
+            "Event-driven Activation",
             "RFM Analysis",
-            "Customer Lifetime Value (CLV)"
+            "Customer Lifetime Value"
           ],
-          "summary": "Giải quyết bài toán phân mảnh dữ liệu giữa cửa hàng vật lý và Online. Kỹ thuật tập trung vào 'Identity Resolution' để nhận diện khách hàng qua nhiều điểm chạm. Mục tiêu kinh doanh là tối ưu hóa vòng đời khách hàng (LTV) và trải nghiệm liền mạch.",
+          "summary": "Trong LEO CDP, Omnichannel không chỉ là kết nối các kênh bán hàng, mà là hợp nhất danh tính con người, dòng sự kiện và hành vi mua sắm thành một Customer Graph duy nhất. Mục tiêu không phải báo cáo, mà là kích hoạt AI Agents để cá nhân hóa trải nghiệm và tối ưu giá trị vòng đời khách hàng (CLV) theo thời gian thực.",
           "content": [
-            "### Bối cảnh & Thách thức\nKhách hàng hiện đại không mua sắm trên một kênh. Họ 'Webrooming' (xem online, mua offline) hoặc 'Showrooming' (xem tại tiệm, mua online giá rẻ hơn). Thách thức lớn nhất là nhận diện: Người vừa thanh toán tiền mặt tại quầy và user `guest_123` trên website có phải là một người không?",
-            "### Technical Implementation (Triển khai kỹ thuật)\n1. **Identity Resolution (Phân giải định danh):** Sử dụng các thuật toán 'Deterministic Matching' (khớp chính xác dựa trên SĐT, Email) kết hợp với 'Probabilistic Matching' (khớp xác suất dựa trên IP, Device ID, Location) để hợp nhất các hồ sơ rời rạc thành một 'Golden Record'.\n2. **POS Integration (Tích hợp máy bán hàng):** Dữ liệu đơn hàng offline được đẩy về CDP theo thời gian thực (Real-time). Webhook trigger sẽ kích hoạt ngay khi hóa đơn được in.\n3. **Beacon/Wi-Fi Tracking:** Ghi nhận sự hiện diện của khách hàng tại cửa hàng vật lý thông qua tín hiệu Wi-Fi hoặc Bluetooth (nếu khách đã cài App).",
-            "### Business Scenarios (Kịch bản kinh doanh)\n- **Kịch bản 'Cart Abandonment Recovery Offline':** Khách bỏ giỏ hàng trên Web. 2 tiếng sau, họ đi ngang qua cửa hàng vật lý. Hệ thống gửi tin nhắn Zalo/App Push: 'Đôi giày bạn thích đang có sẵn tại cửa hàng X cách bạn 500m. Ghé thử ngay để nhận voucher 5%'.\n- **Clienteling (Hỗ trợ nhân viên bán hàng):** Khi khách VIP bước vào, nhân viên nhận thông báo trên tablet về lịch sử mua hàng, size quần áo, và sở thích màu sắc để tư vấn chính xác, tăng tỷ lệ chốt đơn (Closing Rate).",
-            "### Key Metrics\n- **Revenue Per Visitor (RPV):** Doanh thu trên mỗi lượt ghé thăm.\n- **O2O Conversion Rate:** Tỷ lệ chuyển đổi từ Online sang Offline và ngược lại."
+            "![leo_cdp_o2o_retail](media/leo_cdp_o2o_retail.png)",
+            "### 1. Vấn đề cốt lõi của Omnichannel Retail\n\nBán lẻ đa kênh thất bại không phải vì thiếu dữ liệu, mà vì **dữ liệu không nói cùng một ngôn ngữ**.\n\n- POS biết giao dịch, nhưng không biết hành vi trước đó\n- Website biết hành vi, nhưng không biết ai vừa thanh toán offline\n- CRM có hồ sơ, nhưng không biết khách đang đứng ở đâu trong hành trình\n\nCâu hỏi trọng tâm không phải là *\"bán ở đâu\"*, mà là:\n> **Đây có phải là cùng một con người, trong cùng một hành trình hay không?**",
+            "### 2. Identity Graph – Nền tảng Omnichannel của LEO CDP\n\nLEO CDP không dùng bảng phẳng để quản lý khách hàng. Hệ thống sử dụng **Identity Graph trên ArangoDB** để mô hình hóa mối quan hệ:\n\n- `Profile` ↔ `Device` ↔ `Session`\n- `Profile` ↔ `Transaction` (Online / Offline)\n- `Profile` ↔ `Location` ↔ `Store`\n\nMỗi sự kiện (event) không chỉ ghi log, mà được **gắn vào đồ thị danh tính**, cho phép hệ thống trả lời các câu hỏi ngữ cảnh theo thời gian thực.",
+            "### 3. Identity Resolution trong LEO CDP hoạt động thế nào?\n\nLEO CDP triển khai **Identity Resolution đa tầng**:\n\n1. **Deterministic Matching**\n   - SĐT, Email, Loyalty ID, QR Code\n   - Áp dụng khi có độ tin cậy tuyệt đối\n\n2. **Probabilistic Matching**\n   - Device Fingerprint, IP, Location, Time Window\n   - Gán trọng số và độ tin cậy (confidence score)\n\n3. **Progressive Identity Building**\n   - Hồ sơ không hoàn thiện vẫn được kích hoạt\n   - Danh tính được làm giàu dần theo hành vi\n\nKết quả không phải một record tĩnh, mà là **Golden Profile sống**, luôn cập nhật.",
+            "### 4. POS & Offline Events: Offline không còn là \"vùng mù\"\n\n**POS Integration trong LEO CDP** không dừng ở batch cuối ngày:\n\n- Hóa đơn in ra → Webhook → Event Stream\n- Event được gắn vào Profile hiện tại trong Identity Graph\n- Kích hoạt ngay AI Agent nếu thỏa điều kiện\n\nOffline trở thành **một touchpoint bình thường**, giống Web hay App.\n\nNếu khách trả tiền mặt và chưa xác định danh tính, hệ thống vẫn lưu event và **chờ future identity resolution**.",
+            "### 5. AI Agents kích hoạt Omnichannel Experience như thế nào?\n\nTrong LEO Activation, Omnichannel được vận hành bởi các Agent chuyên biệt:\n\n**Customer Context Agent**\n- Tổng hợp lịch sử Online + Offline\n- Xác định journey stage hiện tại\n\n**Retail Activation Agent**\n- Quyết định có kích hoạt hay không\n- Chọn kênh: Zalo OA, App Push, Email, Sales Tablet\n\n**Store-facing Agent (Clienteling)**\n- Đẩy insight cho nhân viên bán hàng\n- Không hiển thị raw data, chỉ hiển thị *\"nên làm gì\"*\n\nAgent không chạy theo rule cứng, mà theo **ngữ cảnh và mục tiêu kinh doanh**.",
+            "### 6. Kịch bản Omnichannel thực chiến\n\n**Kịch bản 1 – Online → Offline Conversion**\n- Khách xem sản phẩm online nhiều lần\n- Chưa mua → có dấu hiệu quan tâm cao\n- Khi khách vào cửa hàng gần nhất → Agent gửi ưu đãi đúng sản phẩm, đúng cửa hàng\n\n**Kịch bản 2 – Offline → Online Retention**\n- Khách mua tại cửa hàng\n- 3 ngày sau không quay lại\n- Agent gửi nội dung hướng dẫn sử dụng + gợi ý mua kèm online\n\n**Kịch bản 3 – VIP Clienteling**\n- Khách CLV cao bước vào cửa hàng\n- Nhân viên nhận insight: sản phẩm yêu thích, size, lịch sử đổi trả\n- Tư vấn cá nhân hóa, không hỏi lại từ đầu",
+            "### 7. Đo lường đúng cho Omnichannel\n\nLEO CDP không đo từng kênh riêng lẻ, mà đo theo **con người và hành trình**:\n\n- **O2O Conversion Rate:** Tỷ lệ chuyển đổi giữa các touchpoint\n- **CLV (Customer Lifetime Value):** Theo profile hợp nhất, không theo kênh\n- **RFM Omnichannel:** Recency/Frequency/Monetary trên toàn bộ hệ sinh thái\n- **Activation Effectiveness:** Hành động nào thực sự thay đổi hành vi\n\nĐiều quan trọng nhất: đo **ảnh hưởng dài hạn**, không chỉ doanh thu tức thời.",
+            "### 8. Khác biệt của LEO CDP so với Omnichannel truyền thống\n\n- Không ghép dữ liệu → xây Identity Graph\n- Không chạy flow cứng → Agent quyết định theo ngữ cảnh\n- Không tối ưu kênh → tối ưu hành vi con người\n\nOmnichannel trong LEO CDP không phải là chiến thuật bán lẻ.\nĐó là **hệ thống hiểu và dẫn dắt hành vi khách hàng ở mọi điểm chạm**."
           ]
         },
         {
           "section_id": "ch02-sec02",
           "section_number": "2.2",
-          "section_title": "Tài chính & Ngân hàng (BFSI): Bảo mật và Cá nhân hóa",
+          "section_title": "Tài chính & Ngân hàng (BFSI) trong LEO CDP: Bảo mật theo Ngữ cảnh, Cá nhân hóa theo Hành vi",
           "keywords": [
+            "BFSI CDP",
             "Real-time Fraud Detection",
-            "Next Best Action (NBA)",
-            "Credit Scoring",
+            "Next Best Action",
+            "Behavioral Credit Scoring",
+            "Event-driven Architecture",
+            "AI Agents",
             "Data Governance",
+            "Consent Management",
             "eKYC"
           ],
-          "summary": "Ứng dụng CDP và AI để cân bằng giữa bảo mật và trải nghiệm người dùng. Tech: Stream Processing để phát hiện gian lận và đề xuất gói vay. Business: Tăng tỷ lệ Cross-sell và giữ chân khách hàng (Retention).",
+          "summary": "LEO CDP cho ngành Tài chính – Ngân hàng không tập trung vào marketing đơn thuần, mà vào việc vận hành AI Agents trên dữ liệu hành vi theo thời gian thực. Hệ thống cho phép phát hiện rủi ro tức thì, cá nhân hóa hành động phù hợp và tuân thủ chặt chẽ các quy định về bảo mật, consent và data governance.",
           "content": [
-            "### Bối cảnh & Thách thức\nNgành tài chính sở hữu lượng dữ liệu khổng lồ nhưng bị cô lập (Silos) chặt chẽ do quy định bảo mật. Thách thức là làm sao sử dụng dữ liệu để bán hàng (Sales) mà không vi phạm quy định (Compliance), đồng thời phản ứng tức thì với rủi ro.",
-            "### Technical Implementation\n1. **Stream Processing (Xử lý luồng):** Sử dụng Kafka và Flink để phân tích log giao dịch theo thời gian thực. Bất kỳ giao dịch nào có dấu hiệu bất thường (ví dụ: rút tiền ở quốc gia khác khi vừa quẹt thẻ tại Việt Nam 5 phút trước) sẽ bị gắn cờ.\n2. **Predictive Modeling:** Chạy các mô hình AI dự báo khả năng rời bỏ (Churn Prediction) hoặc mô hình chấm điểm tín dụng hành vi (Behavioral Credit Scoring) dựa trên lịch sử thanh toán hóa đơn điện/nước.",
-            "### Business Scenarios\n- **Next Best Offer (Đề xuất tối ưu tiếp theo):** Khách hàng vừa tất toán một khoản vay mua xe. Hệ thống tự động phân tích và đề xuất ngay gói bảo hiểm xe cơ giới hoặc thẻ tín dụng cashback cho xăng dầu, thay vì chào mời khoản vay mới (điều có thể gây phiền toái).\n- **Real-time Alert:** Cảnh báo số dư thấp ngay trước khi khách hàng thực hiện giao dịch thanh toán định kỳ (điện, nước) để tránh phí phạt.",
-            "### Compliance (Tuân thủ)\nĐảm bảo mọi luồng dữ liệu tuân thủ nghị định bảo vệ dữ liệu (như GDPR hoặc Nghị định 13) thông qua cơ chế 'Consent Management Platform' (CMP) tích hợp sẵn, cho phép khách hàng rút lại quyền truy cập dữ liệu bất cứ lúc nào."
+            "### 1. Bối cảnh ngành BFSI: Dữ liệu nhiều nhưng không thể dùng tùy ý\n\nNgân hàng và tổ chức tài chính sở hữu dữ liệu có giá trị cao nhất, nhưng cũng bị ràng buộc nghiêm ngặt nhất:\n- Dữ liệu giao dịch nhạy cảm\n- Quy định pháp lý chặt chẽ (GDPR, Nghị định 13, PCI-DSS)\n- Hệ thống legacy phân mảnh\n\nThách thức không phải là *thiếu dữ liệu*, mà là:\n> **Làm sao kích hoạt dữ liệu đúng lúc, đúng ngữ cảnh, đúng quyền?**",
+            "### 2. Kiến trúc LEO CDP cho BFSI\n\nLEO CDP áp dụng kiến trúc **Event-driven + Agent-based**, thay vì batch reporting:\n\n- Mọi giao dịch, đăng nhập, thay đổi hành vi đều là event\n- Event được gắn vào Customer Graph (Identity + Financial Context)\n- AI Agents quyết định hành động, không phải rule cứng\n\nĐiều này cho phép hệ thống vừa **nhanh**, vừa **kiểm soát được rủi ro**.",
+            "### 3. Real-time Fraud Detection bằng AI Agent\n\n**Fraud Detection trong LEO CDP không phải là một dashboard**, mà là một Agent luôn chạy.\n\nLuồng hoạt động:\n1. Transaction Event phát sinh\n2. Fraud Context Agent phân tích:\n   - Vị trí\n   - Thiết bị\n   - Thời gian\n   - Hành vi lịch sử\n3. Gán Risk Score theo ngữ cảnh\n4. Kích hoạt hành động phù hợp:\n   - Cảnh báo\n   - Yêu cầu xác thực bổ sung\n   - Tạm hoãn giao dịch\n\nKhông phải mọi rủi ro đều chặn – **Agent chọn phản ứng tương xứng**.",
+            "### 4. Behavioral Credit Scoring & Risk Profiling\n\nThay vì chỉ dựa vào hồ sơ tài chính tĩnh, LEO CDP cho phép:\n\n- Chấm điểm tín dụng dựa trên hành vi thực tế\n- Phân tích thói quen thanh toán, dòng tiền, tương tác\n- Cập nhật Risk Profile theo thời gian\n\nVí dụ:\n- Khách không có lịch sử tín dụng mạnh\n- Nhưng có hành vi thanh toán đều đặn, chi tiêu ổn định\n\n→ Agent có thể đề xuất hạn mức phù hợp mà không cần hồ sơ truyền thống.",
+            "### 5. Next Best Action (NBA) trong BFSI\n\nTrong LEO CDP, **NBA không phải là bán thêm bằng mọi giá**.\n\nAI Agent đánh giá:\n- Trạng thái tài chính hiện tại\n- Sự kiện vừa xảy ra\n- Mức độ nhạy cảm của thời điểm\n\nVí dụ:\n- Khách vừa tất toán khoản vay → đề xuất bảo hiểm hoặc thẻ phù hợp\n- Khách đang căng dòng tiền → không chào bán, chỉ hỗ trợ\n\nNBA trong BFSI = **đúng hành động, không phải nhiều hành động**.",
+            "### 6. Real-time Personalization nhưng không xâm phạm\n\nLEO CDP cho phép cá nhân hóa ở cấp độ:\n- Nội dung cảnh báo\n- Thời điểm gửi\n- Kênh giao tiếp\n\nNhưng **không vi phạm quyền riêng tư**, vì:\n- Agent chỉ dùng dữ liệu đã được consent\n- Mọi hành động đều có audit trail\n- Không lộ dữ liệu nhạy cảm cho front-end",
+            "### 7. Consent & Data Governance là phần của hệ thống, không phải phụ kiện\n\nLEO CDP tích hợp sẵn:\n\n- **Consent Management Platform (CMP)**\n- Gắn consent vào từng loại dữ liệu\n- Kiểm tra quyền trước mỗi activation\n\nNếu khách rút consent:\n- Agent tự động dừng sử dụng dữ liệu liên quan\n- Không cần sửa code hoặc rule thủ công",
+            "### 8. Business Outcomes cho BFSI\n\nLEO CDP giúp ngân hàng đạt được:\n\n- Giảm fraud loss nhờ phản ứng sớm\n- Tăng cross-sell nhưng không gây phản cảm\n- Giữ chân khách hàng bằng trải nghiệm an toàn\n- Tuân thủ pháp lý ngay từ kiến trúc\n\nQuan trọng nhất: **niềm tin của khách hàng được bảo toàn**.",
+            "### 9. BFSI không cần CDP để bán nhiều hơn\n\nNgành tài chính cần CDP để:\n- Ra quyết định tốt hơn\n- Phản ứng nhanh hơn\n- Hành xử có trách nhiệm hơn với dữ liệu\n\nLEO CDP không biến ngân hàng thành công ty quảng cáo.\nNó biến ngân hàng thành **hệ thống hiểu khách hàng theo ngữ cảnh và hành vi thực**."
           ]
         },
         {
           "section_id": "ch02-sec03",
           "section_number": "2.3",
-          "section_title": "Media & Agency: Tối ưu hóa trong kỷ nguyên Cookieless",
+          "section_title": "Media & Marketing Agency trong LEO CDP: Vận hành Audience & Creative trong kỷ nguyên Cookieless",
           "keywords": [
+            "Cookieless Marketing",
             "First-party Data",
-            "Audience Segmentation",
-            "Lookalike Modeling",
-            "Server-side Tracking (CAPI)",
-            "ROAS Optimization"
+            "Private Audience Graph",
+            "Server-side Tracking",
+            "Conversion API",
+            "AI Agents",
+            "Dynamic Creative Optimization",
+            "ROAS Optimization",
+            "Media Activation"
           ],
-          "summary": "Chuyển dịch từ Third-party data sang First-party data. Tech: Xây dựng Private Graph và Lookalike Audience. Business: Tối ưu hóa chi phí quảng cáo (ROAS) và cá nhân hóa nội dung sáng tạo.",
+          "summary": "Trong bối cảnh cookieless, Media và Agency không còn cạnh tranh bằng kỹ thuật tracking, mà bằng khả năng sở hữu, hiểu và kích hoạt dữ liệu bên thứ nhất. LEO CDP cung cấp nền tảng Private Audience Graph và AI Agents giúp Agency vận hành audience, creative và media activation theo thời gian thực, giảm phụ thuộc vào Big Tech và tối ưu ROAS một cách bền vững.",
           "content": [
-            "### Bối cảnh & Thách thức\nVới việc Google và Apple chặn cookie bên thứ 3 (Third-party cookies), các Agency mất đi khả năng theo dõi (Tracking) người dùng hiệu quả. Chi phí quảng cáo (CPM/CPA) tăng cao do targeting kém chính xác. Giải pháp duy nhất là sở hữu dữ liệu bên thứ nhất (First-party Data).",
-            "### Technical Implementation\n1. **Server-to-Server Tracking (CAPI):** Thay vì dùng Pixel trình duyệt (dễ bị chặn bởi AdBlock), Agency sử dụng Conversion API để gửi sự kiện trực tiếp từ server đến Facebook/Google/TikTok, đảm bảo độ chính xác dữ liệu lên tới 99%.\n2. **Audience Suppression (Loại trừ đối tượng):** Tự động đồng bộ danh sách 'Khách hàng đã mua' lên các nền tảng quảng cáo (Ad Platforms) theo thời gian thực để ngừng hiển thị quảng cáo cho họ, tránh lãng phí ngân sách (Budget Waste).",
-            "### Business Scenarios\n- **Dynamic Creative Optimization (DCO):** Dựa trên dữ liệu CDP, website hiển thị banner khác nhau cho từng người. Người mê thể thao thấy banner giày chạy bộ; người thích công nghệ thấy banner đồng hồ thông minh.\n- **Lookalike Modeling chất lượng cao:** Sử dụng danh sách 'Top 5% khách hàng chi tiêu nhiều nhất' (High-value customers) làm hạt giống (Seed) để tìm kiếm người dùng mới có hành vi tương tự trên mạng xã hội.",
-            "### Key Impact\n- **ROAS (Return on Ad Spend):** Tăng hiệu quả chi tiêu quảng cáo bằng cách nhắm đúng người, đúng thông điệp.\n- **Data Ownership:** Agency giúp Client xây dựng tài sản dữ liệu riêng, giảm phụ thuộc vào Big Tech."
+            "![leo_cdp_media_agency](media/leo_cdp_media_agency.png)",
+            "### 1. Cookieless không phải là vấn đề kỹ thuật, mà là vấn đề mô hình\n\nSự biến mất của third-party cookies chỉ phơi bày một thực tế:\n\n- Agency không sở hữu dữ liệu khách hàng\n- Audience nằm trong nền tảng quảng cáo, không nằm trong hệ thống của Client\n- Media buying tách rời khỏi hiểu biết về hành vi thực\n\nCookieless buộc Agency phải trả lời câu hỏi:\n> **Chúng ta đang tối ưu media, hay đang xây tài sản dữ liệu cho Client?**",
+            "### 2. LEO CDP & Private Audience Graph cho Agency\n\nLEO CDP cho phép Agency xây dựng **Private Audience Graph** cho từng Client:\n\n- Hợp nhất hành vi web, app, CRM, offline\n- Gắn audience với identity thật, không phải cookie tạm thời\n- Phân đoạn dựa trên hành vi, giá trị và ngữ cảnh\n\nAudience không còn là file upload, mà là **tài sản sống**, luôn được cập nhật.",
+            "### 3. Server-side Tracking là nền tảng, không phải lợi thế\n\nLEO CDP triển khai **Server-to-Server Tracking** như một tiêu chuẩn mặc định:\n\n- Facebook Conversion API\n- Google Enhanced Conversions\n- TikTok Events API\n\nMọi event đều:\n- Đi từ hệ thống của Client\n- Được chuẩn hóa trước khi gửi đi\n- Gắn với profile trong CDP\n\nTracking không còn phụ thuộc vào trình duyệt hay cookie.",
+            "### 4. AI Agents vận hành Media Activation\n\nTrong LEO Activation, Media không chạy bằng rule cứng:\n\n**Audience Agent**\n- Tạo và cập nhật segment theo thời gian thực\n- Tự động loại trừ khách đã chuyển đổi\n\n**Creative Intelligence Agent**\n- Phân tích creative performance theo audience\n- Đề xuất thông điệp phù hợp từng nhóm\n\n**Media Optimization Agent**\n- Điều chỉnh ngân sách và tần suất dựa trên hiệu quả thực\n- Giảm spend vào traffic kém chất lượng\n\nAgency không “set campaign” – Agency **điều phối hệ thống**.",
+            "### 5. Dynamic Creative Optimization (DCO) theo ngữ cảnh thật\n\nKhác với DCO truyền thống dựa trên rule:\n\n- LEO CDP dùng hành vi + lịch sử tương tác\n- AI Agent quyết định creative nào nên hiển thị\n\nVí dụ:\n- Người dùng đọc nhiều bài review → creative thiên về so sánh\n- Người quay lại nhiều lần → creative tập trung vào ưu đãi\n\nCreative không chỉ cá nhân hóa – **creative học từ phản hồi**.",
+            "### 6. Lookalike Modeling chất lượng cao trong Cookieless Era\n\nLEO CDP không dùng lookalike đại trà:\n\n- Seed audience là nhóm **High-Intent / High-Value**\n- Seed được làm sạch và cập nhật liên tục\n- Kết hợp nhiều chiều hành vi, không chỉ conversion\n\nKết quả:\n- Lookalike nhỏ hơn\n- Nhưng chất lượng cao hơn\n- CPA ổn định hơn theo thời gian",
+            "### 7. Audience Suppression & Budget Protection\n\nMột trong những lãng phí lớn nhất của media là:\n- Quảng cáo cho người đã mua\n- Re-target sai thời điểm\n\nLEO CDP cho phép:\n- Suppress audience theo thời gian thực\n- Đồng bộ trạng thái chuyển đổi ngay khi event xảy ra\n\nBudget không bị đốt – **media được bảo vệ bằng dữ liệu**.",
+            "### 8. Vai trò mới của Agency trong kỷ nguyên AI\n\nAgency không còn chỉ là:\n- Media buyer\n- Creative producer\n\nAgency trở thành:\n- Kiến trúc sư dữ liệu\n- Người vận hành AI Agents\n- Đối tác xây tài sản dữ liệu cho Client\n\nLEO CDP giúp Agency:\n- Giữ quyền sở hữu dữ liệu cho Client\n- Giảm phụ thuộc vào nền tảng quảng cáo\n- Chuyển từ tối ưu ngắn hạn sang hiệu quả dài hạn",
+            "### 9. Kết quả kinh doanh bền vững\n\nVới LEO CDP, Media & Agency đạt được:\n\n- ROAS ổn định, ít biến động\n- CPM & CPA giảm nhờ audience chính xác\n- Creative performance được cải thiện liên tục\n- Client sở hữu dữ liệu, không bị lock-in\n\nCookieless không giết Agency.\nNó buộc Agency **tiến hóa**."
           ]
         },
         {
@@ -194,6 +253,7 @@
           ],
           "summary": "USPA không chỉ là một quy trình kỹ thuật, đó là vòng đời hoàn chỉnh của dữ liệu khách hàng. Chương này phân tích sâu 4 trụ cột: Unification (Hợp nhất định danh), Segmentation (Phân khúc động), Personalization (Cá nhân hóa AI), và Activation (Kích hoạt đa kênh).",
           "content": [
+            "![uspa_framework](media/uspa_framework.png)",
             "### Giới thiệu: USPA là gì trong kỷ nguyên Data-Driven?\n\nTrong thế giới công nghệ tiếp thị (MarTech), USPA viết tắt của **Unification (Hợp nhất) - Segmentation (Phân khúc) - Personalization (Cá nhân hóa) - Activation (Kích hoạt)**. Đây là khung kiến trúc tiêu chuẩn vàng để biến dữ liệu thô và hỗn độn thành doanh thu thực tế. Một hệ thống CDP mạnh mẽ không phải chỉ là nơi chứa dữ liệu (Data Lake), mà phải là một cỗ máy vận hành trơn tru theo quy trình 4 bước này với độ trễ thấp nhất (Low Latency).",
             "---",
             "### 1. U - UNIFICATION (Hợp nhất dữ liệu và Định danh)\n\n**Bản chất kỹ thuật:**\nĐây là nền móng của ngôi nhà dữ liệu. Trong môi trường doanh nghiệp, dữ liệu khách hàng bị phân mảnh ở khắp nơi: Cookie trên trình duyệt, ID thiết bị (Device ID) trên Mobile App, Email trong CRM, và Số điện thoại tại POS cửa hàng. Thách thức lớn nhất là: Làm sao biết tất cả những mảnh ghép này thuộc về cùng một người?\n\n**Cơ chế hoạt động:**\n- **Data Ingestion (Thu nạp):** Hệ thống thu thập dữ liệu từ đa nguồn (First-party từ web/app, Second-party từ đối tác) thông qua SDK, API hoặc Batch upload.\n- **Cleaning & Standardization:** Làm sạch dữ liệu (ví dụ: chuyển đổi số điện thoại '+84' và '09' về cùng định dạng).\n- **Identity Resolution (Phân giải định danh):** Đây là trái tim của bước Unification. Hệ thống sử dụng:\n  + *Deterministic Matching (Khớp chính xác):* Nối dữ liệu khi có khóa chung duy nhất (Email, SĐT, User ID).\n  + *Probabilistic Matching (Khớp xác suất):* Sử dụng AI để đoán hai hồ sơ là một dựa trên IP, Browser Fingerprint, Vị trí địa lý với độ tin cậy >90%.\n\n**Use Case thực tiễn:**\n*Khách hàng A lướt xem iPhone trên Laptop (ẩn danh) -> Hôm sau dùng Mobile App đăng nhập để mua ốp lưng -> 3 ngày sau ra cửa hàng mua iPhone.* \n-> **Kết quả Unification:** Hệ thống hợp nhất 3 hành động này vào một **Profile 360 độ (Single Customer View)**. Nếu không có bước này, doanh nghiệp sẽ lãng phí tiền quảng cáo chiếc iPhone cho một người đã mua rồi.",
@@ -389,11 +449,48 @@
     {
       "chapter_id": "ch08",
       "chapter_number": 8,
-      "chapter_title": "Tổng kết và Tương lai",
+      "chapter_title": "Triển khai LEO CDP (Deployment Architecture)",
       "sections": [
         {
           "section_id": "ch08-sec01",
           "section_number": "8.1",
+          "section_title": "Kiến trúc Triển khai LEO CDP – Demo & Production-ready",
+          "keywords": [
+            "LEO CDP Deployment",
+            "Nginx Reverse Proxy",
+            "ArangoDB",
+            "Keycloak SSO",
+            "Microservices Architecture",
+            "Event-driven Data Hub",
+            "Security & Network Segmentation",
+            "Scalable CDP"
+          ],
+          "summary": "LEO CDP được triển khai theo kiến trúc phân tách rõ ràng giữa Data Hub, Core Database, Application Layer và Identity & Access Management. Mô hình này cho phép hệ thống vừa phục vụ demo, vừa sẵn sàng mở rộng lên production với khả năng chịu tải cao, bảo mật tốt và dễ vận hành.",
+          "content": [
+            "![leo cdp deployment](media/leo_cdp_deployment.png)",
+            "<a href=\"https://dcdp.bigdatavietnam.org\" target=\"_blank\"><center><h2>Live Demo</h2></center></a>",
+            "### 1. Tổng quan kiến trúc triển khai\n\nLEO CDP được thiết kế theo mô hình **distributed system**, trong đó mỗi thành phần có vai trò rõ ràng và giao tiếp với nhau qua network nội bộ được kiểm soát.\n\nMục tiêu kiến trúc:\n- Tách ingestion, processing và presentation\n- Dễ scale từng thành phần độc lập\n- Giảm rủi ro bảo mật bằng network segmentation",
+            "### 2. Data Sources & Ingestion Layer\n\n**Nguồn dữ liệu bên ngoài** bao gồm:\n- Website, Mobile App\n- Google, Facebook Page, Zalo OA\n- CRM, hệ thống nội bộ doanh nghiệp\n\nTất cả dữ liệu đều đi qua **Data Hub API**, không kết nối trực tiếp vào database.\n\nĐiều này giúp:\n- Chuẩn hóa event\n- Kiểm soát schema\n- Dễ audit và debug",
+            "### 3. Data Hub API – Cổng vào duy nhất của dữ liệu\n\n**Data Hub API** chạy trên:\n- IP: `192.168.0.2`\n- DNS: `datahub4dcdp.bigdatavietnam.org`\n- TCP Port: `9083`\n\nVai trò:\n- Nhận behavioral & transactional events\n- Đồng bộ dữ liệu từ CRM\n- Đẩy event vào Core Database\n\nData Hub **không xử lý business logic**, chỉ làm ingestion & routing.",
+            "### 4. Nginx Proxy & Load Balancer\n\nNginx đóng vai trò **Reverse Proxy + Load Balancer** tại:\n- IP: `192.168.1.3`\n- DNS: `datahub4dcdp.bigdatavietnam.org`\n\nChức năng:\n- Route request từ Internet vào đúng service\n- Cân bằng tải khi mở rộng nhiều instance\n- Che giấu topology nội bộ\n\nĐây là lớp bảo vệ đầu tiên trước Internet.",
+            "### 5. Core Database – ArangoDB\n\n**ArangoDB** là Core Database của LEO CDP:\n- IP: `192.168.1.4`\n- TCP Port: `8600`\n\nVai trò:\n- Lưu Customer Profile\n- Identity Graph (Profile – Device – Event)\n- Journey Map, Segment, Campaign, Agent Config\n\nArangoDB cho phép CDP:\n- Truy vấn quan hệ phức tạp\n- Phân tích hành vi theo ngữ cảnh\n- Phục vụ AI Agents theo thời gian thực",
+            "### 6. Application Layer – Admin & Chatbot CDP\n\nLEO CDP có hai ứng dụng chính:\n\n**Admin CDP**\n- DNS: `dcdp.bigdatavietnam.org`\n- TCP Port: `9072`\n- Dành cho admin & business users\n\n**Chatbot CDP / AI Assistant**\n- DNS: `leobot.leocdp.com`\n- TCP Port: `8888`\n- Giao tiếp trực tiếp với end-users\n\nCả hai đều truy cập dữ liệu thông qua Core Database, không bypass Data Hub.",
+            "### 7. Identity & Access Management – Single Sign-On\n\nLEO CDP sử dụng **Keycloak** cho SSO:\n- Quản lý user, role, permission\n- Phân quyền Admin / Business / System\n\nLợi ích:\n- Không hard-code auth\n- Dễ tích hợp enterprise IAM\n- Phù hợp triển khai đa tenant",
+            "### 8. Backup & Data Safety\n\nDữ liệu được sao lưu định kỳ lên **Cloud Backup Folder**:\n- Không phụ thuộc vào runtime\n- Có thể restore từng collection\n\nĐây là yêu cầu bắt buộc cho production CDP.",
+            "### 9. Load Testing & Deployment Workflow\n\n- **Load Test:** Grafana K6 mô phỏng người dùng thật\n- **Source Code:** `leo-cdp-framework`\n- **Deployment Repo:** `leo-cdp-deployment`\n\nCI/CD cho phép:\n- Deploy nhanh demo\n- Mở rộng lên staging / production\n- Kiểm soát version & rollback",
+            "### 10. Tư duy triển khai của LEO CDP\n\nLEO CDP không được xây như một \"web app\".\n\nNó được xây như:\n- Một **data system sống**\n- Một **nền tảng cho AI Agents**\n- Một **hệ thống activation dài hạn**\n\nTriển khai đúng kiến trúc là điều kiện tiên quyết để AI Agents hoạt động ổn định, an toàn và có thể mở rộng."
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "ch09",
+      "chapter_number": 9,
+      "chapter_title": "Tổng kết và Tương lai",
+      "sections": [
+        {
+          "section_id": "ch09-sec01",
+          "section_number": "9.1",
           "section_title": "Tương lai của LEO AI Agents",
           "keywords": [
             "Generative AI",
