@@ -171,6 +171,7 @@ const LEO_BOOK = {
   loadSection(cIndex, sIndex, updateHash = false) {
     const chapter = this.data.chapters?.[cIndex];
     const section = chapter?.sections?.[sIndex];
+    const section_title = section?.section_title || "";
 
     if (!chapter || !section) return;
 
@@ -190,6 +191,12 @@ const LEO_BOOK = {
     if($(window).width() < 768) {
       // close sidebar on mobile after selecting a section
       $("#sidebar").collapse("hide");
+    }
+
+    if (typeof LeoObserver !== "undefined") {
+      document.title = defaultDocumentTitle + " - " + section_title;
+      window.srcTouchpointName = document.title;
+      LeoObserver.recordEventContentView({"section_title": section_title});
     }
   },
 

@@ -31,7 +31,7 @@
 
         <!-- Search bar -->
         <form class="d-none d-md-flex flex-grow-1 mx-3" role="search">
-            <div class="input-group input-group-sm in_development" >
+            <div class="input-group input-group-sm in_development">
                 <span class="input-group-text bg-secondary border-0 text-light">
                     <i class="bi bi-search"></i>
                 </span>
@@ -41,7 +41,8 @@
         </form>
 
         <!-- Mobile search icon -->
-        <button class="btn btn-outline-light btn-sm d-md-none in_development" data-bs-toggle="collapse" data-bs-target="#mobileSearch">
+        <button class="btn btn-outline-light btn-sm d-md-none in_development" data-bs-toggle="collapse"
+            data-bs-target="#mobileSearch">
             <i class="bi bi-search"></i>
         </button>
 
@@ -161,7 +162,7 @@
 
                 </div>
 
-            
+
                 <div class="border rounded p-3 bg-primary bg-opacity-10 in_development">
                     <h6 class="text-primary fw-bold">
                         Learning Challenge Ready
@@ -181,7 +182,41 @@
 
 
 
-     <!-- jQuery -->
+
+
+    <!-- Tracking Code for LEO CDP -->
+    <script>
+        // (1) CDP_EVENT_OBSERVER: load JavaScript code for [LEO LIVE BOOK]
+        (function () {
+
+            // Observer ID
+            window.leoObserverId = "1hgb91dmV1BhyoW9YMEKnb";
+
+            // Default batch size of Event Tracking
+            window.leoObserverBatchSize = 10;
+
+            // CDN of JS
+            window.leoObserverLogDomain = "datahub4uspa.leocdp.net";
+            window.leoObserverCdnDomain = "cdn.jsdelivr.net/gh/USPA-Technology/leo-cdp-static-files@v0.9.5";
+
+            // Data Touchpoint Metadata
+            window.defaultDocumentTitle = document.title;
+            window.srcTouchpointName = encodeURIComponent(document.title);
+            window.srcTouchpointUrl = encodeURIComponent(location.href);
+
+            // the main proxy CDP JS
+            var leoproxyJsPath = "/js/leo-observer/leo.proxy.min.js";
+            var src =
+                location.protocol + "//" + window.leoObserverCdnDomain + leoproxyJsPath;
+            var jsNode = document.createElement("script");
+            jsNode.src = src;
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(jsNode, s);
+        })();
+    </script>
+    <script src="./js/tracking-code.js"></script>
+
+        <!-- jQuery -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 
     <!-- Leo App Initialization -->
@@ -196,24 +231,20 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-
     <!-- Cytoscape.js -->
     <script src="https://unpkg.com/cytoscape@3.26.0/dist/cytoscape.min.js"></script>
 
-
     <!-- Book Data Service -->
-    <script src="./js/book-data-service.js"></script>
+    <script src="./js/book-data-service.js" defer></script>
 
     <!-- Leo Book Engine -->
-    <script src="./js/leo-book-engine.js"></script>
+    <script src="./js/leo-book-engine.js" defer></script>
 
     <!-- Search Service -->
-    <script src="./js/search-service.js"></script>
+    <script src="./js/search-service.js" defer></script>
 
     <!-- Knowledge Graph Renderer -->
-    <script src="./js/knowledge-graph-render.js"></script>
-
-   
+    <script src="./js/knowledge-graph-render.js" defer></script>
 
 </body>
 
