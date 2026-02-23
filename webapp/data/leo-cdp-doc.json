@@ -42,7 +42,7 @@
             "### 6. Real-time Activation & Closed-loop Learning\n\nLEO CDP hỗ trợ activation đa kênh với độ trễ thấp:\n\n- Web Push, App Push\n- Email, Zalo OA, Facebook Page\n- Conversational AI Assistant\n\nMọi phản hồi của khách hàng được ghi nhận như event mới,\nquay lại Customer Graph và tiếp tục nuôi vòng học.\n\nHệ thống trở thành **closed-loop intelligent growth engine**.",
             "### 7. Security & Enterprise Readiness\n\nLEO CDP tích hợp:\n\n- OpenID Connect (Keycloak)\n- Role-based access control (Admin / Business / System)\n- Data isolation theo tenant\n\nKiến trúc phù hợp cho môi trường enterprise với yêu cầu bảo mật cao.",
             "### 8. LEO CDP giải quyết điều gì?\n\n- Phá vỡ data silos giữa các hệ thống\n- Chuyển từ batch sang event-driven real-time\n- Cho phép AI Agents hành động trên dữ liệu đáng tin cậy\n- Cá nhân hóa ở quy mô lớn mà không phụ thuộc flow cứng\n\nLEO CDP không chỉ là CDP marketing.\nNó là **hạ tầng dữ liệu và activation cho tổ chức vận hành bằng AI**.",
-            "![leo-cdp-version-2.0](media/leo-cdp-version-2.0.png)"
+            "![leo-cdp-version-2.0](media/leo-cdp-version-2.0.png?v=2.0)"
           ]
         },
         {
