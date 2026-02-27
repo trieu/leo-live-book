@@ -1,0 +1,615 @@
+{
+  "book": {
+    "book_id": "leo-cdp-guide-vn",
+    "title": "Hướng Dẫn Sử Dụng LEO CDP",
+    "author": "LEO CDP Community",
+    "image_cover_url":"https://cdn-icons-png.flaticon.com/512/6348/6348248.png",
+    "description": "Tài liệu hướng dẫn chi tiết dành cho người dùng LEO CDP tại Việt Nam. Tham chiếu mã nguồn mở tại https://github.com/trieu/leo-cdp-framework.",
+    "version": "1.0.0"
+  },
+  "chapters": [
+    {
+      "chapter_id": "ch01",
+      "chapter_number": 1,
+      "chapter_title": "Kiến Thức Dành Cho Người Dùng (Knowledge-base)",
+      "sections": [
+        {
+          "section_id": "LEO-CDP-User-Guide",
+          "section_number": "1.1",
+          "section_title": "LEO CDP User Guide",
+          "keywords": ["Self-Learning Courses", "Knowledge Base"],
+          "summary": "Cung cấp các khóa học tự học và nền tảng kiến thức cơ bản cho người dùng mới bắt đầu với LEO CDP.",
+          "content": [
+            "Menu Name: Self-Learning Courses. Mục này cung cấp các tài liệu, hướng dẫn và khóa học tự học giúp người dùng làm quen và khai thác tối đa nền tảng LEO CDP.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "ch02",
+      "chapter_number": 2,
+      "chapter_title": "Phân Tích Dữ Liệu Hợp Nhất (Unified Analytics Module)",
+      "sections": [
+        {
+          "section_id": "Customer-Data-Report",
+          "section_number": "2.1",
+          "section_title": "Customer Data Report",
+          "keywords": ["Customer Data", "Main Dashboard"],
+          "summary": "Báo cáo chính về dữ liệu khách hàng giúp theo dõi tổng quan thông tin người dùng.",
+          "content": [
+            "Menu Name: Customer Data Report. Bảng điều khiển trung tâm hiển thị báo cáo tổng quan về toàn bộ tệp dữ liệu khách hàng, giúp bạn theo dõi các chỉ số và phân bổ người dùng quan trọng nhất.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Event-Data-Report",
+          "section_number": "2.2",
+          "section_title": "Event Data Report",
+          "keywords": ["Time Series", "Event Data"],
+          "summary": "Báo cáo dạng chuỗi thời gian phân tích chi tiết các sự kiện được ghi nhận.",
+          "content": [
+            "Menu Name: Event Data Report. Cung cấp báo cáo dạng chuỗi thời gian (Time Series) để phân tích chi tiết các hành vi, sự kiện và lượt tương tác mà hệ thống đã ghi nhận được từ người dùng.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "CX-Data-Report",
+          "section_number": "2.3",
+          "section_title": "CX Data Report",
+          "keywords": ["CX Data", "Customer Experience"],
+          "summary": "Báo cáo phân tích dữ liệu trải nghiệm khách hàng (Customer Experience).",
+          "content": [
+            "Menu Name: CX Data Report. Chuyên trang thống kê và phân tích các chỉ số liên quan đến trải nghiệm khách hàng (Customer Experience), giúp đánh giá mức độ hài lòng qua các điểm chạm.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Custom-Dashboard",
+          "section_number": "2.4",
+          "section_title": "Custom Dashboard",
+          "keywords": ["Custom Data", "Dashboard"],
+          "summary": "Bảng điều khiển tùy chỉnh cho phép người dùng tự thiết kế báo cáo phân tích riêng.",
+          "content": [
+            "Menu Name: Custom Dashboard. Khu vực cho phép người dùng chủ động kéo thả và thiết lập các bảng điều khiển phân tích dữ liệu tùy chỉnh sao cho phù hợp với nhu cầu nghiệp vụ đặc thù.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "ch03",
+      "chapter_number": 3,
+      "chapter_title": "Dữ Liệu Hành Trình Khách Hàng (Journey Data Module)",
+      "sections": [
+        {
+          "section_id": "Customer-Persona-List",
+          "section_number": "3.1",
+          "section_title": "Customer Persona List",
+          "keywords": ["Targeted Persona", "List"],
+          "summary": "Danh sách các chân dung khách hàng mục tiêu đã được xây dựng và phân loại.",
+          "content": [
+            "Menu Name: Customer Persona List. Trình quản lý danh sách tổng hợp các nhóm chân dung khách hàng mục tiêu (Persona) mà doanh nghiệp đã xây dựng và theo dõi trong hệ thống.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Customer-Persona-Report",
+          "section_number": "3.2",
+          "section_title": "Customer Persona Report",
+          "keywords": ["Persona Report", "Analytics"],
+          "summary": "Báo cáo chi tiết về từng nhóm chân dung khách hàng (Persona).",
+          "content": [
+            "Menu Name: Customer Persona Report. Hệ thống báo cáo chuyên sâu cung cấp cái nhìn chi tiết về quy mô, đặc điểm và tỷ lệ chuyển đổi của một nhóm chân dung khách hàng (Persona) cụ thể.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Customer-Persona-Editor",
+          "section_number": "3.3",
+          "section_title": "Customer Persona Editor",
+          "keywords": ["Persona Editor", "Details"],
+          "summary": "Trình quản lý và chỉnh sửa thông tin chi tiết của một chân dung khách hàng cụ thể.",
+          "content": [
+            "Menu Name: Customer Persona Details. Trình biên tập cung cấp giao diện để người dùng dễ dàng chỉnh sửa, thêm mới các tiêu chí và định nghĩa lại thuộc tính cho một Persona.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Data-Journey-Map",
+          "section_number": "3.4",
+          "section_title": "Data Journey Map",
+          "keywords": ["Journey Map", "Data"],
+          "summary": "Bản đồ hành trình dữ liệu khách hàng giúp trực quan hóa các luồng tương tác.",
+          "content": [
+            "Menu Name: Data Journey Map. Công cụ trực quan hóa toàn bộ hành trình trải nghiệm của khách hàng, giúp doanh nghiệp nắm bắt dòng chảy dữ liệu qua từng giai đoạn tương tác.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Touchpoint-Hub-Report",
+          "section_number": "3.5",
+          "section_title": "Touchpoint Hub Report",
+          "keywords": ["Touchpoint", "Report"],
+          "summary": "Báo cáo trung tâm điểm chạm (Touchpoint) trong hành trình tương tác khách hàng.",
+          "content": [
+            "Menu Name: Touchpoint Hub Report. Phân tích chi tiết mức độ hiệu quả và lưu lượng truy cập tại các điểm chạm (Touchpoints) xuyên suốt trong bản đồ hành trình của khách hàng.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Touchpoint-Hub-Editor",
+          "section_number": "3.6",
+          "section_title": "Touchpoint Hub Editor",
+          "keywords": ["Touchpoint", "Editor"],
+          "summary": "Công cụ chỉnh sửa và thiết lập các điểm chạm (Touchpoint) trên bản đồ hành trình.",
+          "content": [
+            "Menu Name: Touchpoint Hub Editor. Cung cấp giao diện để thêm mới, thiết lập và tùy chỉnh các tham số cấu hình cho từng điểm chạm vật lý hoặc kỹ thuật số của doanh nghiệp.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Event-Data-Funnel",
+          "section_number": "3.7",
+          "section_title": "Event Data Funnel",
+          "keywords": ["Event Funnel", "Conversion"],
+          "summary": "Phễu dữ liệu sự kiện dùng để đo lường tỷ lệ chuyển đổi qua từng bước.",
+          "content": [
+            "Menu Name: Event Data Funnel. Mô hình phễu chuyển đổi dữ liệu sự kiện cho phép nhà tiếp thị đo lường tỷ lệ giữ chân và xác định các điểm 'rơi rớt' của người dùng trong một quy trình.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Journey-Map-List",
+          "section_number": "3.8",
+          "section_title": "Journey Map List",
+          "keywords": ["Journey Map List"],
+          "summary": "Danh sách tổng hợp toàn bộ các bản đồ hành trình khách hàng đang có.",
+          "content": [
+            "Menu Name: Journey Map List. Giao diện quản lý toàn diện chứa danh sách tất cả các bản đồ hành trình khách hàng (Journey Maps) hiện đang được triển khai trên hệ thống LEO CDP.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Journey-Map-Report",
+          "section_number": "3.9",
+          "section_title": "Journey Map Report",
+          "keywords": ["Journey Map Report"],
+          "summary": "Báo cáo phân tích hiệu suất và chi tiết của một bản đồ hành trình cụ thể.",
+          "content": [
+            "Menu Name: Journey Map Report. Đi sâu vào số liệu thống kê và báo cáo vận hành của một bản đồ hành trình cụ thể, giúp đánh giá chiến lược tương tác tổng thể.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Customer-Persona",
+          "section_number": "3.10",
+          "section_title": "Customer Persona",
+          "keywords": ["Persona Editor", "Journey Map"],
+          "summary": "Trình chỉnh sửa và ánh xạ Persona trực tiếp từ danh sách bản đồ hành trình.",
+          "content": [
+            "Menu Name: Customer Persona. Chức năng giúp người dùng cấu hình và ánh xạ trực tiếp các nhóm chân dung khách hàng vào bên trong một luồng bản đồ hành trình cụ thể.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "ch04",
+      "chapter_number": 4,
+      "chapter_title": "Dữ Liệu Khách Hàng (Customer Data Module)",
+      "sections": [
+        {
+          "section_id": "Profile-Management",
+          "section_number": "4.1",
+          "section_title": "Profile Management",
+          "keywords": ["Profile Management", "Customer"],
+          "summary": "Giao diện quản lý chính cho toàn bộ hồ sơ khách hàng được ghi nhận trong hệ thống.",
+          "content": [
+            "Menu Name: Profile Management. Khu vực cốt lõi để duyệt, quản lý và tổ chức toàn bộ cơ sở dữ liệu hồ sơ khách hàng đã được định danh và chưa định danh trong hệ thống CDP.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Profile-List-By-Type",
+          "section_number": "4.2",
+          "section_title": "Profile List By Type",
+          "keywords": ["Profile Type", "Management"],
+          "summary": "Danh sách hồ sơ khách hàng được lọc hoặc phân chia theo loại hồ sơ (Profile Type).",
+          "content": [
+            "Menu Name: Profile Management. Trích xuất nhanh danh sách các hồ sơ khách hàng được phân loại dựa trên nhóm đối tượng (ví dụ: Khách hàng tiềm năng, Khách hàng trung thành,...).",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Customer-Profile-Info",
+          "section_number": "4.3",
+          "section_title": "Customer Profile Info",
+          "keywords": ["Profile Info", "Details"],
+          "summary": "Xem thông tin chi tiết của một hồ sơ khách hàng bất kỳ trong cơ sở dữ liệu.",
+          "content": [
+            "Menu Name: Profile Information. Trực quan hóa góc nhìn 360 độ về một khách hàng, bao gồm dữ liệu nhân khẩu học, thuộc tính cá nhân và lịch sử tương tác đa kênh.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Customer-Profile-Info-By-CRM-ID",
+          "section_number": "4.4",
+          "section_title": "Customer Profile Info By CRM ID",
+          "keywords": ["Profile CRM ID"],
+          "summary": "Truy xuất thông tin chi tiết của hồ sơ khách hàng thông qua CRM ID.",
+          "content": [
+            "Menu Name: Profile Information. Tính năng tra cứu và hiển thị hồ sơ khách hàng cực kỳ nhanh chóng thông qua việc đối khớp mã định danh từ hệ thống CRM ngoài (CRM ID).",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Customer-Profile-Info-By-Visitor-ID",
+          "section_number": "4.5",
+          "section_title": "Customer Profile Info By Visitor ID",
+          "keywords": ["Profile Visitor ID"],
+          "summary": "Truy xuất thông tin chi tiết của hồ sơ khách hàng thông qua Visitor ID.",
+          "content": [
+            "Menu Name: Profile Information. Cung cấp chức năng truy xuất thông tin của người dùng vãng lai (ẩn danh) thông qua ID theo dõi hệ thống (Visitor ID) trên các nền tảng số.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Customer-Profile-Editor",
+          "section_number": "4.6",
+          "section_title": "Customer Profile Editor",
+          "keywords": ["Profile Editor"],
+          "summary": "Trình chỉnh sửa cho phép cập nhật dữ liệu của một hồ sơ khách hàng hiện có.",
+          "content": [
+            "Menu Name: Profile Editor. Bảng chỉnh sửa trực quan cho phép quản trị viên hoặc nhân viên chăm sóc khách hàng cập nhật, điều chỉnh trực tiếp các trường dữ liệu bị thiếu sót của người dùng.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Customer-Profile-Import",
+          "section_number": "4.7",
+          "section_title": "Customer Profile Import",
+          "keywords": ["Profile Import", "Data Import"],
+          "summary": "Công cụ nhập (import) hàng loạt dữ liệu hồ sơ khách hàng vào hệ thống LEO CDP.",
+          "content": [
+            "Menu Name: Profile Data Import. Modun hỗ trợ nhập khẩu (import) dữ liệu hồ sơ khách hàng với số lượng lớn thông qua tệp tin chuẩn nhằm đồng bộ nhanh chóng hệ thống cũ sang CDP.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Customer-Event-Import",
+          "section_number": "4.8",
+          "section_title": "Customer Event Import",
+          "keywords": ["Event Import", "Data Import"],
+          "summary": "Công cụ nhập dữ liệu sự kiện (Event Data) gắn liền với hồ sơ khách hàng.",
+          "content": [
+            "Menu Name: Event Data Import. Tính năng cho phép đưa dữ liệu hành vi, giao dịch hoặc các sự kiện tùy chỉnh (Event Data) từ nền tảng khác vào để ghép nối với hồ sơ khách hàng hiện tại.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Segment-Management",
+          "section_number": "4.9",
+          "section_title": "Segment Management",
+          "keywords": ["Segment Management", "Data Segmentation"],
+          "summary": "Quản lý danh sách các phân khúc (Segment) dữ liệu khách hàng trên hệ thống.",
+          "content": [
+            "Menu Name: Segment Management. Khu vực giám sát toàn bộ các tập phân khúc dữ liệu động và tĩnh đã được phân chia nhằm phục vụ trực tiếp cho các kịch bản tiếp thị tương ứng.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Segment-Builder",
+          "section_number": "4.10",
+          "section_title": "Segment Builder",
+          "keywords": ["Segment Builder"],
+          "summary": "Công cụ xây dựng các điều kiện và luật để tạo phân khúc khách hàng mới.",
+          "content": [
+            "Menu Name: Segment Builder. Cung cấp bộ công cụ mạnh mẽ với các toán tử logic để gom nhóm khách hàng theo các điều kiện cụ thể về hành vi, sự kiện và nhân khẩu học.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Segment-Details",
+          "section_number": "4.11",
+          "section_title": "Segment Details",
+          "keywords": ["Segment Details"],
+          "summary": "Giao diện xem báo cáo và thông tin chi tiết cấu hình của một phân khúc khách hàng.",
+          "content": [
+            "Menu Name: Segment Details. Trình hiển thị báo cáo thông tin tổng quát, liệt kê danh sách thành viên hiện có và các quy tắc (rules) đã được thiết lập bên trong phân khúc này.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Segment-Activation",
+          "section_number": "4.12",
+          "section_title": "Segment Activation",
+          "keywords": ["Segment Activation"],
+          "summary": "Kích hoạt dữ liệu phân khúc để đẩy ra các kênh tiếp thị (Marketing Channels).",
+          "content": [
+            "Menu Name: Segment Activation. Chức năng tối quan trọng dùng để đồng bộ và đẩy tệp dữ liệu khách hàng (Segment) đến các công cụ tiếp thị, nền tảng quảng cáo bên thứ ba.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Customer-Profile-Search",
+          "section_number": "4.13",
+          "section_title": "Customer Profile Search",
+          "keywords": ["Profile Search"],
+          "summary": "Công cụ tìm kiếm nâng cao dành riêng cho hồ sơ khách hàng trong CDP.",
+          "content": [
+            "Menu Name: Customer Profile Search. Cung cấp thanh tìm kiếm thông minh kết hợp nhiều từ khóa giúp người dùng định vị chính xác và nhanh chóng một hồ sơ khách hàng bất kỳ.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Customer-Profile-Filter",
+          "section_number": "4.14",
+          "section_title": "Customer Profile Filter",
+          "keywords": ["Profile Filter"],
+          "summary": "Công cụ bộ lọc động để trích xuất danh sách khách hàng dựa trên các tiêu chí nhất định.",
+          "content": [
+            "Menu Name: Customer Profile Filter. Hệ thống bộ lọc tùy biến nâng cao cho phép bạn nhanh chóng thanh lọc và hiển thị danh sách hồ sơ dựa trên các giá trị thuộc tính chỉ định.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "ch05",
+      "chapter_number": 5,
+      "chapter_title": "Trung Tâm Kích Hoạt Dữ Liệu (Data Activation Hub)",
+      "sections": [
+        {
+          "section_id": "Digital-Asset-Management",
+          "section_number": "5.1",
+          "section_title": "Digital Asset Management",
+          "keywords": ["Digital Asset Management"],
+          "summary": "Hệ thống quản lý các tài sản số và danh mục phục vụ cho các chiến dịch tiếp thị.",
+          "content": [
+            "Menu Name: Digital Asset Management. Nền tảng trung tâm giúp lưu trữ, quản lý và tổ chức khoa học tất cả nội dung tài sản số (hình ảnh, bài viết, link...) dùng trong các chiến dịch tiếp thị.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "AI-Agent-Activation",
+          "section_number": "5.2",
+          "section_title": "AI Agent Activation",
+          "keywords": ["AI Agent Activation"],
+          "summary": "Quản lý và thiết lập các tác nhân AI (AI Agent) để tự động hóa quy trình kích hoạt dữ liệu.",
+          "content": [
+            "Menu Name: AI Agent Activation. Giao diện chuyên sâu để lập trình và kích hoạt các Trợ lý thông minh (AI Agent), tự động hóa các khâu xử lý, đề xuất dữ liệu khách hàng theo thời gian thực.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Asset-Groups",
+          "section_number": "5.3",
+          "section_title": "Asset Groups",
+          "keywords": ["Asset Groups"],
+          "summary": "Giao diện quản lý danh sách các nhóm tài sản số trong một danh mục cụ thể.",
+          "content": [
+            "Menu Name: Asset Group. Khu vực tập hợp và phân quyền quản trị các thư mục, nhóm tài sản số nhằm sắp xếp nội dung một cách logic cho hệ thống dễ dàng truy xuất.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Asset-Group-Details",
+          "section_number": "5.4",
+          "section_title": "Asset Group Details",
+          "keywords": ["Asset Group Details"],
+          "summary": "Trang chi tiết cung cấp toàn bộ thông tin về các hạng mục bên trong nhóm tài sản số.",
+          "content": [
+            "Menu Name: Asset Group Details. Bảng điều khiển phân tích số lượng nội dung và tổng quan các liên kết, tệp tin hiện có thuộc bên trong một nhóm danh mục tài sản số.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Product-Importer",
+          "section_number": "5.5",
+          "section_title": "Product Importer",
+          "keywords": ["Product Importer"],
+          "summary": "Công cụ nhập danh sách thông tin sản phẩm hàng loạt vào hệ thống quản lý tài sản.",
+          "content": [
+            "Menu Name: Product Importer. Công cụ đắc lực hỗ trợ doanh nghiệp nhập khẩu khối lượng lớn thông tin về sản phẩm, hàng hóa trực tiếp vào kho tài sản số chỉ qua thao tác tải tệp.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Asset-Group-Editor",
+          "section_number": "5.6",
+          "section_title": "Asset Group Editor",
+          "keywords": ["Asset Group Editor"],
+          "summary": "Trình chỉnh sửa thông tin cấu hình và siêu dữ liệu cho một nhóm tài sản số.",
+          "content": [
+            "Menu Name: Asset Group Editor. Cung cấp chức năng thay đổi tên, cập nhật thiết lập thẻ tag, cũng như siêu dữ liệu mô tả tổng quan cho các nhóm tài sản tiếp thị số.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Asset-Content-View",
+          "section_number": "5.7",
+          "section_title": "Asset Content View",
+          "keywords": ["Item Information"],
+          "summary": "Giao diện hiển thị chi tiết nội dung của một hạng mục tài sản số.",
+          "content": [
+            "Menu Name: Item Information. Hiển thị thông tin tổng quan dưới dạng trực quan cho một hạng mục nội dung cụ thể (như bài viết tĩnh, tệp tin PDF, hoặc ảnh quảng cáo).",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Asset-Template-Editor",
+          "section_number": "5.8",
+          "section_title": "Asset Template Editor",
+          "keywords": ["Asset Template Editor"],
+          "summary": "Trình tạo và chỉnh sửa mẫu (Template) nội dung tài sản số cho chiến dịch.",
+          "content": [
+            "Menu Name: Asset Template Editor. Bộ biên tập cho phép tùy chỉnh cấu trúc thiết kế, nội dung của các mẫu giao diện định sẵn (Templates) dùng thường xuyên trong các chiến dịch Email, Push.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Asset-Feedback-Form-Editor",
+          "section_number": "5.9",
+          "section_title": "Asset Feedback Form Editor",
+          "keywords": ["Feedback Form Editor"],
+          "summary": "Giao diện thiết kế và quản lý các biểu mẫu phản hồi (Feedback Forms).",
+          "content": [
+            "Menu Name: Feedback Form Editor. Nơi xây dựng linh hoạt các biểu mẫu khảo sát hoặc thu thập phản hồi, từ đó gán thông tin dữ liệu thu được về trực tiếp CDP khách hàng.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Asset-Presentation-Editor",
+          "section_number": "5.10",
+          "section_title": "Asset Presentation Editor",
+          "keywords": ["Presentation Editor"],
+          "summary": "Trình biên tập giao diện HTML Presentation dùng cho các nội dung tương tác.",
+          "content": [
+            "Menu Name: Presentation Editor. Công cụ thiết kế trực quan chuyên dụng để xây dựng các tài liệu trình chiếu dạng HTML phong phú, dùng cho việc chia sẻ tương tác trên web.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Asset-Content-Editor",
+          "section_number": "5.11",
+          "section_title": "Asset Content Editor",
+          "keywords": ["Asset Content Editor"],
+          "summary": "Trình soạn thảo trực tiếp cho các nội dung số phục vụ cho mục đích hiển thị tiếp thị.",
+          "content": [
+            "Menu Name: Asset Content Editor. Text-Editor trực tiếp hỗ trợ người viết tạo, hiệu đính và tối ưu hóa các định dạng văn bản, bài viết quảng cáo lưu bên trong kho nội dung số.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Asset-Product-Item-Editor",
+          "section_number": "5.12",
+          "section_title": "Asset Product Item Editor",
+          "keywords": ["Product Item Editor"],
+          "summary": "Chức năng tùy chỉnh các thông tin chi tiết của từng sản phẩm trong tài sản số.",
+          "content": [
+            "Menu Name: Asset Product Item Editor. Không gian cho phép tinh chỉnh thông tin danh mục, giá bán, chi tiết kĩ thuật và đặc điểm nhận diện cho từng mã sản phẩm cụ thể.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Asset-Short-Link-Editor",
+          "section_number": "5.13",
+          "section_title": "Asset Short Link Editor",
+          "keywords": ["Short Link Editor"],
+          "summary": "Tạo và quản lý các đường dẫn URL rút gọn thông minh có tính năng theo dõi đo lường.",
+          "content": [
+            "Menu Name: Asset Short Link Editor. Tiện ích khởi tạo và chỉnh sửa các siêu liên kết rút gọn thông minh, tự động gắn Tracking để theo dõi nguồn tương tác của khách hàng.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Asset-Service-Item-Editor",
+          "section_number": "5.14",
+          "section_title": "Asset Service Item Editor",
+          "keywords": ["Service Item Editor"],
+          "summary": "Quản lý và chỉnh sửa thông tin cho các dịch vụ đăng ký trả phí (Subscription Items).",
+          "content": [
+            "Menu Name: Asset Product Service Editor. Trình thiết lập thông tin liên quan đến các gói dịch vụ gia hạn, gói trả phí định kỳ và các tài sản số mang tính chất cung cấp dịch vụ thành viên.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Automated-Campaigns",
+          "section_number": "5.15",
+          "section_title": "Automated Campaigns",
+          "keywords": ["Automated Campaigns"],
+          "summary": "Khu vực quản lý tổng quan các chiến dịch tiếp thị kích hoạt tự động.",
+          "content": [
+            "Menu Name: Automated Campaigns. Bảng điều khiển giám sát quy mô, tình trạng hoạt động và liệt kê tất cả những chiến dịch truyền thông đa kênh đang được chạy tự động bằng nền tảng.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Campaign-Info",
+          "section_number": "5.16",
+          "section_title": "Campaign Info",
+          "keywords": ["Campaign Information"],
+          "summary": "Cung cấp cái nhìn chuyên sâu và thống kê hiệu quả của một chiến dịch đã thiết lập.",
+          "content": [
+            "Menu Name: Campaign Information. Trang xem số liệu hiệu suất đo lường (như số lượt gửi, lượt nhấp, lượt chuyển đổi) và chi tiết vận hành của từng chiến dịch đã triển khai.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "Campaign-Editor",
+          "section_number": "5.17",
+          "section_title": "Campaign Editor",
+          "keywords": ["Campaign Editor"],
+          "summary": "Giao diện thiết kế logic kịch bản và các luồng tự động hóa cho một chiến dịch.",
+          "content": [
+            "Menu Name: Campaign Editor. Bản vẽ làm việc cốt lõi cho phép người tiếp thị thiết lập lịch trình, luồng logic phản hồi và chỉ định các tập Segment mục tiêu cho chiến dịch.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "ch06",
+      "chapter_number": 6,
+      "chapter_title": "Quản Lý Hệ Thống (System Data Module)",
+      "sections": [
+        {
+          "section_id": "User-Login-Management",
+          "section_number": "6.1",
+          "section_title": "User Login Management",
+          "keywords": ["User Login Management"],
+          "summary": "Khu vực tổng hợp danh sách tài khoản quản trị và người dùng có quyền đăng nhập vào LEO CDP.",
+          "content": [
+            "Menu Name: User Login Management. Hệ thống quản trị tập trung cung cấp danh sách đầy đủ về các tài khoản người dùng nội bộ đang có đặc quyền đăng nhập và vận hành LEO CDP.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "User-Login-Editor",
+          "section_number": "6.2",
+          "section_title": "User Login Editor",
+          "keywords": ["Login Account Editor"],
+          "summary": "Trình tạo mới hoặc cập nhật thông tin đăng nhập và phân quyền cho người dùng.",
+          "content": [
+            "Menu Name: User Login Editor. Công cụ dành cho Quản trị viên (Admin) để cấp phát tài khoản mới, phân chia vai trò (Roles) và giới hạn quyền truy cập nghiệp vụ cho từng nhân sự.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "User-Login-Report",
+          "section_number": "6.3",
+          "section_title": "User Login Report",
+          "keywords": ["Login Account Report"],
+          "summary": "Báo cáo lịch sử truy cập và hoạt động của các tài khoản đăng nhập trên hệ thống.",
+          "content": [
+            "Menu Name: User Login Report. Bảng báo cáo theo vết lịch sử (Audit Log) nhằm giám sát các luồng hoạt động, thời gian đăng nhập cũng như các thao tác của nhân sự trên toàn hệ thống.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "My-Login-Editor",
+          "section_number": "6.4",
+          "section_title": "My Login Editor",
+          "keywords": ["My Login Editor"],
+          "summary": "Khu vực để người dùng đang thao tác chỉnh sửa thông tin cá nhân (Profile) của chính họ.",
+          "content": [
+            "Menu Name: My Login Account Editor. Giao diện tùy chọn cá nhân cho phép người dùng hiện tại chủ động thay đổi mật khẩu định kỳ, cập nhật avatar hoặc thông tin liên hệ.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        },
+        {
+          "section_id": "System-Data-Settings",
+          "section_number": "6.5",
+          "section_title": "System Data Settings",
+          "keywords": ["System Data Settings"],
+          "summary": "Cấu hình sâu về dữ liệu, giám sát kết nối và thiết lập tham số hệ thống chung.",
+          "content": [
+            "Menu Name: System Data Settings. Cổng thiết lập kỹ thuật cấp cao dành cho quản trị viên cấu hình kết nối API, tham số hệ thống lõi và tinh chỉnh cấu trúc dữ liệu nền tảng CDP.",
+            "![TODO](https://cdn-icons-png.flaticon.com/512/7692/7692809.png)"
+          ]
+        }
+      ]
+    }
+  ]
+}
