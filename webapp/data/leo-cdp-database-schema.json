@@ -1,0 +1,687 @@
+{
+  "book": {
+    "book_id": "leo-cdp-core-schema-full-2026",
+    "title": "LEO CDP - Core Database Schema in ArangoDB (Full Attributes)",
+    "image_cover_url": "https://www.shutterstock.com/image-vector/schema-outline-icon-vector-illustration-600nw-2582070607.jpg",
+    "author": "LEO AI Analytics",
+    "description": "Tài liệu kỹ thuật toàn diện về thiết kế lược đồ cơ sở dữ liệu cốt lõi của LEO CDP trên ArangoDB, liệt kê đầy đủ tất cả các trường dữ liệu phục vụ phát triển và tích hợp.",
+    "version": "3.1.2"
+  },
+  "chapters": [
+    {
+      "chapter_id": "ch01",
+      "chapter_number": 1,
+      "chapter_title": "System Core & Management",
+      "sections": [
+        {
+          "section_id": "ch01-sec01",
+          "section_number": "1.1",
+          "section_title": "system_service",
+          "keywords": ["Orchestration", "Airflow DAG", "Integration"],
+          "summary": "Cấu hình cho các dịch vụ hệ thống cốt lõi, điều phối qua Airflow DAG và tích hợp API.",
+          "content": [
+            "`id` (String): Khóa chính (_key trong ArangoDB), định danh duy nhất của dịch vụ.",
+            "`name` (String): Tên dịch vụ.",
+            "`description` (String): Mô tả dịch vụ để con người dễ đọc.",
+            "`dagId` (String): ID của Airflow DAG dùng cho các luồng công việc điều phối.",
+            "`index` (int): Chỉ số ưu tiên/thứ tự thực thi.",
+            "`createdAt` (Date): Thời gian tạo.",
+            "`updatedAt` (Date): Thời gian cập nhật cuối.",
+            "`status` (int): Trạng thái dịch vụ (0 = enabled, 1 = ready, -1 = disabled).",
+            "`configs` (Map<String, Object>): Các tham số cấu hình động (API keys, endpoints, tokens...).",
+            "`coreFieldConfigs` (Map<String, AttributeMetaData>): Định nghĩa các trường CDP tiêu chuẩn (email, customer_id, phone...).",
+            "`extFieldConfigs` (Map<String, AttributeMetaData>): Định nghĩa các trường mở rộng/tùy chỉnh theo từng tenant hoặc use-case."
+          ]
+        },
+        {
+          "section_id": "ch01-sec02",
+          "section_number": "1.2",
+          "section_title": "system_event",
+          "keywords": ["Audit", "Monitoring", "Logs"],
+          "summary": "Lưu vết sự kiện hệ thống phục vụ kiểm toán, giám sát job, và hành động của admin.",
+          "content": [
+            "`id` (String): Khóa chính, ID được hash dựa trên dữ liệu sự kiện.",
+            "`loginUsername` (String): Tên đăng nhập của người/hệ thống kích hoạt sự kiện.",
+            "`createdAt` (Date): Thời gian tạo sự kiện.",
+            "`objectName` (String): Tên đối tượng mục tiêu (ví dụ: class name, entity type).",
+            "`objectId` (String): Định danh của đối tượng mục tiêu.",
+            "`action` (String): Hành động được thực hiện (CREATE, UPDATE, DELETE, LOGIN, RUN_JOB...).",
+            "`data` (String): Payload bổ sung hoặc metadata liên quan đến sự kiện (JSON/string).",
+            "`accessIp` (String): Địa chỉ IP kích hoạt sự kiện.",
+            "`userAgent` (String): Thông tin user agent (trình duyệt, bot, hệ thống)."
+          ]
+        },
+        {
+          "section_id": "ch01-sec03",
+          "section_number": "1.3",
+          "section_title": "system_user",
+          "keywords": ["RBAC", "Authentication", "SSO"],
+          "summary": "Thực thể người dùng hệ thống phục vụ xác thực, phân quyền (RBAC), SSO và kiểm soát truy cập.",
+          "content": [
+            "`key` (String): Khóa chính (_key trong ArangoDB), định danh người dùng duy nhất.",
+            "`userLogin` (String): Tên đăng nhập duy nhất (có thể chứa tiền tố sso_).",
+            "`profileVisitorId` (String): ID hồ sơ visitor liên kết user với CDP profile.",
+            "`displayName` (String): Tên hiển thị/Họ tên đầy đủ.",
+            "`role` (int): Vai trò người dùng (SUPER_ADMIN, DATA_ADMIN...).",
+            "`userEmail` (String): Địa chỉ email (index duy nhất).",
+            "`status` (int): Trạng thái tài khoản (0 = pending, 1 = active, 2 = disabled, 3 = expired).",
+            "`avatarUrl` (String): URL ảnh đại diện.",
+            "`creationTime` (long): Thời gian tạo (epoch millis).",
+            "`modificationTime` (long): Thời gian cập nhật cuối (epoch millis).",
+            "`registeredTime` (long): Thời gian đăng ký (epoch millis).",
+            "`businessUnit` (String): Đơn vị kinh doanh/Phòng ban.",
+            "`inGroups` (Set<String>): Danh sách nhóm người dùng thuộc về.",
+            "`isOnline` (boolean): Trạng thái online hiện tại.",
+            "`networkId` (long): Định danh tenant/mạng (multi-tenant).",
+            "`customData` (Map<String, String>): Siêu dữ liệu tùy chỉnh dạng key-value.",
+            "`accessProfileFields` (List<String>): Danh sách các trường profile được phép truy cập.",
+            "`userPass` (String): Mật khẩu đã mã hóa (AES với salt).",
+            "`activationKey` (String): Khóa kích hoạt/reset mật khẩu.",
+            "`ssoSource` (String): Nguồn cung cấp SSO (ví dụ: Keycloak URL).",
+            "`notifications` (List<Notification>): Danh sách thông báo.",
+            "`viewableJourneyMapIds` (List<String>): Danh sách ID Journey Map được phép xem.",
+            "`editableJourneyMapIds` (List<String>): Danh sách ID Journey Map được phép chỉnh sửa."
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "ch02",
+      "chapter_number": 2,
+      "chapter_title": "Digital Assets & Content",
+      "sections": [
+        {
+          "section_id": "ch02-sec01",
+          "section_number": "2.1",
+          "section_title": "cdp_assetcategory",
+          "keywords": ["Category", "Taxonomy", "Organization"],
+          "summary": "Danh mục tài sản số dùng để tổ chức nội dung, sản phẩm, chiến dịch.",
+          "content": [
+            "`id` (String): Khóa chính.",
+            "`name` (String): Tên danh mục.",
+            "`description` (String): Mô tả chi tiết.",
+            "`assetType` (int): Loại tài sản của danh mục (content, campaign, product).",
+            "`navigationOrder` (int): Thứ tự hiển thị trên UI.",
+            "`parentId` (String): ID danh mục cha (cấu trúc phân cấp).",
+            "`networkId` (long): Định danh tenant.",
+            "`slug` (String): URL-friendly ID.",
+            "`privacyStatus` (int): Trạng thái bảo mật (public, private...).",
+            "`headlineImageUrl` (String): URL ảnh đại diện của danh mục.",
+            "`viewerIds` (List<String>): Danh sách user ID được phép xem.",
+            "`customData` (Map<String, Object>): Dữ liệu mở rộng.",
+            "`createdAt` (Date): Thời gian tạo.",
+            "`updatedAt` (Date): Thời gian cập nhật cuối.",
+            "`creationTime` (long): Thời gian tạo (epoch millis).",
+            "`modificationTime` (long): Thời gian sửa cuối (epoch millis)."
+          ]
+        },
+        {
+          "section_id": "ch02-sec02",
+          "section_number": "2.2",
+          "section_title": "cdp_assetcontent",
+          "keywords": ["Content", "Media", "Tracking"],
+          "summary": "Thực thể nội dung số (quảng cáo, bài viết, link rút gọn) hỗ trợ tracking và cá nhân hóa.",
+          "content": [
+            "`id` (String): Khóa chính, sinh từ chuỗi hash dữ liệu.",
+            "`title` (String): Tiêu đề nội dung.",
+            "`description` (String): Mô tả nội dung.",
+            "`type` (int): Loại định dạng nội dung (HTML, video, URL).",
+            "`assetType` (int): Phân loại tài sản (landing page, ad banner...).",
+            "`contentClass` (String): Lớp nội dung (creative, standard...).",
+            "`campaignId` (String): ID chiến dịch liên kết.",
+            "`fullUrl` (String): URL đích đầy đủ.",
+            "`shortLinkUrl` (String): URL rút gọn sinh ra để tracking.",
+            "`slug` (String): URL-friendly identifier.",
+            "`categoryIds` (List<String>): Danh sách ID danh mục.",
+            "`groupIds` (List<String>): Danh sách ID nhóm.",
+            "`keywords` (List<String>): Từ khóa/tags.",
+            "`ownerId` (String): ID người sở hữu.",
+            "`networkId` (long): Định danh tenant.",
+            "`privacyStatus` (int): Mức độ riêng tư.",
+            "`status` (int): Trạng thái (draft, published...).",
+            "`systemAsset` (boolean): Cờ đánh dấu tài sản hệ thống.",
+            "`isAdItem` (boolean): Cờ đánh dấu vật phẩm quảng cáo.",
+            "`headlineImageUrl` (String): URL ảnh chính.",
+            "`headlineImages` (Map<String, String>): Danh sách nhiều ảnh chính.",
+            "`headlineVideoUrl` (String): URL video.",
+            "`mediaInfo` (String): Nội dung HTML/Rich text.",
+            "`mediaInfoUnits` (List<Object>): Khối cấu trúc media.",
+            "`targetGeoLocations` (List<String>): Mục tiêu khu vực địa lý.",
+            "`targetSegmentIds` (List<String>): Mục tiêu tệp khách hàng (Segment).",
+            "`targetViewerIds` (List<String>): Mục tiêu người dùng cụ thể.",
+            "`viewCount` (int): Lượt xem.",
+            "`clickCount` (int): Lượt click.",
+            "`shareCount` (int): Lượt chia sẻ.",
+            "`reactionReportUnits` (Map<String, Object>): Báo cáo cảm xúc/phản ứng.",
+            "`feedbackCount` (int): Số lượt feedback.",
+            "`transactionCount` (int): Số lượt giao dịch tạo ra.",
+            "`rankingScore` (int): Điểm xếp hạng/đề xuất.",
+            "`qrCodeUrl` (String): URL ảnh mã QR.",
+            "`publishingTime` (long): Thời điểm xuất bản.",
+            "`destroyedTime` (long): Thời điểm xóa/hủy.",
+            "`createdAt` (Date): Thời gian tạo.",
+            "`updatedAt` (Date): Thời gian cập nhật.",
+            "`creationTime` (long): Epoch time tạo.",
+            "`modificationTime` (long): Epoch time cập nhật."
+          ]
+        },
+        {
+          "section_id": "ch02-sec03",
+          "section_number": "2.3",
+          "section_title": "cdp_assetgroup",
+          "keywords": ["Group", "Collection", "Segmentation"],
+          "summary": "Nhóm quản lý và tổ chức tập hợp các tài sản số.",
+          "content": [
+            "`id` (String): Khóa chính.",
+            "`title` (String): Tiêu đề nhóm.",
+            "`description` (String): Mô tả.",
+            "`type` (int): Loại nội dung nhóm.",
+            "`assetType` (int): Loại tài sản.",
+            "`categoryIds` (List<String>): Danh sách ID danh mục.",
+            "`groupIds` (List<String>): Nhóm cha (nếu lồng nhau).",
+            "`ownerId` (String): ID sở hữu.",
+            "`networkId` (long): Định danh tenant.",
+            "`mediaInfo` (String): HTML/Text thông tin nhóm.",
+            "`headlineImageUrl` (String): Ảnh đại diện nhóm.",
+            "`keywords` (List<String>): Từ khóa phân loại.",
+            "`defaultGroup` (boolean): Nhóm mặc định.",
+            "`isManagedByLeoBot` (boolean): Được AI/Bot quản lý tự động.",
+            "`mergeDataIntoTemplates` (boolean): Merge dữ liệu nhóm vào template.",
+            "`mapContentClassKeywords` (Map<String, List<String>>): Map loại nội dung với từ khóa.",
+            "`eventNamesForSegmentation` (Set<String>): Sự kiện trigger phân khúc.",
+            "`itemsOfGroup` (SortedSet<MeasurableItem>): Tập hợp các item thuộc nhóm (runtime).",
+            "`viewCount`, `clickCount`, `shareCount` (int): Thống kê tương tác nhóm.",
+            "`createdAt`, `updatedAt` (Date): Timestamps.",
+            "`creationTime`, `modificationTime` (long): Epoch timestamps."
+          ]
+        },
+        {
+          "section_id": "ch02-sec04",
+          "section_number": "2.4",
+          "section_title": "cdp_assettemplate",
+          "keywords": ["Template", "Dynamic", "A/B Testing"],
+          "summary": "Khuôn mẫu tài sản dùng để render nội dung động như landing page, email, survey.",
+          "content": [
+            "`id` (String): Khóa chính.",
+            "`title` (String): Tiêu đề.",
+            "`description` (String): Mô tả.",
+            "`type` (int): Loại nội dung (luôn là TEMPLATE).",
+            "`assetType` (int): Loại tài sản mẫu (email, survey...).",
+            "`categoryIds`, `groupIds` (List<String>): Phân loại.",
+            "`ownerId` (String): Chủ sở hữu.",
+            "`networkId` (long): Tenant ID.",
+            "`selectorKey` (String): Key chọn biến thể (hỗ trợ A/B Test).",
+            "`activationName` (String): Tên rule kích hoạt liên kết.",
+            "`selectorWeight` (double): Trọng số hiển thị ngẫu nhiên.",
+            "`templateType` (int): Kiểu khuôn mẫu.",
+            "`jsonMetadata` (String): Cấu hình metadata/schema JSON.",
+            "`headCode` (String): Mã HTML phần <head>.",
+            "`bodyCode` (String): Mã HTML phần <body>.",
+            "`mediaInfo` (String): Nội dung HTML/Text phụ trợ.",
+            "`shortLinkUrl` (String): URL truy cập template rút gọn.",
+            "`qrCodeUrl` (String): Mã QR truy cập.",
+            "`slug` (String): URL-friendly ID.",
+            "`headlineImageUrl` (String): Ảnh đại diện.",
+            "`keywords` (List<String>): Từ khóa.",
+            "`status` (int): Trạng thái (draft, active...).",
+            "`createdAt`, `updatedAt` (Date): Timestamps.",
+            "`creationTime`, `modificationTime` (long): Epoch timestamps."
+          ]
+        },
+        {
+          "section_id": "ch02-sec05",
+          "section_number": "2.5",
+          "section_title": "cdp_productitem",
+          "keywords": ["Product", "SKU", "E-commerce"],
+          "summary": "Mục sản phẩm, cốt lõi cho hệ thống quản lý dữ liệu sản phẩm, e-commerce và recommendation.",
+          "content": [
+            "`id` (String): Khóa chính (kết hợp productId + category + URL).",
+            "`productId` (String): ID sản phẩm từ hệ thống ngoài (SKU).",
+            "`productCode` (String): Mã nội bộ (cho ERP).",
+            "`categoryName` (String): Tên danh mục.",
+            "`categoryId` (String): ID danh mục.",
+            "`productIdType` (String): Loại ID (SKU, GTIN...).",
+            "`productType` (String): Phân loại sản phẩm.",
+            "`inCampaigns`, `inJourneyMaps` (Set<String>): Chiến dịch/Hành trình đang sử dụng.",
+            "`originalPrice`, `salePrice` (double): Giá gốc và giá bán.",
+            "`quantity` (int): Số lượng tồn kho.",
+            "`priceCurrency` (String): Loại tiền tệ.",
+            "`siteName`, `siteDomain` (String): Nguồn bán hàng.",
+            "`itemCondition`, `availability` (String): Tình trạng và trạng thái hàng hóa.",
+            "`brand`, `sellerName` (String): Thương hiệu và nhà cung cấp.",
+            "`storeIds`, `salesAgentIds`, `warehouseIds` (Set<String>): ID cửa hàng, người bán, kho bãi.",
+            "`touchpointIds` (Set<String>): ID các điểm chạm liên quan.",
+            "`promoCodes` (Map<String, Voucher>): Danh sách mã giảm giá.",
+            "`slug`, `title`, `description` (String): SEO, tiêu đề, mô tả.",
+            "`fullUrl`, `headlineImageUrl`, `headlineVideoUrl` (String): Media URLs.",
+            "`groupIds`, `keywords`, `topicIds`, `categoryIds`, `targetGeoLocations`, `targetSegmentIds` (Set<String>): Phân loại và targeting.",
+            "`createdAt`, `updatedAt` (Date): Timestamps."
+          ]
+        },
+        {
+          "section_id": "ch02-sec06",
+          "section_number": "2.6",
+          "section_title": "cdp_filemetadata",
+          "keywords": ["Files", "Metadata", "Polymorphism"],
+          "summary": "Siêu dữ liệu cho các tệp vật lý được tải lên hệ thống CDP.",
+          "content": [
+            "`id` (String): Khóa chính.",
+            "`path` (String): Đường dẫn file.",
+            "`name` (String): Tên tệp.",
+            "`uploadedTime` (long): Thời điểm tải lên.",
+            "`createdAt` (Date): Thời điểm tạo.",
+            "`revision` (int): Phiên bản tệp.",
+            "`refObjectClass`, `refObjectKey` (String): Liên kết đa hình tới entity khác.",
+            "`downloadable` (boolean): Có cho phép tải xuống không.",
+            "`ownerLogin` (String): Chủ sở hữu file.",
+            "`privacyStatus` (int): Trạng thái riêng tư.",
+            "`viewerIds` (List<Long>): ID người xem.",
+            "`networkId` (long): Định danh tenant."
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "ch03",
+      "chapter_number": 3,
+      "chapter_title": "Activation & Rules",
+      "sections": [
+        {
+          "section_id": "ch03-sec01",
+          "section_number": "3.1",
+          "section_title": "cdp_activationrule",
+          "keywords": ["Rule Engine", "Trigger", "Activation"],
+          "summary": "Quy tắc kích hoạt xác định thời điểm và cách thức trigger các hành động tự động.",
+          "content": [
+            "`id` (String): Khóa chính.",
+            "`createdAt`, `updatedAt` (Date): Timestamps.",
+            "`name` (String): Tên rule.",
+            "`activationType` (String): Loại trigger (scheduling_task, event_trigger_task...).",
+            "`description` (String): Mô tả.",
+            "`priority` (int): Mức độ ưu tiên.",
+            "`active` (boolean): Trạng thái kích hoạt.",
+            "`condition` (String): Điều kiện logic.",
+            "`actions` (List<String>): Danh sách hành động thực thi.",
+            "`purpose` (String): Mục đích kinh doanh.",
+            "`agentId`, `agentName` (String): ID và tên dịch vụ thực thi.",
+            "`segmentId` (String): ID tập khách hàng.",
+            "`assetType` (int): Loại tài sản liên kết.",
+            "`assetTemplateId`, `assetTemplateName` (String): ID và tên template.",
+            "`schedulingTime`, `timeUnit` (int): Cấu hình lập lịch (thủ công, lặp lại).",
+            "`timeToStart` (String): Thời gian bắt đầu (HH:mm).",
+            "`triggerEventName` (String): Tên event kích hoạt.",
+            "`ownerUsername` (String): Người tạo."
+          ]
+        },
+        {
+          "section_id": "ch03-sec02",
+          "section_number": "3.2",
+          "section_title": "cdp_agent",
+          "keywords": ["Service", "Execution", "Microservice"],
+          "summary": "Thực thể đại diện cho một tác vụ hoặc dịch vụ có thể thực thi trong hệ thống.",
+          "content": [
+            "`id` (String): Khóa chính.",
+            "`name`, `description` (String): Tên và mô tả.",
+            "`serviceUri` (String): URI thực thi (javaclass hoặc External URL).",
+            "`dagId` (String): DAG ID để điều phối.",
+            "`status` (int): Trạng thái agent.",
+            "`index` (int): Thứ tự ưu tiên.",
+            "`configs`, `coreFieldConfigs`, `extFieldConfigs` (Map): Các cấu hình parameters và fields.",
+            "`forPersonalization`, `forDataEnrichment`, `forSynchronization` (boolean): Cờ xác định mục đích của Agent.",
+            "`startedAt`, `createdAt`, `updatedAt` (Date): Timestamps."
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "ch04",
+      "chapter_number": 4,
+      "chapter_title": "Marketing & Journey Orchestration",
+      "sections": [
+        {
+          "section_id": "ch04-sec01",
+          "section_number": "4.1",
+          "section_title": "cdp_campaign",
+          "keywords": ["Campaign", "Workflow", "ROI"],
+          "summary": "Chiến dịch marketing tổ chức hành trình tự động, tương tác kênh và đo lường ROI.",
+          "content": [
+            "`id` (String): Khóa chính.",
+            "`name`, `description` (String): Tên và mô tả chiến dịch.",
+            "`keywords` (List<String>): Tags phân loại.",
+            "`type` (int): Phân loại chiến dịch.",
+            "`automatedFlowJson` (String): JSON gốc định nghĩa Workflow flowchart.",
+            "`flowchartDefinition` (Object): Đối tượng Workflow lúc runtime.",
+            "`status` (int): Trạng thái (draft, planned, running...).",
+            "`agentPersona` (String): Định danh AI Persona giao tiếp.",
+            "`scenarios` (List<Scenario>): Kịch bản thực thi.",
+            "`targetSegmentId`, `targetSegmentName` (String): ID và Tên tập khách hàng đích.",
+            "`ownerUsername` (String): Người sở hữu.",
+            "`reportedUsernames` (List<String>): Người nhận báo cáo.",
+            "`maxBudget`, `spentBudget` (double): Ngân sách kế hoạch và thực tế.",
+            "`communicationFrequency`, `timeUnit` (int): Tần suất liên lạc.",
+            "`createdAt`, `updatedAt`, `startDate`, `lastRunAt`, `endDate` (Date): Các mốc thời gian vòng đời chiến dịch.",
+            "`tagName` (String): Định danh slug duy nhất."
+          ]
+        },
+        {
+          "section_id": "ch04-sec02",
+          "section_number": "4.2",
+          "section_title": "cdp_journeymap",
+          "keywords": ["Journey Map", "Attribution", "Graph"],
+          "summary": "Bản đồ hành trình khách hàng xây dựng cấu trúc đồ thị từ các điểm chạm.",
+          "content": [
+            "**Persisted Attributes (Lưu trong Database):**",
+            "`id` (String): Khóa chính.",
+            "`name` (String): Tên bản đồ hành trình.",
+            "`status` (int): Trạng thái vòng đời.",
+            "`createdAt`, `updatedAt` (Date): Timestamps.",
+            "`defaultMetricName` (String): Metric mặc định (ví dụ page-view).",
+            "`authorizedViewers`, `authorizedEditors` (Set<String>): Phân quyền truy cập.",
+            "**Runtime/Computed Attributes (Không lưu Database):**",
+            "`journeyStages` (List<String>): Danh sách tên giai đoạn.",
+            "`journeyNodes` (List<JourneyNode>): Nodes để vẽ UI đồ thị.",
+            "`journeyLinks` (List<JourneyNodeLink>): Kết nối giữa các Nodes.",
+            "`touchpointHubMap`, `touchpointHubIndex` (Map): Indexing in-memory phục vụ logic.",
+            "`sortedTouchpointHubs` (List<TouchpointHub>): Danh sách hub đã sắp xếp."
+          ]
+        },
+        {
+          "section_id": "ch04-sec03",
+          "section_number": "4.3",
+          "section_title": "cdp_socialevent",
+          "keywords": ["Event", "Social", "Offline"],
+          "summary": "Đại diện cho hoạt động marketing số/thực tế để làm giàu context hành vi.",
+          "content": [
+            "`id` (String): Khóa chính.",
+            "`brands`, `productIds`, `serviceIds`, `inCampaigns` (Set<String>): Các IDs liên kết.",
+            "`fullUrl`, `videoUrl` (String): Links tới sự kiện.",
+            "`beginDate`, `endDate` (Date): Thời gian bắt đầu/kết thúc.",
+            "`locationName`, `locationCode`, `locationAddress` (String): Dữ liệu vị trí địa lý.",
+            "`slug`, `title`, `description` (String): Tiêu đề và mô tả nội dung.",
+            "`keywords`, `groupIds`, `topicIds`, `categoryIds`, `targetGeoLocations`, `targetSegmentIds`, `targetViewerIds` (Set<String>): Dữ liệu phân loại và targeting.",
+            "`createdAt`, `updatedAt` (Date): Timestamps.",
+            "`networkId` (String): Tenant ID.",
+            "`contentClass` (String): Lớp nội dung sự kiện."
+          ]
+        },
+        {
+          "section_id": "ch04-sec04",
+          "section_number": "4.4",
+          "section_title": "cdp_targetmediaunit",
+          "keywords": ["Media Unit", "Tracking", "Omnichannel"],
+          "summary": "Đơn vị cá nhân hóa nối Profile, Content, Campaign và Touchpoint để tracking impressions/clicks.",
+          "content": [
+            "`id` (String): Khóa chính.",
+            "`createdAt`, `updatedAt`, `expiredAt` (Date): Timestamps.",
+            "`name` (String): Tên media unit.",
+            "`status` (int): Trạng thái tương tác (clicked, viewed...).",
+            "`refCampaignId`, `refProductItemId`, `refContentItemId`, `refProfileId`, `refSegmentId`, `refVisitorId`, `refSocialEventId`, `refTouchpointId`, `refTouchpointHubId`, `refObserverId`, `refAffiliateId` (String): ID tham chiếu chéo toàn hệ thống.",
+            "`landingPageName`, `landingPageUrl`, `imageUrl`, `videoUrl` (String): Cấu hình URL hiển thị và điều hướng đích.",
+            "`trackingLinkUrl` (String): URL tracking rút gọn.",
+            "`eventMetaDataId` (String): Phân loại loại tracking event (QR, SHORT_LINK).",
+            "`ratingScore` (double): Điểm số xếp hạng/AI Recommend.",
+            "`customData` (Map<String,String>): Siêu dữ liệu mở rộng.",
+            "`productItem`, `contentItem` (Object): Object join ở runtime (Không lưu DB)."
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "ch05",
+      "chapter_number": 5,
+      "chapter_title": "Identity & Audiences",
+      "sections": [
+        {
+          "section_id": "ch05-sec01",
+          "section_number": "5.1",
+          "section_title": "cdp_profile",
+          "keywords": ["Profile", "Identity Resolution", "Customer 360"],
+          "summary": "Hồ sơ 360 độ của khách hàng, lưu trữ đa định danh, hành vi và thuộc tính cá nhân.",
+          "content": [
+            "**Identity & Device:** `id`, `visitorId`, `fingerprintId`, `lastUsedDeviceId`, `webCookies` (String); `visitorIds`, `applicationIDs`, `loyaltyIDs`, `fintechSystemIDs`, `governmentIssuedIDs`, `usedDeviceIds` (Set<String>).",
+            "**Personal Information:** `primaryUsername`, `firstName`, `middleName`, `lastName`, `primaryAvatar`, `primaryNationality`, `housingType` (String); `gender`, `maritalStatus`, `genderProbability`, `age`, `ageGroup` (int); `dateOfBirth` (Date); `personalityTypes` (Set<PersonalityType>); `personalAvatars` (Set<String>).",
+            "**Location Data:** `locationCode`, `livingLocationType`, `permanentLocation`, `livingLocation`, `livingCountry`, `livingState`, `livingProvince`, `livingCity`, `livingDistrict`, `livingWard`, `livingCounty`, `currentZipCode` (String); `contactAddresses` (Set<ContactAddress>).",
+            "**Contacts & Interests:** `personalContacts`, `businessContacts` (Map<String,String>); `personalInterests` (Set<String>).",
+            "**Education & Career:** `learningCourses` (Set<LearningCourse>); `softSkills`, `learningHistory`, `studyCertificates`, `jobTitles`, `workingHistory` (Set<String>); `jobType` (int).",
+            "**Financial & Behavior Signals:** `incomeHistory` (Map<String, Double>); `weeklyMobileUsage` (Map<String, Integer>).",
+            "**Tracking & Context:** `lastTrackingEvent`, `lastItemViewEvent`, `lastPurchaseEvent` (TrackingEvent); `contextSessionKeys` (Map<String, Date>).",
+            "**Inherited (AbstractProfile):** `type`, `status`, `dataQualityScore` (int); `identities`, `secondaryEmails`, `secondaryPhones`, `topEngagedTouchpointIds` (Set<String>); `primaryEmail`, `primaryPhone`, `crmRefId`, `lastObserverId`, `lastTouchpointId` (String); `createdAt`, `updatedAt` (Date).",
+            "**Not Persisted:** `genderAsText`, `maritalStatusAsText` (String)."
+          ]
+        },
+        {
+          "section_id": "ch05-sec02",
+          "section_number": "5.2",
+          "section_title": "cdp_segment",
+          "keywords": ["Segmentation", "AQL", "Audiences"],
+          "summary": "Tập khách hàng được sinh ra từ các thuật toán truy vấn (Query Rules).",
+          "content": [
+            "**Core Identification:** `id`, `parentId`, `name`, `description`, `imageAvatarUri` (String).",
+            "**Configuration:** `type`, `status` (int); `realtimeQuery`, `autoUpdateProfiles` (boolean); `jsonQueryRules`, `customQueryFilter`, `queryHashedId` (String); `selectedFields` (List<String>).",
+            "**Metrics:** `totalCount`, `totalLeadScore`, `totalProspectScore`, `totalEngagementScore`, `totalCreditScore` (long); `totalDataQualityScore` (int); `totalTransactionValue`, `totalCAC`, `totalCLV` (double); `avgCFS`, `totalCES`, `avgCSAT`, `avgNPS` (float); `performanceReports` (List<PerformanceReport>); `conversionReport` (ConversionReport).",
+            "**Metadata:** `keywords` (Set<String>); `campaignIds` (List<String>); `extData` (Map<String,String>).",
+            "**Targeting Flags (boolean):** `managedBySystem`, `forDeepAnalytics`, `forPredictiveAnalytics`, `forPersonalization`, `forEmailMarketing`, `forRealtimeMarketing`, `forReTargeting`, `forLookalikeTargeting`, `for3rdSynchronization`.",
+            "**Ownership:** `ownerUsername` (String); `authorizedEditors`, `authorizedViewers` (Set<String>).",
+            "**Indexing:** `indexScore` (int); `updateIndex` (boolean).",
+            "**Export Data:** `exportedFileUrlCsvForAds`, `exportedFileUrlCsvForExcel` (String); `exportedDateForAds`, `exportedDateForExcel` (Date).",
+            "**Timestamps:** `createdAt`, `updatedAt` (Date).",
+            "**Not Persisted:** `activationRules` (List<ActivationRule>)."
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "ch06",
+      "chapter_number": 6,
+      "chapter_title": "Tracking & Touchpoints",
+      "sections": [
+        {
+          "section_id": "ch06-sec02",
+          "section_number": "6.2",
+          "section_title": "cdp_eventobserver",
+          "keywords": ["Observer", "Ingestion", "Tracking"],
+          "summary": "Cổng tiếp nhận dữ liệu tracking từ client (JS, SDK).",
+          "content": [
+            "`id`, `name`, `slug` (String): Định danh Observer.",
+            "`type`, `status` (int): Loại (TouchpointType) và trạng thái.",
+            "`collectDirectly`, `firstPartyData` (boolean): Phương thức thu thập dữ liệu.",
+            "`dataSourceUrl`, `thumbnailUrl`, `securityCode`, `touchpointHubId`, `journeyMapId`, `mobileAppId`, `deviceId`, `securityAccessIp`, `observerUri` (String): Thông số nguồn và bảo mật.",
+            "`dataSourceHosts` (Set<String>): Domain được cấp phép tracking.",
+            "`qrCodeData` (Object): Dữ liệu mã QR offline.",
+            "`accessTokens` (Map<String,String>): Tokens bảo mật tích hợp.",
+            "`journeyLevel` (int): Cấp độ hành trình.",
+            "`estimatedTotalEvent` (long): Ước tính số sự kiện.",
+            "`javascriptTags`, `webApiHooks` (List<String>): JS tags và server hooks.",
+            "`createdAt`, `updatedAt` (Date): Timestamps."
+          ]
+        },
+        {
+          "section_id": "ch06-sec03",
+          "section_number": "6.3",
+          "section_title": "cdp_touchpoint",
+          "keywords": ["Touchpoint", "Nodes", "Journey"],
+          "summary": "Điểm chạm tương tác vật lý/số, là hạt nhân của đồ thị hành trình khách hàng.",
+          "content": [
+            "`id`, `name`, `typeAsType`, `url`, `hostname`, `collectionId`, `parentId` (String): Thông tin định danh cơ bản.",
+            "`type`, `partitionId` (int): Loại điểm chạm và ID phân vùng.",
+            "`locationCode`, `address`, `reachableArea` (String): Dữ liệu địa lý.",
+            "`latitude`, `longitude`, `radius`, `unitCost` (double): Tọa độ, bán kính phủ và chi phí CPC/CPA.",
+            "`journeyMapId`, `observerId`, `assetContentId` (String): Tham chiếu kiến trúc.",
+            "`isRootNode`, `firstPartyData` (boolean): Cờ hệ thống.",
+            "`assetType` (int): Loại tài sản đích.",
+            "`eventCounter` (EventCounter): Khối dữ liệu đếm view/click.",
+            "`scoreCX` (ScoreCX): Điểm trải nghiệm khách hàng.",
+            "`keywords`, `groupIds`, `topicIds`, `categoryIds`, `targetGeoLocations`, `targetSegmentIds`, `targetViewerIds` (Set<String>): Phân loại, nhắm mục tiêu.",
+            "`createdAt`, `updatedAt` (Date): Timestamps."
+          ]
+        },
+        {
+          "section_id": "ch06-sec04",
+          "section_number": "6.4",
+          "section_title": "cdp_touchpointhub",
+          "keywords": ["Hub", "Aggregation", "Domain"],
+          "summary": "Root node gom nhóm các điểm chạm nhỏ lẻ theo hệ thống hoặc domain.",
+          "content": [
+            "`id`, `name`, `typeAsType`, `url`, `hostname`, `thumbnailUrl`, `countryCode`, `locationCode`, `address`, `journeyMapId`, `observerId` (String): Khóa, URL, Location, và liên kết.",
+            "`type`, `status`, `journeyLevel` (int): Phân loại và trạng thái.",
+            "`firstPartyData`, `isRootNode` (boolean): Cờ trạng thái root.",
+            "`latitude`, `longitude`, `radius`, `reachableArea` (double): Tọa độ.",
+            "`dataSourceHosts`, `eventMetrics`, `keywords` (Set<String>): Domains và metrics.",
+            "`totalProfile` (long): Số lượng người dùng ghi nhận được.",
+            "`createdAt`, `updatedAt` (Date): Timestamps.",
+            "`report` (TouchpointHubReport): Dữ liệu báo cáo runtime (Không lưu DB)."
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "ch07",
+      "chapter_number": 7,
+      "chapter_title": "Analytics & Events Pipeline",
+      "sections": [
+        {
+          "section_id": "ch07-sec01",
+          "section_number": "7.1",
+          "section_title": "cdp_trackingevent",
+          "keywords": ["Events", "Behavior", "Transactions"],
+          "summary": "Sự kiện hành vi cốt lõi thu thập được từ mọi điểm chạm CDP.",
+          "content": [
+            "`id`, `sessionKey`, `metricName`, `message`, `environment` (String): Định danh và loại event.",
+            "`timestamp` (int): Unix timestamp giây.",
+            "`metricValue` (long): Giá trị sự kiện.",
+            "`isActiveTracked`, `isConversion`, `isExperience` (boolean): Cờ nhận diện loại event.",
+            "`state`, `journeyStage`, `partitionId`, `fraudScore`, `timeSpent`, `transactionCode` (int): Trạng thái, cấp độ hành trình, thời gian và điểm chống gian lận.",
+            "`refProfileId`, `refVisitorId`, `refJourneyId`, `observerId`, `srcTouchpointId`, `srcTouchpointHubId`, `srcTouchpointName`, `srcTouchpointUrl`, `srcTouchpointHost`, `refTouchpointId`, `refTouchpointHubId`, `refTouchpointName`, `refTouchpointUrl`, `refTouchpointHost` (String): Khóa tham chiếu ngữ cảnh điểm chạm.",
+            "`refCampaignId`, `refContentId`, `refItemId`, `refTicketId`, `refDataSource`, `refFeedbackEventId` (String): Khóa ngoại tham chiếu object liên quan.",
+            "`browserName`, `fingerprintId`, `deviceId`, `deviceOS`, `deviceType`, `deviceName`, `sourceIP`, `locationCode`, `locationName`, `locationAddress` (String): Dữ liệu thiết bị và mạng.",
+            "`transactionId`, `transactionStatus`, `transactionCurrency`, `transactionPayment` (String): Chi tiết giao dịch E-commerce.",
+            "`transactionValue`, `transactionShippingValue`, `transactionDiscount`, `transactionTax` (double): Thông tin tiền tệ giao dịch.",
+            "`transactionShippingInfo`, `eventData` (Map<String,Object>): Dữ liệu động mở rộng (UTMs, attributes).",
+            "`orderedItems`, `serviceItems`, `tradingItems` (Set): Danh sách mặt hàng bán.",
+            "`imageUrls`, `videoUrls`, `computableFields` (Set): Dữ liệu đa phương tiện và xử lý.",
+            "`rawJsonData` (String): Chuỗi JSON payload gốc dự phòng.",
+            "`createdAt`, `updatedAt` (Date): Timestamps.",
+            "`observer`, `refTouchpoint`, `srcTouchpoint` (Object): Data runtime (Không lưu DB)."
+          ]
+        },
+        {
+          "section_id": "ch07-sec02",
+          "section_number": "7.2",
+          "section_title": "cdp_contextsession",
+          "keywords": ["Session", "Context", "Device"],
+          "summary": "Phiên làm việc thu thập ngữ cảnh thiết bị và touchpoint.",
+          "content": [
+            "`sessionKey`, `dateTimeKey`, `userDeviceId`, `ip`, `locationCode`, `refMediaHost`, `appId`, `refTouchpointId`, `srcTouchpointId`, `observerId`, `profileId`, `visitorId`, `fingerprintId`, `environment` (String): Tất cả các IDs nhận diện phiên làm việc.",
+            "`profileType` (int): Loại user trong session.",
+            "`createdAt`, `updatedAt`, `autoDeleteAt` (Date): Timestamps quản lý TTL dọn dẹp data."
+          ]
+        },
+        {
+          "section_id": "ch07-sec03",
+          "section_number": "7.3",
+          "section_title": "cdp_dailyreportunit",
+          "keywords": ["Time-Series", "Aggregation", "Dashboard"],
+          "summary": "Bản báo cáo aggregation dạng chuỗi thời gian phân giải tới giờ.",
+          "content": [
+            "`id`, `dateKey`, `journeyMapId`, `objectId`, `objectName`, `eventName` (String): Khóa phân tích chính.",
+            "`year`, `month`, `day`, `hour`, `partitionId` (int): Trường thời gian phân tách Index.",
+            "`dailyCount` (long): Đếm theo ngày.",
+            "`hourlyEventStatistics` (Map<String, Map<String, Long>>): Thống kê sự kiện theo giờ.",
+            "`createdAt`, `updatedAt` (Date): Timestamps."
+          ]
+        },
+        {
+          "section_id": "ch07-sec04",
+          "section_number": "7.4",
+          "section_title": "cdp_dataflowstage",
+          "keywords": ["Funnel", "Stages", "Flow"],
+          "summary": "Giai đoạn phễu phân tích vòng đời khách hàng.",
+          "content": [
+            "`id`, `name`, `type`, `flowName` (String): Định dạng Flow.",
+            "`flowType`, `orderIndex` (int): Phân loại và số thứ tự giai đoạn.",
+            "`createdAt`, `updatedAt` (Date): Timestamps."
+          ]
+        },
+        {
+          "section_id": "ch07-sec05",
+          "section_number": "7.5",
+          "section_title": "cdp_device",
+          "keywords": ["Device", "Hardware", "OS"],
+          "summary": "Định danh thiết bị phần cứng của khách hàng.",
+          "content": [
+            "`id`, `name`, `type`, `osName`, `osVersion`, `browserName` (String): Thuộc tính gốc của thiết bị.",
+            "`createdAt`, `updatedAt` (Date): Timestamps."
+          ]
+        },
+        {
+          "section_id": "ch07-sec06",
+          "section_number": "7.6",
+          "section_title": "cdp_eventmetric",
+          "keywords": ["Metrics", "Scoring", "Definitions"],
+          "summary": "Định nghĩa điểm số quy chuẩn cho sự kiện CDP.",
+          "content": [
+            "`id`, `eventName`, `eventLabel`, `flowName`, `funnelStageId`, `journeyMapId` (String): Phân loại metric.",
+            "`journeyStage`, `dataType`, `score`, `cumulativePoint`, `scoreModel` (int): Trọng số và cơ chế tính điểm.",
+            "`systemMetric`, `showInObserverJS` (boolean): Cờ quản lý.",
+            "`createdAt`, `updatedAt` (Date): Timestamps."
+          ]
+        },
+        {
+          "section_id": "ch07-sec07",
+          "section_number": "7.7",
+          "section_title": "cdp_feedbackdata",
+          "keywords": ["Feedback", "Surveys", "CX Score"],
+          "summary": "Biểu diễn phản hồi khảo sát CX của người dùng.",
+          "content": [
+            "`id`, `feedbackDataType`, `refTemplateId`, `refProductItemId`, `refContentItemId`, `refTouchpointHubId`, `refTouchpointId`, `refCampaignId`, `refDataFlowStageId`, `feedbackType`, `header`, `group`, `evaluatedObject`, `evaluatedItem`, `evaluatedPerson`, `surveyChoicesId`, `timePeriod` (String): Định danh và Metadata liên kết phản hồi.",
+            "`scoreCX` (ScoreCX): Chấm điểm cảm xúc khách hàng.",
+            "`surveyChoices` (List<SurveyChoice>): Danh sách lựa chọn đánh giá.",
+            "`createdAt` (Date): Timestamp."
+          ]
+        },
+        {
+          "section_id": "ch07-sec08",
+          "section_number": "7.8",
+          "section_title": "cdp_financeevent",
+          "keywords": ["Finance", "Payment", "Due Date"],
+          "summary": "Nguồn lưu vết sự kiện tài chính, thanh toán, nợ đọng cốt lõi.",
+          "content": [
+            "`id`, `refProfileId`, `paymentType`, `observerId`, `refTouchpointHubId`, `srcTouchpointId`, `srcTouchpointName`, `srcTouchpointUrl`, `refTouchpointId`, `refTouchpointName`, `refTouchpointUrl`, `refApplicationId`, `periodType` (String): Nguồn, loại giao dịch và tham chiếu điểm chạm.",
+            "`period` (int): Chu kỳ thanh toán.",
+            "`dueAmountValue`, `principalValue`, `interestValue` (long): Dữ liệu giá trị tiền tệ.",
+            "`paid` (boolean): Tình trạng đã thanh toán hay nợ.",
+            "`extData` (Map<String, String>): Metadata thanh toán.",
+            "`dueDate`, `createdAt`, `updatedAt` (Date): Mốc thời gian hạn chót và timestamps."
+          ]
+        },
+        {
+          "section_id": "ch07-sec09",
+          "section_number": "7.9",
+          "section_title": "cdp_notebook",
+          "keywords": ["Data Science", "Jupyter", "Machine Learning"],
+          "summary": "Kho lưu trữ Notebook phục vụ AI/ML Job Pipeline.",
+          "content": [
+            "`id`, `type`, `name`, `description`, `notebookFileUri`, `notebookOutputFileUri`, `htmlFileUri`, `pythonFileUri`, `lastErrorMessage`, `accessToken` (String): Thông tin URI và files.",
+            "`status`, `autoRunAfterMinute`, `lastRunStatus` (int): Cấu hình trạng thái và chạy lịch định kỳ.",
+            "`tags`, `dataSources` (List<String>): Nguồn data ML.",
+            "`authorizedViewers`, `authorizedEditors` (Set<String>): Phân quyền.",
+            "`parameters` (Map<String, Object>): Hyper-parameters tùy chỉnh.",
+            "`lastRunAt`, `createdAt`, `updatedAt` (Date): Timestamps."
+          ]
+        },
+        {
+          "section_id": "ch07-sec10",
+          "section_number": "7.10",
+          "section_title": "cdp_webhookdataevent",
+          "keywords": ["Webhooks", "Ingestion", "Raw Payload"],
+          "summary": "Hứng payload webhook thô từ hệ thống ngoài phục vụ ETL.",
+          "content": [
+            "`id`, `observerId`, `refTouchpointHubId`, `source`, `payload` (String): Tín hiệu thô, JSON Payload từ 3rd party.",
+            "`processed` (boolean): Trạng thái đã xử lý xong hay chưa.",
+            "`createdAt`, `updatedAt` (Date): Timestamps."
+          ]
+        }
+      ]
+    }
+  ]
+}
