@@ -3,9 +3,9 @@
     "book_id": "leo-cdp-core-schema-full-2026",
     "title": "LEO CDP - Core Database Schema in ArangoDB (Full Attributes)",
     "image_cover_url": "https://www.shutterstock.com/image-vector/schema-outline-icon-vector-illustration-600nw-2582070607.jpg",
-    "author": "LEO AI Analytics",
-    "description": "Tài liệu kỹ thuật toàn diện về thiết kế lược đồ cơ sở dữ liệu cốt lõi của LEO CDP trên ArangoDB, liệt kê đầy đủ tất cả các trường dữ liệu phục vụ phát triển và tích hợp.",
-    "version": "3.1.2"
+    "author": "Trieu Nguyen",
+    "description": "Tài liệu này mô tả chi tiết thiết kế lược đồ cơ sở dữ liệu cốt lõi của **LEO CDP** trên **ArangoDB 3.11+**.\n\n**LEO CDP (Customer Data Platform)** là nền tảng dữ liệu khách hàng hỗ trợ:\n- Thu thập dữ liệu (Data Ingestion)\n- Hợp nhất danh tính (Identity Resolution)\n- Phân tích hành vi (Behavior Analytics)\n- Kích hoạt dữ liệu (Real-time Activation)\n\nHệ thống được thiết kế theo hướng **real-time, event-driven, graph-native**, tối ưu cho các use case marketing automation và personalization ở quy mô lớn.\n\n---\n\n## Target Audience\n\nTài liệu này dành cho:\n\n- Data Engineers\n- Backend Developers\n- System Architects\n\nMục tiêu là giúp:\n- Hiểu rõ cấu trúc dữ liệu và quan hệ giữa các entity\n- Viết truy vấn **AQL tối ưu**\n- Thiết kế mở rộng hệ thống (scalability & extensibility)\n\n---\n\n## Design Philosophy\n\nThiết kế của LEO CDP không chỉ là mô hình dữ liệu, mà là một **data architecture framework** với các nguyên tắc:\n\n- **Single Customer View (SCV)** làm trung tâm\n- **Event-first architecture** (mọi thứ đều là event)\n- **Graph-based relationship modeling**\n- **Schema-flexible nhưng có kiểm soát**",
+    "version": "1.0.0"
   },
   "chapters": [
     {
@@ -17,7 +17,11 @@
           "section_id": "ch01-sec01",
           "section_number": "1.1",
           "section_title": "system_service",
-          "keywords": ["Orchestration", "Airflow DAG", "Integration"],
+          "keywords": [
+            "Orchestration",
+            "Airflow DAG",
+            "Integration"
+          ],
           "summary": "Cấu hình cho các dịch vụ hệ thống cốt lõi, điều phối qua Airflow DAG và tích hợp API.",
           "content": [
             "`id` (String): Khóa chính (_key trong ArangoDB), định danh duy nhất của dịch vụ.",
@@ -37,7 +41,11 @@
           "section_id": "ch01-sec02",
           "section_number": "1.2",
           "section_title": "system_event",
-          "keywords": ["Audit", "Monitoring", "Logs"],
+          "keywords": [
+            "Audit",
+            "Monitoring",
+            "Logs"
+          ],
           "summary": "Lưu vết sự kiện hệ thống phục vụ kiểm toán, giám sát job, và hành động của admin.",
           "content": [
             "`id` (String): Khóa chính, ID được hash dựa trên dữ liệu sự kiện.",
@@ -55,7 +63,11 @@
           "section_id": "ch01-sec03",
           "section_number": "1.3",
           "section_title": "system_user",
-          "keywords": ["RBAC", "Authentication", "SSO"],
+          "keywords": [
+            "RBAC",
+            "Authentication",
+            "SSO"
+          ],
           "summary": "Thực thể người dùng hệ thống phục vụ xác thực, phân quyền (RBAC), SSO và kiểm soát truy cập.",
           "content": [
             "`key` (String): Khóa chính (_key trong ArangoDB), định danh người dùng duy nhất.",
@@ -94,7 +106,11 @@
           "section_id": "ch02-sec01",
           "section_number": "2.1",
           "section_title": "cdp_assetcategory",
-          "keywords": ["Category", "Taxonomy", "Organization"],
+          "keywords": [
+            "Category",
+            "Taxonomy",
+            "Organization"
+          ],
           "summary": "Danh mục tài sản số dùng để tổ chức nội dung, sản phẩm, chiến dịch.",
           "content": [
             "`id` (String): Khóa chính.",
@@ -119,7 +135,11 @@
           "section_id": "ch02-sec02",
           "section_number": "2.2",
           "section_title": "cdp_assetcontent",
-          "keywords": ["Content", "Media", "Tracking"],
+          "keywords": [
+            "Content",
+            "Media",
+            "Tracking"
+          ],
           "summary": "Thực thể nội dung số (quảng cáo, bài viết, link rút gọn) hỗ trợ tracking và cá nhân hóa.",
           "content": [
             "`id` (String): Khóa chính, sinh từ chuỗi hash dữ liệu.",
@@ -169,7 +189,11 @@
           "section_id": "ch02-sec03",
           "section_number": "2.3",
           "section_title": "cdp_assetgroup",
-          "keywords": ["Group", "Collection", "Segmentation"],
+          "keywords": [
+            "Group",
+            "Collection",
+            "Segmentation"
+          ],
           "summary": "Nhóm quản lý và tổ chức tập hợp các tài sản số.",
           "content": [
             "`id` (String): Khóa chính.",
@@ -199,7 +223,11 @@
           "section_id": "ch02-sec04",
           "section_number": "2.4",
           "section_title": "cdp_assettemplate",
-          "keywords": ["Template", "Dynamic", "A/B Testing"],
+          "keywords": [
+            "Template",
+            "Dynamic",
+            "A/B Testing"
+          ],
           "summary": "Khuôn mẫu tài sản dùng để render nội dung động như landing page, email, survey.",
           "content": [
             "`id` (String): Khóa chính.",
@@ -232,7 +260,11 @@
           "section_id": "ch02-sec05",
           "section_number": "2.5",
           "section_title": "cdp_productitem",
-          "keywords": ["Product", "SKU", "E-commerce"],
+          "keywords": [
+            "Product",
+            "SKU",
+            "E-commerce"
+          ],
           "summary": "Mục sản phẩm, cốt lõi cho hệ thống quản lý dữ liệu sản phẩm, e-commerce và recommendation.",
           "content": [
             "`id` (String): Khóa chính (kết hợp productId + category + URL).",
@@ -262,7 +294,11 @@
           "section_id": "ch02-sec06",
           "section_number": "2.6",
           "section_title": "cdp_filemetadata",
-          "keywords": ["Files", "Metadata", "Polymorphism"],
+          "keywords": [
+            "Files",
+            "Metadata",
+            "Polymorphism"
+          ],
           "summary": "Siêu dữ liệu cho các tệp vật lý được tải lên hệ thống CDP.",
           "content": [
             "`id` (String): Khóa chính.",
@@ -290,7 +326,11 @@
           "section_id": "ch03-sec01",
           "section_number": "3.1",
           "section_title": "cdp_activationrule",
-          "keywords": ["Rule Engine", "Trigger", "Activation"],
+          "keywords": [
+            "Rule Engine",
+            "Trigger",
+            "Activation"
+          ],
           "summary": "Quy tắc kích hoạt xác định thời điểm và cách thức trigger các hành động tự động.",
           "content": [
             "`id` (String): Khóa chính.",
@@ -317,7 +357,11 @@
           "section_id": "ch03-sec02",
           "section_number": "3.2",
           "section_title": "cdp_agent",
-          "keywords": ["Service", "Execution", "Microservice"],
+          "keywords": [
+            "Service",
+            "Execution",
+            "Microservice"
+          ],
           "summary": "Thực thể đại diện cho một tác vụ hoặc dịch vụ có thể thực thi trong hệ thống.",
           "content": [
             "`id` (String): Khóa chính.",
@@ -342,7 +386,11 @@
           "section_id": "ch04-sec01",
           "section_number": "4.1",
           "section_title": "cdp_campaign",
-          "keywords": ["Campaign", "Workflow", "ROI"],
+          "keywords": [
+            "Campaign",
+            "Workflow",
+            "ROI"
+          ],
           "summary": "Chiến dịch marketing tổ chức hành trình tự động, tương tác kênh và đo lường ROI.",
           "content": [
             "`id` (String): Khóa chính.",
@@ -367,7 +415,11 @@
           "section_id": "ch04-sec02",
           "section_number": "4.2",
           "section_title": "cdp_journeymap",
-          "keywords": ["Journey Map", "Attribution", "Graph"],
+          "keywords": [
+            "Journey Map",
+            "Attribution",
+            "Graph"
+          ],
           "summary": "Bản đồ hành trình khách hàng xây dựng cấu trúc đồ thị từ các điểm chạm.",
           "content": [
             "**Persisted Attributes (Lưu trong Database):**",
@@ -389,7 +441,11 @@
           "section_id": "ch04-sec03",
           "section_number": "4.3",
           "section_title": "cdp_socialevent",
-          "keywords": ["Event", "Social", "Offline"],
+          "keywords": [
+            "Event",
+            "Social",
+            "Offline"
+          ],
           "summary": "Đại diện cho hoạt động marketing số/thực tế để làm giàu context hành vi.",
           "content": [
             "`id` (String): Khóa chính.",
@@ -408,7 +464,11 @@
           "section_id": "ch04-sec04",
           "section_number": "4.4",
           "section_title": "cdp_targetmediaunit",
-          "keywords": ["Media Unit", "Tracking", "Omnichannel"],
+          "keywords": [
+            "Media Unit",
+            "Tracking",
+            "Omnichannel"
+          ],
           "summary": "Đơn vị cá nhân hóa nối Profile, Content, Campaign và Touchpoint để tracking impressions/clicks.",
           "content": [
             "`id` (String): Khóa chính.",
@@ -435,7 +495,11 @@
           "section_id": "ch05-sec01",
           "section_number": "5.1",
           "section_title": "cdp_profile",
-          "keywords": ["Profile", "Identity Resolution", "Customer 360"],
+          "keywords": [
+            "Profile",
+            "Identity Resolution",
+            "Customer 360"
+          ],
           "summary": "Hồ sơ 360 độ của khách hàng, lưu trữ đa định danh, hành vi và thuộc tính cá nhân.",
           "content": [
             "**Identity & Device:** `id`, `visitorId`, `fingerprintId`, `lastUsedDeviceId`, `webCookies` (String); `visitorIds`, `applicationIDs`, `loyaltyIDs`, `fintechSystemIDs`, `governmentIssuedIDs`, `usedDeviceIds` (Set<String>).",
@@ -453,7 +517,11 @@
           "section_id": "ch05-sec02",
           "section_number": "5.2",
           "section_title": "cdp_segment",
-          "keywords": ["Segmentation", "AQL", "Audiences"],
+          "keywords": [
+            "Segmentation",
+            "AQL",
+            "Audiences"
+          ],
           "summary": "Tập khách hàng được sinh ra từ các thuật toán truy vấn (Query Rules).",
           "content": [
             "**Core Identification:** `id`, `parentId`, `name`, `description`, `imageAvatarUri` (String).",
@@ -479,7 +547,11 @@
           "section_id": "ch06-sec02",
           "section_number": "6.2",
           "section_title": "cdp_eventobserver",
-          "keywords": ["Observer", "Ingestion", "Tracking"],
+          "keywords": [
+            "Observer",
+            "Ingestion",
+            "Tracking"
+          ],
           "summary": "Cổng tiếp nhận dữ liệu tracking từ client (JS, SDK).",
           "content": [
             "`id`, `name`, `slug` (String): Định danh Observer.",
@@ -499,7 +571,11 @@
           "section_id": "ch06-sec03",
           "section_number": "6.3",
           "section_title": "cdp_touchpoint",
-          "keywords": ["Touchpoint", "Nodes", "Journey"],
+          "keywords": [
+            "Touchpoint",
+            "Nodes",
+            "Journey"
+          ],
           "summary": "Điểm chạm tương tác vật lý/số, là hạt nhân của đồ thị hành trình khách hàng.",
           "content": [
             "`id`, `name`, `typeAsType`, `url`, `hostname`, `collectionId`, `parentId` (String): Thông tin định danh cơ bản.",
@@ -519,7 +595,11 @@
           "section_id": "ch06-sec04",
           "section_number": "6.4",
           "section_title": "cdp_touchpointhub",
-          "keywords": ["Hub", "Aggregation", "Domain"],
+          "keywords": [
+            "Hub",
+            "Aggregation",
+            "Domain"
+          ],
           "summary": "Root node gom nhóm các điểm chạm nhỏ lẻ theo hệ thống hoặc domain.",
           "content": [
             "`id`, `name`, `typeAsType`, `url`, `hostname`, `thumbnailUrl`, `countryCode`, `locationCode`, `address`, `journeyMapId`, `observerId` (String): Khóa, URL, Location, và liên kết.",
@@ -543,7 +623,11 @@
           "section_id": "ch07-sec01",
           "section_number": "7.1",
           "section_title": "cdp_trackingevent",
-          "keywords": ["Events", "Behavior", "Transactions"],
+          "keywords": [
+            "Events",
+            "Behavior",
+            "Transactions"
+          ],
           "summary": "Sự kiện hành vi cốt lõi thu thập được từ mọi điểm chạm CDP.",
           "content": [
             "`id`, `sessionKey`, `metricName`, `message`, `environment` (String): Định danh và loại event.",
@@ -568,7 +652,11 @@
           "section_id": "ch07-sec02",
           "section_number": "7.2",
           "section_title": "cdp_contextsession",
-          "keywords": ["Session", "Context", "Device"],
+          "keywords": [
+            "Session",
+            "Context",
+            "Device"
+          ],
           "summary": "Phiên làm việc thu thập ngữ cảnh thiết bị và touchpoint.",
           "content": [
             "`sessionKey`, `dateTimeKey`, `userDeviceId`, `ip`, `locationCode`, `refMediaHost`, `appId`, `refTouchpointId`, `srcTouchpointId`, `observerId`, `profileId`, `visitorId`, `fingerprintId`, `environment` (String): Tất cả các IDs nhận diện phiên làm việc.",
@@ -580,7 +668,11 @@
           "section_id": "ch07-sec03",
           "section_number": "7.3",
           "section_title": "cdp_dailyreportunit",
-          "keywords": ["Time-Series", "Aggregation", "Dashboard"],
+          "keywords": [
+            "Time-Series",
+            "Aggregation",
+            "Dashboard"
+          ],
           "summary": "Bản báo cáo aggregation dạng chuỗi thời gian phân giải tới giờ.",
           "content": [
             "`id`, `dateKey`, `journeyMapId`, `objectId`, `objectName`, `eventName` (String): Khóa phân tích chính.",
@@ -594,7 +686,11 @@
           "section_id": "ch07-sec04",
           "section_number": "7.4",
           "section_title": "cdp_dataflowstage",
-          "keywords": ["Funnel", "Stages", "Flow"],
+          "keywords": [
+            "Funnel",
+            "Stages",
+            "Flow"
+          ],
           "summary": "Giai đoạn phễu phân tích vòng đời khách hàng.",
           "content": [
             "`id`, `name`, `type`, `flowName` (String): Định dạng Flow.",
@@ -606,7 +702,11 @@
           "section_id": "ch07-sec05",
           "section_number": "7.5",
           "section_title": "cdp_device",
-          "keywords": ["Device", "Hardware", "OS"],
+          "keywords": [
+            "Device",
+            "Hardware",
+            "OS"
+          ],
           "summary": "Định danh thiết bị phần cứng của khách hàng.",
           "content": [
             "`id`, `name`, `type`, `osName`, `osVersion`, `browserName` (String): Thuộc tính gốc của thiết bị.",
@@ -617,7 +717,11 @@
           "section_id": "ch07-sec06",
           "section_number": "7.6",
           "section_title": "cdp_eventmetric",
-          "keywords": ["Metrics", "Scoring", "Definitions"],
+          "keywords": [
+            "Metrics",
+            "Scoring",
+            "Definitions"
+          ],
           "summary": "Định nghĩa điểm số quy chuẩn cho sự kiện CDP.",
           "content": [
             "`id`, `eventName`, `eventLabel`, `flowName`, `funnelStageId`, `journeyMapId` (String): Phân loại metric.",
@@ -630,7 +734,11 @@
           "section_id": "ch07-sec07",
           "section_number": "7.7",
           "section_title": "cdp_feedbackdata",
-          "keywords": ["Feedback", "Surveys", "CX Score"],
+          "keywords": [
+            "Feedback",
+            "Surveys",
+            "CX Score"
+          ],
           "summary": "Biểu diễn phản hồi khảo sát CX của người dùng.",
           "content": [
             "`id`, `feedbackDataType`, `refTemplateId`, `refProductItemId`, `refContentItemId`, `refTouchpointHubId`, `refTouchpointId`, `refCampaignId`, `refDataFlowStageId`, `feedbackType`, `header`, `group`, `evaluatedObject`, `evaluatedItem`, `evaluatedPerson`, `surveyChoicesId`, `timePeriod` (String): Định danh và Metadata liên kết phản hồi.",
@@ -643,7 +751,11 @@
           "section_id": "ch07-sec08",
           "section_number": "7.8",
           "section_title": "cdp_financeevent",
-          "keywords": ["Finance", "Payment", "Due Date"],
+          "keywords": [
+            "Finance",
+            "Payment",
+            "Due Date"
+          ],
           "summary": "Nguồn lưu vết sự kiện tài chính, thanh toán, nợ đọng cốt lõi.",
           "content": [
             "`id`, `refProfileId`, `paymentType`, `observerId`, `refTouchpointHubId`, `srcTouchpointId`, `srcTouchpointName`, `srcTouchpointUrl`, `refTouchpointId`, `refTouchpointName`, `refTouchpointUrl`, `refApplicationId`, `periodType` (String): Nguồn, loại giao dịch và tham chiếu điểm chạm.",
@@ -658,7 +770,11 @@
           "section_id": "ch07-sec09",
           "section_number": "7.9",
           "section_title": "cdp_notebook",
-          "keywords": ["Data Science", "Jupyter", "Machine Learning"],
+          "keywords": [
+            "Data Science",
+            "Jupyter",
+            "Machine Learning"
+          ],
           "summary": "Kho lưu trữ Notebook phục vụ AI/ML Job Pipeline.",
           "content": [
             "`id`, `type`, `name`, `description`, `notebookFileUri`, `notebookOutputFileUri`, `htmlFileUri`, `pythonFileUri`, `lastErrorMessage`, `accessToken` (String): Thông tin URI và files.",
@@ -673,7 +789,11 @@
           "section_id": "ch07-sec10",
           "section_number": "7.10",
           "section_title": "cdp_webhookdataevent",
-          "keywords": ["Webhooks", "Ingestion", "Raw Payload"],
+          "keywords": [
+            "Webhooks",
+            "Ingestion",
+            "Raw Payload"
+          ],
           "summary": "Hứng payload webhook thô từ hệ thống ngoài phục vụ ETL.",
           "content": [
             "`id`, `observerId`, `refTouchpointHubId`, `source`, `payload` (String): Tín hiệu thô, JSON Payload từ 3rd party.",

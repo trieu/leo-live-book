@@ -62,7 +62,7 @@ const LEO_BOOK = {
 
     // default
     if (!hash || !hash.startsWith("#book$")) {
-      this.loadSection(0, 0);
+      this.renderBookDetails();
       return;
     }
 
@@ -120,9 +120,43 @@ const LEO_BOOK = {
   renderBookMeta() {
     const book = this.data.book || {};
 
-    this.dom.title.text(book.title || "LEO LIVE BOOK");
+    const bookTitle = book.title || "LEO LIVE BOOK";
+    this.dom.title.text(bookTitle);
+
+    const fullDescription = book.description || "";
+    this.dom.title.attr("title", fullDescription);
+
     this.dom.pageTitle.text((book.title || "LEO LIVE BOOK") + " | AI Learning");
-    $("#book-cover").attr("src", book.image_cover_url || "").show();
+
+    const coverUrl = book.image_cover_url;
+    if (coverUrl) {
+      $("#book-cover")
+        .attr("src", coverUrl)
+        .attr("title", bookTitle)
+        .show();
+    } 
+  },
+
+
+  renderBookDetails() {
+    const book = this.data.book || {};
+    const title =  book.title || "LEO LIVE BOOK";
+    const fullDescription = book.description || "";
+     const coverUrl = book.image_cover_url || "https://img.icons8.com/plasticine/1200/storytelling.jpg";
+
+    // Markdown → HTML
+    const descriptionHTML = convertMdToHTML(fullDescription);
+
+    
+    // Inject HTML
+    this.dom.reader.html(`
+        <h1 class="mb-3">${title}</h1>
+        <img class="img-fluid rounded shadow mb-2 mx-auto d-block"
+                            src="${coverUrl}"
+                            style="max-width:200px; height:auto;" alt="Book Cover" />
+        <div class="lead">${descriptionHTML}</div>
+    `);
+
   },
 
   /* ===========================
@@ -188,7 +222,7 @@ const LEO_BOOK = {
       window.location.hash = `book$${bookId}$${section.section_id}`;
     }
 
-    if($(window).width() < 768) {
+    if ($(window).width() < 768) {
       // close sidebar on mobile after selecting a section
       $("#sidebar").collapse("hide");
     }
@@ -196,7 +230,7 @@ const LEO_BOOK = {
     if (typeof LeoObserver !== "undefined") {
       document.title = defaultDocumentTitle + " - " + section_title;
       window.srcTouchpointName = document.title;
-      LeoObserver.recordEventContentView({"section_title": section_title});
+      LeoObserver.recordEventContentView({ section_title: section_title });
     }
   },
 
