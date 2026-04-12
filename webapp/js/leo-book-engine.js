@@ -153,7 +153,7 @@ const LEO_BOOK = {
         <h1 class="mb-3">${title}</h1>
         <img class="img-fluid rounded shadow mb-2 mx-auto d-block"
                             src="${coverUrl}"
-                            style="max-width:200px; height:auto;" alt="Book Cover" />
+                            style="max-width:90%; height:auto;" alt="Book Cover" />
         <div class="lead">${descriptionHTML}</div>
     `);
 

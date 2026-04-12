@@ -1,0 +1,492 @@
+{
+    "book": {
+        "book_id": "cac-kinh-can-ban-trong-giao-ly-du-tong-cong-giao",
+        "title": "Kinh Căn Bản Trong Giáo Lý Dự Tòng",
+        "image_cover_url": "https://img.youtube.com/vi/2kzKyLHqDj4/maxresdefault.jpg",
+        "author": "LEOTICA - LEO AI (LEO CDP Framework)",
+        "description": "Tập hợp các bài kinh căn bản dành cho người dự tòng Công Giáo, chuẩn hóa nội dung, giúp học, hiểu và thực hành đời sống đức tin cách hệ thống.",
+        "version": "1.0.0"
+    },
+    "chapters": [
+        {
+            "chapter_id": "ch01",
+            "chapter_number": 1,
+            "chapter_title": "Các Kinh Khởi Đầu và Cơ Bản",
+            "sections": [
+                {
+                    "section_id": "ch01-sec01",
+                    "section_number": "1.1",
+                    "section_title": "Kinh Vì Dấu Thánh Giá ",
+                    "summary": "Kinh mở đầu quan trọng xin Thiên Chúa giải thoát khỏi sự dữ và tuyên xưng mầu nhiệm Thánh Giá.",
+                    "summary_video": {
+                        "title": "Dấu Thánh Giá (Dấu Kép và Dấu Đơn)",
+                        "youtube_id": "BruCEnQeKOE"
+                    },
+                    "keywords": [
+                        "vi dau thanh gia",
+                        "dau kep",
+                        "dau thanh gia",
+                        "tru ta",
+                        "cau nguyen mo dau",
+                        "kitohuu",
+                        "thanh gia chua"
+                    ],
+                    "content": [
+                        "Vì dấu Thánh Giá, xin Chúa chúng con cho khỏi kẻ thù.",
+                        "Nhân danh Cha và Con và Thánh Thần. Amen."
+                    ]
+                },
+                {
+                    "section_id": "ch01-sec02",
+                    "section_number": "1.2",
+                    "section_title": "Kinh Đức Chúa Thánh Thần",
+                    "summary": "Kinh cầu xin Chúa Thánh Thần soi sáng, hướng dẫn và thánh hóa đời sống người tín hữu.",
+                    "summary_video": {
+                        "title": "Kinh Đức Chúa Thánh Thần",
+                        "youtube_id": "P2JYajTddKQ"
+                    },
+                    "keywords": [
+                        "kinh duc chua thanh than",
+                        "chua thanh than",
+                        "soi sang",
+                        "on chua",
+                        "cau nguyen truoc khi hoc",
+                        "thanh hoa",
+                        "tin dieu cong giao"
+                    ],
+                    "content": [
+                        "Chúng con lạy ơn Đức Chúa Thánh Thần thiêng liêng sáng láng vô cùng.",
+                        "Chúng con xin Đức Chúa Thánh Thần xuống đầy lòng chúng con, là kẻ tin cậy Đức Chúa Trời.",
+                        "Và đốt lửa kính mến Đức Chúa Trời trong lòng chúng con.",
+                        "Chúng con xin Đức Chúa Trời cho Đức Chúa Thánh Thần xuống.",
+                        "<b>Sửa lại mọi sự trong ngoài chúng con.</b>",
+                        "Chúng con cầu cùng Đức Chúa Trời, xưa đã cho Đức Chúa Thánh Thần xuống soi lòng dạy dỗ các Thánh Tông Đồ.",
+                        "Thì rày chúng con cũng xin Đức Chúa Trời cho Đức Chúa Thánh Thần lại xuống.",
+                        "An ủi dạy dỗ chúng con làm những việc lành.",
+                        "Vì công nghiệp vô cùng Đức Chúa Giêsu Kitô là Chúa chúng con. Amen."
+                    ]
+                },
+                {
+                    "section_id": "ch01-sec03",
+                    "section_number": "1.3",
+                    "section_title": "Kinh Lạy Cha",
+                    "summary": "Kinh nguyện do chính Chúa Giêsu dạy, là mẫu mực mọi lời cầu nguyện.",
+                    "summary_video": {
+                        "title": "Kinh Lạy Cha",
+                        "youtube_id": "FegLfwJ0KV4"
+                    },
+                    "keywords": [
+                        "kinh lay cha",
+                        "our father",
+                        "chu giesu",
+                        "cau nguyen cong giao"
+                    ],
+                    "content": [
+                        "Lạy Cha chúng con ở trên trời, chúng con nguyện danh Cha cả sáng, nước Cha trị đến, ý Cha thể hiện dưới đất cũng như trên trời.",
+                        "Xin Cha cho chúng con hôm nay lương thực hằng ngày.",
+                        "Và tha nợ chúng con như chúng con cũng tha kẻ có nợ chúng con.",
+                        "Xin chớ để chúng con sa chước cám dỗ, nhưng cứu chúng con cho khỏi sự dữ. Amen."
+                    ]
+                },
+                {
+                    "section_id": "ch01-sec04",
+                    "section_number": "1.4",
+                    "section_title": "Kinh Kính Mừng",
+                    "summary": "Kinh tôn kính Đức Maria và xin Mẹ chuyển cầu.",
+                    "summary_video": {
+                        "title": "Kinh Kính Mừng",
+                        "youtube_id": "7H1s4MlYZE0"
+                    },
+                    "keywords": [
+                        "kinh kinh mung",
+                        "duc me maria",
+                        "hail mary",
+                        "cau nguyen"
+                    ],
+                    "content": [
+                        "Kính mừng Maria đầy ơn phúc, Đức Chúa Trời ở cùng Bà.",
+                        "Bà có phúc lạ hơn mọi người nữ, và Giêsu con lòng Bà gồm phúc lạ.",
+                        "Thánh Maria Đức Mẹ Chúa Trời, cầu cho chúng con là kẻ có tội, khi nay và trong giờ lâm tử. Amen."
+                    ]
+                },
+                {
+                    "section_id": "ch01-sec05",
+                    "section_number": "1.5",
+                    "section_title": "Kinh Sáng Danh",
+                    "summary": "Lời ca tụng vinh quang Thiên Chúa Ba Ngôi.",
+                    "summary_video": {
+                        "title": "Kinh Sáng Danh",
+                        "youtube_id": "HZveHgR52d4"
+                    },
+                    "keywords": [
+                        "sang danh",
+                        "ba ngoi",
+                        "vinh quang",
+                        "phung vu"
+                    ],
+                    "content": [
+                        "Sáng danh Đức Chúa Cha, và Đức Chúa Con, và Đức Chúa Thánh Thần.",
+                        "Như đã có trước vô cùng, và bây giờ, và hằng có, và đời đời chẳng cùng. Amen."
+                    ]
+                }
+            ]
+        },
+        {
+            "chapter_id": "ch02",
+            "chapter_number": 2,
+            "chapter_title": "Các Kinh Đối Thần và Sám Hối",
+            "sections": [
+                {
+                    "section_id": "ch02-sec01",
+                    "section_number": "2.1",
+                    "section_title": "Kinh Tin",
+                    "summary": "Kinh tuyên xưng nhân đức Tin, xác tín vào Thiên Chúa và các chân lý Hội Thánh dạy.",
+                    "summary_video": {
+                        "title": "Kinh Tin và ý nghĩa",
+                        "youtube_id": "LXen2cR4Sjc"
+                    },
+                    "keywords": [
+                        "kinh tin",
+                        "duc tin cong giao",
+                        "thien chua",
+                        "ba ngoi",
+                        "chu giesu",
+                        "tin dieu",
+                        "hoi thanh cong giao"
+                    ],
+                    "content": [
+                        "Lạy Chúa, con tin thật có một Đức Chúa Trời là Đấng thưởng phạt vô cùng.",
+                        "Con lại tin thật Đức Chúa Trời có Ba Ngôi.",
+                        "Mà Ngôi Thứ Hai đã xuống thế làm Người, chịu nạn chịu chết mà chuộc tội cho thiên hạ.",
+                        "Bấy nhiêu điều ấy cùng các điều Hội Thánh dạy, thì con tin vững vàng.",
+                        "Vì Chúa là Đấng thông minh và chân thật vô cùng đã phán truyền cho Hội Thánh. Amen."
+                    ]
+                },
+                {
+                    "section_id": "ch02-sec02",
+                    "section_number": "2.2",
+                    "section_title": "Kinh Cậy",
+                    "summary": "Kinh diễn tả nhân đức Cậy, đặt trọn niềm hy vọng vào ơn cứu độ và lời hứa của Thiên Chúa.",
+                    "summary_video": {
+                        "title": "Kinh Cậy và ý nghĩa",
+                        "youtube_id": "WFLDy3-jfm0"
+                    },
+                    "keywords": [
+                        "kinh cay",
+                        "duc cay",
+                        "hy vong cong giao",
+                        "on cuu do",
+                        "thien dang",
+                        "chu giesu",
+                        "thien chua"
+                    ],
+                    "content": [
+                        "Lạy Chúa, con trông cậy vững vàng.",
+                        "Vì công nghiệp Đức Chúa Giêsu, thì Chúa sẽ ban ơn cho con giữ đạo nên ở đời này.",
+                        "Cho ngày sau được lên thiên đàng, xem thấy mặt Đức Chúa Trời, hưởng phúc đời đời.",
+                        "Vì Chúa là Đấng phép tắc và lòng lành vô cùng, đã phán hứa sự ấy, chẳng có lẽ nào sai được. Amen."
+                    ]
+                },
+                {
+                    "section_id": "ch02-sec03",
+                    "section_number": "2.3",
+                    "section_title": "Kinh Mến",
+                    "summary": "Kinh diễn tả nhân đức Mến, yêu mến Thiên Chúa trên hết mọi sự và yêu tha nhân như chính mình.",
+                    "summary_video": {
+                        "title": "Kinh Mến và ý nghĩa",
+                        "youtube_id": "n2wvMoFiy50"
+                    },
+                    "keywords": [
+                        "kinh men",
+                        "duc men",
+                        "yeu chua",
+                        "bac ai",
+                        "yeu nguoi",
+                        "duc ai cong giao",
+                        "thien chua"
+                    ],
+                    "content": [
+                        "Lạy Chúa, con kính mến Chúa hết lòng hết sức trên hết mọi sự.",
+                        "Vì Chúa là Đấng trọn tốt trọn lành vô cùng.",
+                        "Lại vì Chúa, thì con thương yêu người ta như mình con vậy. Amen."
+                    ]
+                },
+                {
+                    "section_id": "ch02-sec04",
+                    "section_number": "2.4",
+                    "section_title": "Kinh Ăn Năn Tội",
+                    "summary": "Bày tỏ lòng thống hối và quyết tâm chừa tội.",
+                    "summary_video": {
+                        "title": "Kinh Ăn Năn Tội",
+                        "youtube_id": "roNnVg2_yEQ"
+                    },
+                    "keywords": [
+                        "an nan toi",
+                        "sam hoi",
+                        "lanh bi tich hoa giai"
+                    ],
+                    "content": [
+                        "Lạy Chúa, Chúa là Đấng trọn tốt trọn lành vô cùng.",
+                        "Chúa đã dựng nên con, và cho Con Chúa ra đời chịu nạn chịu chết vì con.",
+                        "Mà con đã cả lòng phản nghịch lỗi nghĩa cùng Chúa.",
+                        "Con lo buồn đau đớn cùng chê ghét mọi tội con trên hết mọi sự.",
+                        "Con dốc lòng chừa cải, và nhờ ơn Chúa thì con sẽ lánh xa dịp tội, ",
+                        " cùng làm việc đền tội cho xứng. Amen."
+                    ]
+                },
+                {
+                    "section_id": "ch02-sec05",
+                    "section_number": "2.5",
+                    "section_title": "Kinh Sáng Soi",
+                    "summary": "Kinh xin ơn soi sáng và trợ giúp của Thiên Chúa trong mọi công việc hằng ngày.",
+                    "summary_video": {
+                        "title": "Kinh Sáng Soi",
+                        "youtube_id": "2HAZkpGaNAY"
+                    },
+                    "keywords": [
+                        "kinh sang soi",
+                        "soi sang",
+                        "cau nguyen buoi sang",
+                        "on chua",
+                        "huong dan",
+                        "cong giao",
+                        "song dao"
+                    ],
+                    "content": [
+                        "Cúi xin Chúa sáng soi cho chúng con được biết việc phải làm.",
+                        "Cùng khi làm, xin Chúa giúp đỡ cho mỗi kinh mỗi việc chúng con.",
+                        "Từ khởi sự cho đến hoàn thành đều nhờ bởi ơn Chúa. Amen."
+                    ]
+                }
+            ]
+        },
+        {
+            "chapter_id": "ch03",
+            "chapter_number": 3,
+            "chapter_title": "Các Kinh Tuyên Xưng và Lề Luật",
+            "sections": [
+                {
+                    "section_id": "ch03-sec01",
+                    "section_number": "3.1",
+                    "section_title": "Kinh Tin Kính",
+                    "summary": "Tóm lược toàn bộ đức tin Kitô giáo.",
+                    "summary_video": {
+                        "title": "Kinh Tin Kính",
+                        "youtube_id": "XFQRz67g75s"
+                    },
+                    "keywords": [
+                        "tin kinh",
+                        "tin dieu",
+                        "apostles creed"
+                    ],
+                    "content": [
+                        "Tôi tin kính Đức Chúa Trời là Cha phép tắc vô cùng dựng nên trời đất.",
+                        "Tôi tin kính Đức Chúa Giêsu Kitô là Con Một Đức Chúa Cha cùng là Chúa chúng tôi.",
+                        "Bởi phép Đức Chúa Thánh Thần mà Người xuống thai, sinh bởi Bà Maria đồng trinh.",
+                        "Chịu nạn đời quan Phongxiô Philatô, chịu đóng đinh trên cây Thánh Giá, chết và táng xác.",
+                        "Xuống ngục tổ tông, ngày thứ ba bởi trong kẻ chết mà sống lại.",
+                        "Lên trời ngự bên hữu Đức Chúa Cha phép tắc vô cùng.",
+                        "Ngày sau bởi trời lại xuống phán xét kẻ sống và kẻ chết.",
+                        "Tôi tin kính Đức Chúa Thánh Thần.",
+                        "Tôi tin có Hội Thánh hằng có ở khắp thế này, các Thánh thông công.",
+                        "Tôi tin phép tha tội.",
+                        "Tôi tin xác loài người ngày sau sống lại.",
+                        "Tôi tin hằng sống vậy. Amen."
+                    ]
+                },
+                {
+                    "section_id": "ch03-sec02",
+                    "section_number": "3.2",
+                    "section_title": "Mười Điều Răn",
+                    "summary": "Luật căn bản Thiên Chúa dạy con người sống.",
+                    "summary_video": {
+                        "title": "10 Điều Răn",
+                        "youtube_id": "CEa3WXdPcBU"
+                    },
+                    "keywords": [
+                        "muoi dieu ran",
+                        "luat chua",
+                        "dao duc cong giao"
+                    ],
+                    "content": [
+                        "Đạo Đức Chúa Trời có mười điều răn:",
+                        "Thứ nhất: Thờ phượng một Đức Chúa Trời và kính mến Người trên hết mọi sự.",
+                        "Thứ hai: Chớ kêu tên Đức Chúa Trời vô cớ.",
+                        "Thứ ba: Giữ ngày Chúa Nhật.",
+                        "Thứ bốn: Thảo kính cha mẹ.",
+                        "Thứ năm: Chớ giết người.",
+                        "Thứ sáu: Chớ làm sự dâm dục.",
+                        "Thứ bảy: Chớ lấy của người.",
+                        "Thứ tám: Chớ làm chứng dối.",
+                        "Thứ chín: Chớ muốn vợ chồng người.",
+                        "Thứ mười: Chớ tham của người."
+                    ]
+                },
+                {
+                    "section_id": "ch03-sec03",
+                    "section_number": "3.3",
+                    "section_title": "Kinh năm Điều Răn Hội Thánh",
+                    "summary": "Những quy định giúp người tín hữu sống đạo.",
+                    "summary_video": {
+                        "title": "5 Điều Răn Hội Thánh",
+                        "youtube_id": "l2lrEXOK9rg"
+                    },
+                    "keywords": [
+                        "nam dieu ran hoi thanh",
+                        "luat hoi thanh"
+                    ],
+                    "content": [
+                        "1. Dự lễ ngày Chúa Nhật và các ngày lễ buộc.",
+                        "2. Xưng tội ít là một lần trong năm.",
+                        "3. Rước lễ ít là một lần trong mùa Phục Sinh.",
+                        "4. Giữ chay và kiêng thịt theo luật Hội Thánh.",
+                        "5. Đóng góp cho các nhu cầu của Hội Thánh."
+                    ]
+                },
+                {
+                    "section_id": "ch03-sec04",
+                    "section_number": "3.4",
+                    "section_title": "Bảy Phép Bí Tích",
+                    "summary": "Các dấu chỉ hữu hiệu ban ơn cứu độ.",
+                    "summary_video": {
+                        "title": "7 Bí Tích",
+                        "youtube_id": "2RqFqs9ItLg"
+                    },
+                    "keywords": [
+                        "bay bi tich",
+                        "sacraments",
+                        "on chua"
+                    ],
+                    "content": [
+                        "Đạo Đức Chúa Giêsu có bảy phép Bí tích:",
+                        "1. Rửa Tội",
+                        "2. Thêm Sức",
+                        "3. Thánh Thể",
+                        "4. Hòa Giải",
+                        "5. Xức Dầu Bệnh Nhân",
+                        "6. Truyền Chức Thánh",
+                        "7. Hôn Phối"
+                    ]
+                },
+                {
+                    "section_id": "ch03-sec05",
+                    "section_number": "3.5",
+                    "section_title": "Kinh Cáo Mình",
+                    "summary": "Kinh xưng thú tội lỗi trước Thiên Chúa và Hội Thánh.",
+                    "summary_video": {
+                        "title": "Kinh Cáo Mình",
+                        "youtube_id": "yvpBTNB_-Lk"
+                    },
+                    "keywords": [
+                        "kinh cao minh",
+                        "xung toi",
+                        "sam hoi",
+                        "toi loi",
+                        "bi tich hoa giai"
+                    ],
+                    "content": [
+                        "Tôi thú nhận cùng Thiên Chúa toàn năng và cùng anh chị em.",
+                        "Tôi đã phạm tội nhiều trong tư tưởng, lời nói, việc làm và những điều thiếu sót.",
+                        "Lỗi tại tôi, lỗi tại tôi, lỗi tại tôi mọi đàng.",
+                        "Vì vậy tôi xin Đức Bà Maria trọn đời đồng trinh, các Thiên Thần, các Thánh và anh chị em cầu cho tôi trước tòa Thiên Chúa, Chúa chúng ta."
+                    ]
+                }
+            ]
+        },
+        {
+            "chapter_id": "ch04",
+            "chapter_number": 4,
+            "chapter_title": "Các Kinh Luân Lý và Kết Thúc",
+            "sections": [
+                {
+                    "section_id": "ch04-sec01",
+                    "section_number": "4.1",
+                    "section_title": "Kinh Cải Tội Bảy Mối",
+                    "summary": "Kinh dạy cách sửa mình bằng cách thực hành các nhân đức đối nghịch với bảy mối tội đầu.",
+                    "summary_video": {
+                        "title": "Cải Tội Bảy Mối (dễ nhớ)",
+                        "youtube_id": "RtYx3Lp9Qw2"
+                    },
+                    "keywords": [
+                        "cai toi bay moi",
+                        "7 moi toi",
+                        "nhan duc cong giao",
+                        "luan ly cong giao",
+                        "song dao",
+                        "tu sua minh"
+                    ],
+                    "content": [
+                        "Cải tội bảy mối có bảy đức:",
+                        "Thứ nhất: Khiêm nhường, chớ kiêu ngạo.",
+                        "Thứ hai: Rộng rãi, chớ hà tiện.",
+                        "Thứ ba: Giữ mình sạch sẽ, chớ mê dâm dục.",
+                        "Thứ bốn: Hay nhịn, chớ hờn giận.",
+                        "Thứ năm: Kiêng bớt, chớ mê ăn uống.",
+                        "Thứ sáu: Yêu người, chớ ghen ghét.",
+                        "Thứ bảy: Siêng năng việc Đức Chúa Trời, chớ làm biếng."
+                    ]
+                },
+                {
+                    "section_id": "ch04-sec02",
+                    "section_number": "4.2",
+                    "section_title": "Tám Mối Phúc Thật",
+                    "summary": "Lời dạy của Chúa Giêsu về con đường dẫn đến hạnh phúc thật và Nước Trời.",
+                    "summary_video": {
+                        "title": "Tám Mối Phúc Thật",
+                        "youtube_id": "4IQKvXLNYvo"
+                    },
+                    "keywords": [
+                        "tam moi phuc that",
+                        "phuc that",
+                        "bai giang tren nui",
+                        "chu giesu",
+                        "luan ly cong giao",
+                        "song dao",
+                        "nuoc troi"
+                    ],
+                    "content": [
+                        "Thứ nhất: Ai có lòng khó khăn, ấy là phúc thật, vì chưng nước Đức Chúa Trời là của mình vậy.",
+                        "Thứ hai: Ai hiền lành, ấy là phúc thật, vì chưng sẽ được đất Đức Chúa Trời làm của mình vậy.",
+                        "Thứ ba: Ai khóc lóc, ấy là phúc thật, vì chưng sẽ được an ủi vậy.",
+                        "Thứ bốn: Ai khao khát nhân đức trọn lành, ấy là phúc thật, vì chưng sẽ được no đủ vậy.",
+                        "Thứ năm: Ai thương xót người, ấy là phúc thật, vì chưng mình sẽ được thương xót vậy.",
+                        "Thứ sáu: Ai giữ lòng sạch sẽ, ấy là phúc thật, vì chưng sẽ được thấy mặt Đức Chúa Trời vậy.",
+                        "Thứ bảy: Ai làm cho người hòa thuận, ấy là phúc thật, vì chưng sẽ được gọi là con Đức Chúa Trời vậy.",
+                        "Thứ tám: Ai chịu khốn nạn vì đạo ngay, ấy là phúc thật, vì chưng nước Đức Chúa Trời là của mình vậy."
+                    ]
+                },
+                {
+                    "section_id": "ch04-sec03",
+                    "section_number": "4.3",
+                    "section_title": "Năm Sự Vui (Mân Côi)",
+                    "summary": "Năm mầu nhiệm Mùa Vui giúp suy niệm về thời thơ ấu của Chúa Giêsu và đời sống Đức Maria.",
+                    "summary_video": {
+                        "title": "5 Sự Vui Mân Côi",
+                        "youtube_id": "7APZe7BiZeQ"
+                    },
+                    "keywords": [
+                        "5 su vui",
+                        "nam su vui",
+                        "man coi",
+                        "mau nhiem mua vui",
+                        "duc me maria",
+                        "chu giesu",
+                        "cau nguyen man coi"
+                    ],
+                    "content": [
+                        "Thứ nhất thì ngắm: Thiên Thần truyền tin cho Đức Bà chịu thai.",
+                        "Ta hãy xin cho được ở khiêm nhường.",
+                        "Thứ hai thì ngắm: Đức Bà đi viếng bà Êlisabét.",
+                        "Ta hãy xin cho được lòng yêu người.",
+                        "Thứ ba thì ngắm: Đức Bà sinh Đức Chúa Giêsu nơi hang đá.",
+                        "Ta hãy xin cho được lòng khó khăn.",
+                        "Thứ bốn thì ngắm: Đức Bà dâng Đức Chúa Giêsu trong đền thánh.",
+                        "Ta hãy xin cho được vâng lời chịu lụy.",
+                        "Thứ năm thì ngắm: Đức Bà tìm được Đức Chúa Giêsu trong đền thánh.",
+                        "Ta hãy xin cho được giữ nghĩa cùng Chúa luôn."
+                    ]
+                }
+            ]
+        }
+    ]
+}
