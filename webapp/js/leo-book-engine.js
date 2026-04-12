@@ -203,6 +203,11 @@ const LEO_BOOK = {
     ============================ */
 
   loadSection(cIndex, sIndex, updateHash = false) {
+    if ($(window).width() < 768) {
+      // close sidebar on mobile after selecting a section
+      $("#sidebar").collapse("hide");
+    }
+
     const chapter = this.data.chapters?.[cIndex];
     const section = chapter?.sections?.[sIndex];
     const section_title = section?.section_title || "";
@@ -220,11 +225,6 @@ const LEO_BOOK = {
     if (updateHash) {
       const bookId = this.data.book.book_id;
       window.location.hash = `book$${bookId}$${section.section_id}`;
-    }
-
-    if ($(window).width() < 768) {
-      // close sidebar on mobile after selecting a section
-      $("#sidebar").collapse("hide");
     }
 
     if (typeof LeoObserver !== "undefined") {
