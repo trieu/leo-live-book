@@ -9,7 +9,24 @@ class LeoSearchEngine {
     this.buildIndex(data);
   }
 
+  /**
+   * Normalize string:
+   * - lowercase
+   * - remove Vietnamese accents
+   */
+  normalize(str = "") {
+    return str
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  }
+
+  /**
+   * Build flat search index from nested book structure
+   */
   buildIndex(data) {
+    if (!data?.chapters) return;
+
     data.chapters.forEach((chapter) => {
       chapter.sections.forEach((section) => {
         const contentStr = section.content.join(" ");
@@ -23,21 +40,23 @@ class LeoSearchEngine {
           keywords: section.keywords,
           summary: section.summary,
           content: contentStr,
+
+          // Precomputed search blob (performance optimization)
           _searchBlob: this.normalize(
-            `${chapter.chapter_title} ${section.section_title} ${section.keywords.join(" ")} ${section.summary} ${contentStr}`,
+            `${chapter.chapter_title} 
+             ${section.section_title} 
+             ${section.keywords.join(" ")} 
+             ${section.summary} 
+             ${contentStr}`
           ),
         });
       });
     });
   }
 
-  normalize(str) {
-    return str
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "");
-  }
-
+  /**
+   * Core search scoring algorithm
+   */
   search(query) {
     if (!query || query.trim().length === 0) return [];
 
@@ -78,8 +97,11 @@ class LeoSearchRenderer {
     this.container = container;
   }
 
-  highlight(text, terms) {
-    if (!terms || terms.length === 0) return text;
+  /**
+   * Highlight matched terms
+   */
+  highlight(text = "", terms = []) {
+    if (!terms.length) return text;
 
     const sorted = [...terms].sort((a, b) => b.length - a.length);
     const pattern = new RegExp(`(${sorted.join("|")})`, "gi");
@@ -87,6 +109,9 @@ class LeoSearchRenderer {
     return text.replace(pattern, '<span class="highlight">$1</span>');
   }
 
+  /**
+   * Render search results
+   */
   render(results, query) {
     this.container.innerHTML = "";
 
@@ -104,7 +129,7 @@ class LeoSearchRenderer {
     results.forEach((res) => {
       const div = document.createElement("div");
       div.className = "result-item";
-      div.dataset.sectionId = res.id; // click payload
+      div.dataset.sectionId = res.id;
 
       const titleH = this.highlight(res.section_title, terms);
       const summaryH = this.highlight(res.summary, terms);
@@ -144,50 +169,80 @@ class LeoSearchRenderer {
  */
 class LeoSearchController {
   constructor(bookData, inputEl, resultsEl) {
-    console.log("LeoSearchController created with bookData:", bookData);
     this.bookId = bookData.book?.book_id;
     this.engine = new LeoSearchEngine(bookData);
     this.renderer = new LeoSearchRenderer(resultsEl);
     this.inputEl = inputEl;
     this.resultsEl = resultsEl;
 
+    // Bind + debounce search handler
+    this.handleSearch = this.debounce(this.handleSearch.bind(this), 150);
+
     this.bindEvents();
   }
 
+  /**
+   * Debounce utility to prevent excessive computation
+   */
+  debounce(fn, delay = 200) {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => fn(...args), delay);
+    };
+  }
+
+  /**
+   * Centralized search execution
+   * → ALL events must go through this
+   */
+  handleSearch(query) {
+    const q = (query ?? this.inputEl.value ?? "").trim();
+    const results = this.engine.search(q);
+    this.renderer.render(results, q);
+  }
+
+  /**
+   * Bind ALL event sources:
+   * - typing (input)
+   * - change (blur / manual trigger)
+   * - jQuery trigger support
+   */
   bindEvents() {
+    // Native typing
     this.inputEl.addEventListener("input", (e) => {
-      const query = e.target.value;
-      const results = this.engine.search(query);
-      this.renderer.render(results, query);
+      this.handleSearch(e.target.value);
     });
 
-    // Event delegation for result clicks
+    // Native change
+    this.inputEl.addEventListener("change", (e) => {
+      this.handleSearch(e.target.value);
+    });
+
+    // jQuery compatibility (CRITICAL for your use case)
+    if (window.jQuery) {
+      $(this.inputEl).on("input change", (e) => {
+        this.handleSearch(e.target.value);
+      });
+    }
+
+    // Result click delegation
     this.resultsEl.addEventListener("click", (e) => {
       const item = e.target.closest(".result-item");
       if (!item) return;
 
       const sectionId = item.dataset.sectionId;
-
       this.onResultClick(sectionId);
     });
   }
 
   /**
-   * =========================================
-   * TODO: IMPLEMENT YOUR OWN HANDLER
-   *
-   * Example use cases:
-   * - Scroll reader to section
-   * - Load section by ID
-   * - Track analytics
-   * - Trigger AI reasoning
-   * =========================================
+   * Handle click on result
    */
   onResultClick(sectionId) {
-    // TODO: handle search result click
-    var hashId = `book$${this.bookId}$${sectionId}`
-     console.log("Clicked hashId:", hashId);
-     location.hash = hashId;
+    const hashId = `book$${this.bookId}$${sectionId}`;
+    console.log("Clicked hashId:", hashId);
+    location.hash = hashId;
   }
 }
 
@@ -204,7 +259,7 @@ function initSearchService(endpointUrl) {
       new LeoSearchController(
         bookJson,
         document.getElementById("search-input"),
-        document.getElementById("results-container"),
+        document.getElementById("results-container")
       );
     },
     onError: (err) => {

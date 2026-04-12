@@ -42,6 +42,7 @@ const LEO_BOOK = {
   showContentByTag(tag) {
     // TODO: implement filtering content by tag
     console.log("🔎 Filter by tag:", tag);
+    $('#search-input').val(tag).trigger('change');
 
     // Example behaviors (choose one or combine):
     // 1. Filter sections by keyword
