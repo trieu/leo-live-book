@@ -215,10 +215,38 @@ a {
 }
 
 .reader-card p {
-  font-size: 1.05rem;
+  /* Typography */
+  font-size: clamp(1rem, 1.1vw + 0.9rem, 1.2rem);
   line-height: 1.75;
-  color: #374151;
-  margin-bottom: 1.5rem;
+  letter-spacing: 0.01em;
+
+  /* Readability */
+  color: #1f2937; /* darker for better contrast */
+  max-width: 70ch; /* optimal line length */
+
+  /* Spacing */
+  margin-bottom: 1.4em;
+
+  /* Rendering */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Improve spacing on larger screens */
+@media (min-width: 1024px) {
+  .reader-card p {
+    line-height: 1.8;
+    margin-bottom: 1.2em;
+  }
+}
+
+/* Mobile optimization */
+@media (max-width: 480px) {
+  .reader-card p {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1em;
+  }
 }
 
 .reader-card img {

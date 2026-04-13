@@ -260,12 +260,10 @@ const LEO_BOOK = {
 
     const video = section.summary_video?.youtube_id
       ? `
-            <div class="ratio ratio-16x9 my-4 rounded overflow-hidden">
                 <iframe
                     src="https://www.youtube.com/embed/${section.summary_video.youtube_id}"
                     allowfullscreen>
                 </iframe>
-            </div>
           `
       : "";
 
@@ -286,10 +284,10 @@ const LEO_BOOK = {
       .join("");
 
     // Inject HTML
-    this.dom.reader.html(`
+    this.dom.reader.empty().html(`
         <h1 class="mb-3">${section.section_title}</h1>
         <div class="lead">${summaryHTML}</div>
-        ${video}
+        <div id="video-container" style="display:none;" class="ratio ratio-16x9 my-4 rounded overflow-hidden"> </div>
         ${paragraphsHTML}
         <div class="mt-4 tag-container">
             ${tagsHTML}
@@ -304,6 +302,11 @@ const LEO_BOOK = {
         const tag = $(e.currentTarget).data("tag");
         LEO_BOOK.showContentByTag(tag);
       });
+
+    // add summary_video if exists
+    if(video){
+      this.dom.reader.find("#video-container").show().html(video);
+    }  
 
     // 🔥 Render MathJax after everything
     renderMath(this.dom.reader[0]);
